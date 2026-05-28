@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSc Audio ML Thesis Planner</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue:       #185FA5;
+    --blue-soft:  #E6F1FB;
+    --blue-dark:  #0C447C;
+    --teal:       #0F6E56;
+    --teal-soft:  #E1F5EE;
+    --amber:      #854F0B;
+    --amber-soft: #FAEEDA;
+    --green:      #3B6D11;
+    --green-soft: #EAF3DE;
+    --coral:      #993C1D;
+    --coral-soft: #FAECE7;
+    --purple:     #534AB7;
+    --purple-soft:#EEEDFE;
+    --gray:       #6B7280;
+    --gray-light: #F3F4F6;
+    --gray-mid:   #E5E7EB;
+    --text:       #111827;
+    --text-sec:   #6B7280;
+    --white:      #FFFFFF;
+    --bg:         #F8FAFC;
+    --radius:     10px;
+    --shadow:     0 1px 4px rgba(0,0,0,0.08);
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── header ── */
+  .header { background: linear-gradient(135deg, #0C1E3B 0%, #185FA5 100%); color: #fff; padding: 2rem 1.5rem 1.5rem; }
+  .header h1 { font-size: clamp(1.3rem, 4vw, 1.8rem); font-weight: 700; letter-spacing: -0.02em; }
+  .header p  { font-size: 0.9rem; opacity: 0.75; margin-top: 6px; }
+  .stats { display: flex; gap: 1rem; margin-top: 1.2rem; flex-wrap: wrap; }
+  .stat { background: rgba(255,255,255,0.12); border-radius: 8px; padding: 8px 14px; }
+  .stat-n { font-size: 1.4rem; font-weight: 700; }
+  .stat-l { font-size: 0.72rem; opacity: 0.75; margin-top: 1px; }
+
+  /* ── nav tabs ── */
+  .nav { display: flex; gap: 4px; padding: 14px 1.5rem 0; background: #fff; border-bottom: 1px solid var(--gray-mid); overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-btn { flex-shrink: 0; padding: 8px 14px; border: none; background: none; font-size: 0.82rem; font-weight: 500; color: var(--text-sec); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; border-radius: 6px 6px 0 0; transition: all 0.15s; white-space: nowrap; }
+  .nav-btn:hover  { color: var(--blue); background: var(--blue-soft); }
+  .nav-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+  /* ── main content ── */
+  .main { max-width: 860px; margin: 0 auto; padding: 1.5rem; }
+
+  /* ── sections ── */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ── cards ── */
+  .card { background: var(--white); border: 1px solid var(--gray-mid); border-radius: var(--radius); padding: 1.1rem 1.2rem; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .card-blue   { border-left: 4px solid var(--blue); }
+  .card-teal   { border-left: 4px solid var(--teal); }
+  .card-amber  { border-left: 4px solid var(--amber); }
+  .card-green  { border-left: 4px solid var(--green); }
+  .card-coral  { border-left: 4px solid var(--coral); }
+  .card-purple { border-left: 4px solid var(--purple); }
+  .card-star   { border: 2px solid var(--blue); }
+
+  .card-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+  .lbl-blue   { color: var(--blue); }
+  .lbl-teal   { color: var(--teal); }
+  .lbl-amber  { color: var(--amber); }
+  .lbl-green  { color: var(--green); }
+  .lbl-coral  { color: var(--coral); }
+  .lbl-purple { color: var(--purple); }
+
+  .card-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .card-body  { font-size: 0.875rem; color: var(--text-sec); line-height: 1.65; }
+
+  /* ── key-value table ── */
+  .kv { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.85rem; }
+  .kv tr { border-bottom: 1px solid var(--gray-mid); }
+  .kv tr:last-child { border-bottom: none; }
+  .kv td { padding: 8px 10px; vertical-align: top; line-height: 1.55; }
+  .kv td:first-child { font-weight: 600; color: var(--blue-dark); background: var(--blue-soft); width: 30%; min-width: 130px; border-radius: 4px 0 0 4px; }
+  .kv td:last-child  { color: var(--text-sec); }
+
+  /* ── badges ── */
+  .badges { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 0.72rem; font-weight: 500; }
+  .badge-blue   { background: var(--blue-soft);   color: var(--blue-dark); }
+  .badge-teal   { background: var(--teal-soft);   color: var(--teal); }
+  .badge-amber  { background: var(--amber-soft);  color: var(--amber); }
+  .badge-green  { background: var(--green-soft);  color: var(--green); }
+  .badge-gray   { background: var(--gray-light);  color: var(--gray); }
+  .badge-purple { background: var(--purple-soft); color: var(--purple); }
+  .badge-coral  { background: var(--coral-soft);  color: var(--coral); }
+
+  /* ── difficulty dots ── */
+  .diff { display: flex; align-items: center; gap: 4px; margin-top: 8px; font-size: 0.78rem; color: var(--text-sec); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .dot-on  { background: var(--blue); }
+  .dot-off { background: var(--gray-mid); border: 1px solid var(--gray); }
+
+  /* ── pro-con grid ── */
+  .pro-con { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .pro-con-box { background: var(--gray-light); border-radius: 7px; padding: 9px 11px; font-size: 0.8rem; color: var(--text-sec); line-height: 1.5; }
+  .pro-con-box b { display: block; font-size: 0.72rem; margin-bottom: 4px; }
+
+  /* ── recommended pill ── */
+  .rec-pill { display: inline-block; background: var(--blue); color: #fff; font-size: 0.72rem; font-weight: 600; padding: 3px 11px; border-radius: 99px; margin-bottom: 9px; }
+
+  /* ── phase timeline ── */
+  .phases { display: flex; gap: 4px; margin-bottom: 1.4rem; border-radius: 8px; overflow: hidden; }
+  .phase { flex: 1; padding: 10px 6px; text-align: center; font-size: 0.72rem; font-weight: 600; cursor: pointer; transition: opacity 0.15s; line-height: 1.35; }
+  .phase:hover { opacity: 0.8; }
+  .ph1 { background: #B5D4F4; color: #042C53; }
+  .ph2 { background: #9FE1CB; color: #04342C; }
+  .ph3 { background: #FAC775; color: #412402; }
+  .ph4 { background: #C0DD97; color: #173404; }
+  .ph5 { background: #C9C9C9; color: #333; }
+  .ph6 { background: #F4C0D1; color: #4B1528; }
+
+  /* ── milestone list ── */
+  .milestones { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .ms { display: flex; gap: 10px; align-items: flex-start; }
+  .ms-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .ms-text { font-size: 0.85rem; color: var(--text-sec); line-height: 1.6; }
+  .ms-text b { color: var(--text); }
+
+  /* ── week grid ── */
+  .week-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin: 8px 0 14px; }
+  .day-hdr { font-size: 0.72rem; font-weight: 600; text-align: center; color: var(--text-sec); margin-bottom: 3px; }
+  .day-hdr-row { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
+  .day-cell { border-radius: 6px; padding: 7px 3px; font-size: 0.7rem; text-align: center; line-height: 1.4; }
+  .day-wk   { background: var(--blue-soft); color: var(--blue-dark); }
+  .day-we   { background: var(--teal-soft); color: var(--teal); }
+  .day-rest { background: var(--gray-light); color: var(--text-sec); }
+
+  /* ── tool grid ── */
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 10px; }
+
+  /* ── session time table ── */
+  .session-row { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--gray-mid); font-size: 0.85rem; }
+  .session-row:last-child { border-bottom: none; }
+  .session-time { font-weight: 600; color: var(--text-sec); font-size: 0.78rem; padding-top: 1px; }
+
+  /* ── insight box ── */
+  .insight { background: var(--blue-soft); border-left: 4px solid var(--blue); border-radius: 8px; padding: 12px 14px; margin: 12px 0; font-size: 0.85rem; color: var(--blue-dark); line-height: 1.6; }
+  .insight-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--blue); margin-bottom: 4px; }
+  .warn  { background: var(--amber-soft); border-left-color: var(--amber); color: var(--amber); }
+  .warn p { color: #3A2005; }
+  .good  { background: var(--teal-soft); border-left-color: var(--teal); }
+  .good p { color: #04342C; }
+
+  /* ── section header ── */
+  .sec-h2 { font-size: 1rem; font-weight: 700; color: var(--white); background: #0C1E3B; padding: 9px 14px; border-radius: 7px; margin: 18px 0 10px; }
+  .sec-h3 { font-size: 0.9rem; font-weight: 600; color: var(--blue-dark); background: var(--blue-soft); padding: 7px 12px; border-radius: 6px; margin: 14px 0 8px; border-left: 3px solid var(--blue); }
+
+  /* ── responsive ── */
+  @media (max-width: 540px) {
+    .pro-con { grid-template-columns: 1fr; }
+    .kv td:first-child { width: 38%; font-size: 0.78rem; }
+    .phases { flex-wrap: wrap; }
+    .phase { flex: 1 0 30%; }
+  }
+
+  /* progress tracker */
+  .tracker { background: var(--white); border: 1px solid var(--gray-mid); border-radius: var(--radius); padding: 1.1rem; margin-bottom: 12px; }
+  .tracker h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; }
+  .tracker-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 6px; }
+  .month-box { background: var(--gray-light); border-radius: 7px; padding: 8px 6px; text-align: center; cursor: pointer; transition: all 0.15s; border: 2px solid transparent; }
+  .month-box:hover { border-color: var(--blue); }
+  .month-box.done { background: var(--teal-soft); border-color: var(--teal); }
+  .month-box.active { background: var(--blue-soft); border-color: var(--blue); }
+  .month-num { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+  .month-lbl { font-size: 0.65rem; color: var(--text-sec); margin-top: 2px; }
+  .month-box.done .month-num::after { content: " ✓"; color: var(--teal); }
+  .progress-bar { height: 6px; background: var(--gray-mid); border-radius: 99px; margin-top: 12px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--blue)); border-radius: 99px; transition: width 0.4s; }
+  .progress-text { font-size: 0.75rem; color: var(--text-sec); margin-top: 6px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🎓 BSc Audio ML Thesis Planner</h1>
+  <p>Bangla Speech Emotion Recognition · 6 months · 1 hr/weekday · 3 hrs/weekend</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">6</div><div class="stat-l">months total</div></div>
+    <div class="stat"><div class="stat-n">264</div><div class="stat-l">total hours</div></div>
+    <div class="stat"><div class="stat-n">11</div><div class="stat-l">hours/week</div></div>
+    <div class="stat"><div class="stat-n">0 → BSc</div><div class="stat-l">your journey</div></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="show('topics',this)">⭐ Thesis Topics</button>
+  <button class="nav-btn" onclick="show('plan',this)">📅 6-Month Plan</button>
+  <button class="nav-btn" onclick="show('weekly',this)">🗓 Weekly Routine</button>
+  <button class="nav-btn" onclick="show('daily',this)">⏱ Daily Schedule</button>
+  <button class="nav-btn" onclick="show('tools',this)">🛠 Toolkit</button>
+  <button class="nav-btn" onclick="show('tracker',this)">📊 My Progress</button>
+  <button class="nav-btn" onclick="show('tips',this)">💡 Survival Tips</button>
+</nav>
+
+<main class="main">
+
+<!-- ═══════════════════════════ TOPICS ═══════════════════════════ -->
+<div class="section active" id="sec-topics">
+
+  <div class="card card-star">
+    <div class="rec-pill">⭐ Recommended for you</div>
+    <div class="card-title">Bangla Speech Emotion Recognition using Transfer Learning</div>
+    <div class="card-body">Fine-tune a pretrained HuBERT or wav2vec 2.0 model to classify emotions (happy, sad, angry, neutral, fear, disgust, surprise) from Bangla speech. Bangla is your native language — this is a real research gap. You don't train from scratch; pretrained models do the heavy lifting.</div>
+    <div class="diff">
+      <span style="margin-right:4px;">Difficulty:</span>
+      <div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div>
+      <span style="margin-left:6px;">Moderate — perfect for BSc</span>
+    </div>
+    <div class="pro-con">
+      <div class="pro-con-box"><b style="color:var(--teal)">✓ Why it works</b>Real research gap for Bangla · Pretrained models handle complexity · Clear metric (F1, accuracy) · SUBESCO dataset exists · Novel contribution guaranteed</div>
+      <div class="pro-con-box"><b style="color:var(--coral)">⚠ Watch out for</b>Need free Colab GPU for fine-tuning · SUBESCO dataset must be requested from authors · Literature review is the hardest part</div>
+    </div>
+    <table class="kv" style="margin-top:12px;">
+      <tr><td>Dataset</td><td>SUBESCO — 7000 utterances, 7 emotions, 10 Bangla speakers</td></tr>
+      <tr><td>Model</td><td>HuBERT (facebook/hubert-base-ls960) fine-tuned on HuggingFace</td></tr>
+      <tr><td>Baseline</td><td>CNN on mel spectrograms (your comparison point)</td></tr>
+      <tr><td>Metric</td><td>Accuracy + F1 per emotion class + confusion matrix</td></tr>
+      <tr><td>Your thesis sentence</td><td>"Fine-tuned HuBERT outperforms CNN baselines for Bangla speech emotion recognition, with X% accuracy on SUBESCO, suggesting self-supervised models transfer effectively to low-resource emotional speech tasks."</td></tr>
+    </table>
+    <div class="badges"><span class="badge badge-blue">HuBERT</span><span class="badge badge-teal">Bangla NLP</span><span class="badge badge-amber">HuggingFace</span><span class="badge badge-purple">Transfer Learning</span><span class="badge badge-green">SUBESCO</span></div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px;">
+      <div class="card-title">Environmental Sound Classification via CNN on Mel Spectrograms</div>
+      <span class="badge badge-green">Easiest option</span>
+    </div>
+    <div class="card-body" style="margin-top:6px;">Convert audio to mel spectrogram images, apply a CNN. Dataset: ESC-50 (2000 clips, 50 classes). Most tutorials online. Choose this if SUBESCO is unavailable.</div>
+    <div class="diff"><span style="margin-right:4px;">Difficulty:</span><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><span style="margin-left:6px;">Easy — well-trodden path</span></div>
+    <div class="badges"><span class="badge badge-blue">CNN</span><span class="badge badge-teal">ESC-50</span><span class="badge badge-gray">Image Classification</span></div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px;">
+      <div class="card-title">Whisper Fine-tuning for Low-Resource Bangla ASR</div>
+      <span class="badge badge-amber">High impact</span>
+    </div>
+    <div class="card-body" style="margin-top:6px;">Fine-tune OpenAI Whisper on Bangla speech from Mozilla Common Voice. Compare WER before vs after. Very publishable. Harder data pipeline.</div>
+    <div class="diff"><span style="margin-right:4px;">Difficulty:</span><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><span style="margin-left:6px;">Harder — more data work</span></div>
+    <div class="badges"><span class="badge badge-blue">Whisper</span><span class="badge badge-teal">Bangla ASR</span><span class="badge badge-amber">Common Voice</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Music Genre Classification: CNN vs Audio Spectrogram Transformer</div>
+    <div class="card-body" style="margin-top:6px;">Compare CNN vs AST on GTZAN (1000 clips, 10 genres). A comparative study structure is strong for beginners — you compare, not invent.</div>
+    <div class="diff"><span style="margin-right:4px;">Difficulty:</span><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div></div>
+    <div class="badges"><span class="badge badge-blue">AST</span><span class="badge badge-gray">GTZAN</span><span class="badge badge-gray">Comparative study</span></div>
+  </div>
+
+  <div class="insight"><div class="insight-label">Bottom line</div>Go with <strong>Bangla Speech Emotion Recognition</strong>. It's novel, uses your native language as an academic advantage, the dataset exists, and it's achievable with HuggingFace in 6 months even as a beginner. If SUBESCO is inaccessible, fall back to ESC-50 + CNN.</div>
+</div>
+
+<!-- ═══════════════════════════ 6-MONTH PLAN ═══════════════════════════ -->
+<div class="section" id="sec-plan">
+
+  <div class="phases">
+    <div class="phase ph1">Month 1<br>Foundation</div>
+    <div class="phase ph2">Month 2<br>Audio basics</div>
+    <div class="phase ph3">Month 3<br>Lit review</div>
+    <div class="phase ph4">Month 4<br>Build it</div>
+    <div class="phase ph5">Month 5<br>Experiments</div>
+    <div class="phase ph6">Month 6<br>Write it</div>
+  </div>
+
+  <div class="card card-blue">
+    <div class="card-label lbl-blue">Month 1 — Python & ML Foundations · 44 hours</div>
+    <div class="card-title">Learn to code. Understand what ML is. Do not touch audio yet.</div>
+    <div class="milestones">
+      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Weeks 1–2 (22 hrs):</b> Python fundamentals — variables, loops, functions, lists, dicts. Use Claude/ChatGPT to explain every error. Work through freeCodeCamp Python or CS50P daily. Goal: write a script that reads a CSV and prints averages.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> NumPy and Pandas basics. Load data, slice arrays, compute statistics. Kaggle micro-courses are free and take ~1 hr each.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Watch 3Blue1Brown Neural Networks playlist (8 videos). Read Chapters 1–2 of the ML guide. No coding this week — understanding only.</div></div>
+    </div>
+    <div class="insight" style="margin-top:12px;"><div class="insight-label">Month 1 Checkpoint</div>You can write a Python script that loads data, filters it, and prints results without help.</div>
+  </div>
+
+  <div class="card card-teal">
+    <div class="card-label lbl-teal">Month 2 — Audio Signal Processing · 44 hours</div>
+    <div class="card-title">Learn the language of audio. Build your first audio classifier.</div>
+    <div class="milestones">
+      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Valerio Velardo — Audio Signal Processing for ML playlist, first 8 videos. Re-watch with a Colab notebook open. Plot waveforms and spectrograms in Python.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> MFCCs and Mel spectrograms using librosa. Extract features from 10 audio files. Understand what each feature means physically.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> HuggingFace Audio Course, Section 1 — Audio classification. Copy the tutorial exactly; understanding comes from running it.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Download ESC-50. Build a mel spectrogram + CNN classifier end to end. Doesn't need good accuracy — just working.</div></div>
+    </div>
+    <div class="insight good" style="margin-top:12px;"><div class="insight-label">Month 2 Checkpoint</div>You can load any audio file, extract a mel spectrogram, and run it through a classifier.</div>
+  </div>
+
+  <div class="card card-amber">
+    <div class="card-label lbl-amber">Month 3 — Literature Review & Topic Lock · 44 hours</div>
+    <div class="card-title">Read 5 papers. Lock your scope. Write introduction and literature review.</div>
+    <div class="milestones">
+      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Read 5 papers: wav2vec 2.0 (arxiv 2006.11477), HuBERT (arxiv 2106.07447), SUBESCO dataset paper, + 2 papers on Bangla speech emotion recognition. Ask AI to explain any paragraph you don't understand.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Finalise research question with supervisor. Write thesis introduction (1–2 pages). Question: "How does fine-tuned HuBERT compare to a CNN baseline for Bangla SER?"</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Write literature review (4–6 pages). Cover: speech emotion recognition, transfer learning for audio, Bangla speech processing state of the art.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Download SUBESCO dataset. Explore its structure. Write methodology chapter outline.</div></div>
+    </div>
+    <div class="insight warn" style="margin-top:12px;"><div class="insight-label">Month 3 Checkpoint</div><p>Research question finalised. Introduction + literature review drafted. Dataset downloaded and explored.</p></div>
+  </div>
+
+  <div class="card card-green">
+    <div class="card-label lbl-green">Month 4 — Baseline Implementation · 44 hours</div>
+    <div class="card-title">Build CNN baseline. Fine-tune HuBERT. Run first experiments.</div>
+    <div class="milestones">
+      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Preprocess SUBESCO: load audio, extract mel spectrograms, create 70/15/15 train/val/test splits. Write the data loading pipeline.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Build CNN baseline: mel spectrogram → 3-layer CNN → emotion class. Train on Colab free GPU. Record accuracy and F1 per emotion class.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Fine-tune HuBERT using HuggingFace Trainer API. Use the audio course fine-tuning tutorial as your exact template.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Compare CNN vs HuBERT: accuracy, F1, confusion matrix per emotion. Write methodology chapter. Produce results table.</div></div>
+    </div>
+    <div class="insight good" style="margin-top:12px;"><div class="insight-label">Month 4 Checkpoint</div>Both models trained. Results table complete. Methodology chapter written.</div>
+  </div>
+
+  <div class="card" style="border-left:4px solid #888;">
+    <div class="card-label" style="color:#555;">Month 5 — Analysis, Ablations & Results Writing · 44 hours</div>
+    <div class="card-title">Dig into results. Run extra experiments. Write results and discussion.</div>
+    <div class="milestones">
+      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Error analysis: which emotions are confused? Listen to misclassified clips. Try data augmentation (pitch shift, noise) and retrain.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Ablation: what happens with 50% / 25% of training data? How does HuBERT degrade vs CNN? This is a genuine contribution at BSc level.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Weeks 3–4 (22 hrs):</b> Write results chapter (all tables, confusion matrix figures) and discussion chapter (why does HuBERT outperform? what are the limitations?).</div></div>
+    </div>
+    <div class="insight" style="margin-top:12px;"><div class="insight-label">Month 5 Checkpoint</div>Results + discussion chapters complete. Thesis ~70% written.</div>
+  </div>
+
+  <div class="card card-coral">
+    <div class="card-label lbl-coral">Month 6 — Writing, Polishing & Submission · 44 hours</div>
+    <div class="card-title">Write conclusion. Revise everything. Submit.</div>
+    <div class="milestones">
+      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Write conclusion: what you found, why it matters, limitations, future work. Write abstract last — easiest when done.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Full readthrough — fix structure, transitions, grammar. Every figure needs a caption. Every claim needs a citation.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Supervisor review round. Apply feedback. Format references (IEEE or APA per your department).</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Buffer week — final supervisor comments, viva/defence slides if required, final submission.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ WEEKLY ═══════════════════════════ -->
+<div class="section" id="sec-weekly">
+  <div class="card card-blue">
+    <div class="card-label lbl-blue">Your Weekly Time Budget</div>
+    <table class="kv">
+      <tr><td>Mon–Fri</td><td>1 quality hour each day = 5 hrs/week</td></tr>
+      <tr><td>Saturday</td><td>3-hour deep session (hardest work of the week)</td></tr>
+      <tr><td>Sunday</td><td>3-hour polish + plan session</td></tr>
+      <tr><td>Total</td><td><strong>11 hours per week × 24 weeks = 264 hours</strong></td></tr>
+    </table>
+  </div>
+
+  <div class="sec-h2">Phase-by-Phase Weekly Structure</div>
+
+  <div class="card">
+    <div class="sec-h3">Months 1–2 · Learning Phase</div>
+    <div class="day-hdr-row" style="margin-bottom:4px;">
+      <div class="day-hdr">Mon</div><div class="day-hdr">Tue</div><div class="day-hdr">Wed</div>
+      <div class="day-hdr">Thu</div><div class="day-hdr">Fri</div><div class="day-hdr">Sat</div><div class="day-hdr">Sun</div>
+    </div>
+    <div class="week-grid">
+      <div class="day-cell day-wk">Python basics<br>1 hr</div>
+      <div class="day-cell day-wk">Tutorial<br>1 hr</div>
+      <div class="day-cell day-wk">Code practice<br>1 hr</div>
+      <div class="day-cell day-wk">Watch videos<br>1 hr</div>
+      <div class="day-cell day-wk">Review week<br>1 hr</div>
+      <div class="day-cell day-we">Deep coding<br>3 hrs</div>
+      <div class="day-cell day-we">Build project<br>3 hrs</div>
+    </div>
+
+    <div class="sec-h3">Month 3 · Literature + Writing Phase</div>
+    <div class="day-hdr-row" style="margin-bottom:4px;">
+      <div class="day-hdr">Mon</div><div class="day-hdr">Tue</div><div class="day-hdr">Wed</div>
+      <div class="day-hdr">Thu</div><div class="day-hdr">Fri</div><div class="day-hdr">Sat</div><div class="day-hdr">Sun</div>
+    </div>
+    <div class="week-grid">
+      <div class="day-cell day-wk">Read paper<br>1 hr</div>
+      <div class="day-cell day-wk">Take notes<br>1 hr</div>
+      <div class="day-cell day-wk">Read paper<br>1 hr</div>
+      <div class="day-cell day-wk">Summarise<br>1 hr</div>
+      <div class="day-cell day-wk">Plan writing<br>1 hr</div>
+      <div class="day-cell day-we">Write thesis<br>3 hrs</div>
+      <div class="day-cell day-we">Write thesis<br>3 hrs</div>
+    </div>
+
+    <div class="sec-h3">Months 4–5 · Implementation + Experiments Phase</div>
+    <div class="day-hdr-row" style="margin-bottom:4px;">
+      <div class="day-hdr">Mon</div><div class="day-hdr">Tue</div><div class="day-hdr">Wed</div>
+      <div class="day-hdr">Thu</div><div class="day-hdr">Fri</div><div class="day-hdr">Sat</div><div class="day-hdr">Sun</div>
+    </div>
+    <div class="week-grid">
+      <div class="day-cell day-wk">Code 1 hr</div>
+      <div class="day-cell day-wk">Debug 1 hr</div>
+      <div class="day-cell day-wk">Code 1 hr</div>
+      <div class="day-cell day-wk">Read/write<br>1 hr</div>
+      <div class="day-cell day-wk">Review 1 hr</div>
+      <div class="day-cell day-we">Long coding<br>3 hrs</div>
+      <div class="day-cell day-we">Write chapter<br>3 hrs</div>
+    </div>
+
+    <div class="sec-h3">Month 6 · Writing Sprint</div>
+    <div class="day-hdr-row" style="margin-bottom:4px;">
+      <div class="day-hdr">Mon</div><div class="day-hdr">Tue</div><div class="day-hdr">Wed</div>
+      <div class="day-hdr">Thu</div><div class="day-hdr">Fri</div><div class="day-hdr">Sat</div><div class="day-hdr">Sun</div>
+    </div>
+    <div class="week-grid">
+      <div class="day-cell day-wk">Write 1 hr</div>
+      <div class="day-cell day-wk">Edit 1 hr</div>
+      <div class="day-cell day-wk">Write 1 hr</div>
+      <div class="day-cell day-wk">Edit 1 hr</div>
+      <div class="day-cell day-wk">Proofread<br>1 hr</div>
+      <div class="day-cell day-we">Full revision<br>3 hrs</div>
+      <div class="day-cell day-we">Format + refs<br>3 hrs</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ DAILY ═══════════════════════════ -->
+<div class="section" id="sec-daily">
+  <div class="insight"><div class="insight-label">The Golden Rule</div><strong>Phone off. One task only. No switching.</strong> 1 quality hour beats 3 distracted hours every time. Use Pomodoro: 25 min work → 5 min break → 25 min work = your 1 hour.</div>
+
+  <div class="sec-h2">Weekday Session · 1 Hour (Mon–Fri)</div>
+  <div class="card">
+    <div class="session-row"><div class="session-time">0:00 – 0:05</div><div>Open yesterday's work. Read your last 3 lines of code or last paragraph. Remind yourself exactly where you were. Do NOT start anything new.</div></div>
+    <div class="session-row"><div class="session-time">0:05 – 0:30</div><div>Deep work block 1. Code one function, read one paper section, or write one paragraph. <strong>One thing only.</strong></div></div>
+    <div class="session-row"><div class="session-time">0:30 – 0:35</div><div>Break. Stand up. Walk. No phone, no social media.</div></div>
+    <div class="session-row"><div class="session-time">0:35 – 0:55</div><div>Deep work block 2. Continue or move to next small task.</div></div>
+    <div class="session-row"><div class="session-time">0:55 – 1:00</div><div>Write 3 sentences in a notes file: <em>what you did · what's blocking you · what you'll do tomorrow.</em> This replaces having to remember next time.</div></div>
+  </div>
+
+  <div class="sec-h2">Weekend Session · 3 Hours (Sat & Sun)</div>
+  <div class="card">
+    <div class="session-row"><div class="session-time">0:00 – 0:10</div><div>Review your weekly notes. Set one clear goal: <em>"By end of today I will have X done."</em> Write it down.</div></div>
+    <div class="session-row"><div class="session-time">0:10 – 1:10</div><div>Deep work block 1 (60 min). Hardest task first — coding, writing, or building.</div></div>
+    <div class="session-row"><div class="session-time">1:10 – 1:20</div><div>Break. Walk or eat. No screens.</div></div>
+    <div class="session-row"><div class="session-time">1:20 – 2:20</div><div>Deep work block 2 (60 min). Continue or switch to second task.</div></div>
+    <div class="session-row"><div class="session-time">2:20 – 2:30</div><div>Break.</div></div>
+    <div class="session-row"><div class="session-time">2:30 – 2:50</div><div>Polish and organise: clean code, fix notes, update progress tracker.</div></div>
+    <div class="session-row"><div class="session-time">2:50 – 3:00</div><div>Plan next week. Write <strong>5 specific tasks</strong> for Mon–Sun. Specific beats vague: <em>"fine-tune HuBERT for 10 epochs and record F1"</em> not <em>"work on model"</em>.</div></div>
+  </div>
+
+  <div class="insight warn" style="margin-top:12px;"><div class="insight-label">When you're stuck</div><p>1. Paste the error into Claude or ChatGPT — explain what you wanted. 90% of issues resolve this way.<br>2. If stuck for more than 2 sessions: <strong>simplify the goal</strong>. Don't fight one bug for a week — reduce scope and move forward.</p></div>
+</div>
+
+<!-- ═══════════════════════════ TOOLS ═══════════════════════════ -->
+<div class="section" id="sec-tools">
+  <div class="tool-grid">
+    <div class="card card-blue">
+      <div class="card-label lbl-blue">Coding Environment</div>
+      <table class="kv"><tr><td>Google Colab</td><td>Free GPU in browser. All training here. <a href="https://colab.research.google.com" target="_blank">colab.research.google.com</a></td></tr><tr><td>VS Code</td><td>Local code editor. <a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a></td></tr><tr><td>GitHub</td><td>Save all code. Never lose work. <a href="https://github.com" target="_blank">github.com</a></td></tr></table>
+    </div>
+    <div class="card card-teal">
+      <div class="card-label lbl-teal">Audio ML Libraries</div>
+      <table class="kv"><tr><td>librosa</td><td>Load audio, spectrograms, MFCCs. <code>pip install librosa</code></td></tr><tr><td>torchaudio</td><td>PyTorch audio transforms</td></tr><tr><td>soundfile</td><td>Read/write audio files</td></tr><tr><td>pyannote</td><td>Speaker diarisation</td></tr></table>
+    </div>
+    <div class="card card-amber">
+      <div class="card-label lbl-amber">ML Framework</div>
+      <table class="kv"><tr><td>HuggingFace</td><td>Fine-tune HuBERT in 10 lines. <a href="https://huggingface.co" target="_blank">huggingface.co</a></td></tr><tr><td>PyTorch</td><td>The deep learning engine underneath</td></tr><tr><td>scikit-learn</td><td>F1, confusion matrix, accuracy</td></tr></table>
+    </div>
+    <div class="card card-purple">
+      <div class="card-label lbl-purple">Writing & Research</div>
+      <table class="kv"><tr><td>Overleaf</td><td>Free LaTeX thesis editor. <a href="https://overleaf.com" target="_blank">overleaf.com</a></td></tr><tr><td>Google Scholar</td><td>Find papers. <a href="https://scholar.google.com" target="_blank">scholar.google.com</a></td></tr><tr><td>Zotero</td><td>Reference manager. <a href="https://zotero.org" target="_blank">zotero.org</a></td></tr></table>
+    </div>
+    <div class="card card-green">
+      <div class="card-label lbl-green">Datasets (all free)</div>
+      <table class="kv"><tr><td>SUBESCO</td><td>Bangla emotional speech. 7000 utterances, 7 emotions. Request from paper authors.</td></tr><tr><td>ESC-50</td><td>Environmental sounds backup. github.com/karolpiczak/ESC-50</td></tr><tr><td>Common Voice</td><td>Mozilla multilingual speech. commonvoice.mozilla.org</td></tr></table>
+    </div>
+    <div class="card card-coral">
+      <div class="card-label lbl-coral">AI Help (use every day)</div>
+      <table class="kv"><tr><td>Claude</td><td>Explain errors, explain papers, generate boilerplate code, review writing.</td></tr><tr><td>ChatGPT</td><td>Same use cases. Always tell AI what you tried and what went wrong.</td></tr></table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ TRACKER ═══════════════════════════ -->
+<div class="section" id="sec-tracker">
+  <div class="tracker">
+    <h3>📊 My Progress Tracker</h3>
+    <div class="tracker-grid">
+      <div class="month-box" id="m1" onclick="toggleMonth(1)"><div class="month-num">1</div><div class="month-lbl">Foundation</div></div>
+      <div class="month-box" id="m2" onclick="toggleMonth(2)"><div class="month-num">2</div><div class="month-lbl">Audio basics</div></div>
+      <div class="month-box" id="m3" onclick="toggleMonth(3)"><div class="month-num">3</div><div class="month-lbl">Lit review</div></div>
+      <div class="month-box" id="m4" onclick="toggleMonth(4)"><div class="month-num">4</div><div class="month-lbl">Build it</div></div>
+      <div class="month-box" id="m5" onclick="toggleMonth(5)"><div class="month-num">5</div><div class="month-lbl">Experiments</div></div>
+      <div class="month-box" id="m6" onclick="toggleMonth(6)"><div class="month-num">6</div><div class="month-lbl">Submit 🎓</div></div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+    <div class="progress-text" id="prog-text">Click a month to mark it complete</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lbl-blue">Weekly Checklist — copy this into a notes app</div>
+    <div class="card-body" style="font-family:monospace;white-space:pre-line;font-size:0.82rem;line-height:2;">
+☐ Monday    — 1 hr session done
+☐ Tuesday   — 1 hr session done
+☐ Wednesday — 1 hr session done
+☐ Thursday  — 1 hr session done
+☐ Friday    — 1 hr session done
+☐ Saturday  — 3 hr deep session done
+☐ Sunday    — 3 hr polish + plan done
+☐ Weekly notes file updated
+☐ Next week's 5 tasks written down
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label lbl-teal">Thesis Chapter Completion</div>
+    <div id="chapters"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ TIPS ═══════════════════════════ -->
+<div class="section" id="sec-tips">
+  <div class="insight good"><div class="insight-label">The Most Important Thing</div><strong>Consistency beats intensity.</strong> 11 hours a week every week for 26 weeks = 286 hours of genuine work. That is more than enough. One missed week is fine. Two consecutive missed weeks = you are behind. Protect Month 1 and 2 — they have the most slack.</div>
+
+  <div class="card card-blue" style="margin-top:12px;">
+    <div class="card-label lbl-blue">On using AI to help you code</div>
+    <div class="card-body">Using Claude or ChatGPT to write and explain code is fine and expected at BSc level — <strong>as long as you understand every line you submit</strong>. Ask AI to write something, then ask it to explain each line. If you can explain your code to your supervisor, you know it well enough. Never copy-paste without reading.</div>
+  </div>
+
+  <div class="card card-amber">
+    <div class="card-label lbl-amber">The 3 mistakes that kill BSc theses</div>
+    <table class="kv">
+      <tr><td>Scope creep</td><td>Trying to build too much. ONE research question. ONE clear answer. Not five experiments.</td></tr>
+      <tr><td>Skip lit review</td><td>Supervisors fail theses that ignore prior work. Month 3 is not optional.</td></tr>
+      <tr><td>Bulk writing</td><td>Leaving all writing to Month 6. Write one paragraph every day from Month 3 onwards.</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-purple">
+    <div class="card-label lbl-purple">How to talk to your supervisor</div>
+    <div class="card-body">Meet at least <strong>once a month</strong>. Come with: (1) what you did, (2) what result you got, (3) one specific problem you're facing. Ask one specific question. Supervisors respect students who show work even when it's wrong. They cannot help students who disappear.</div>
+  </div>
+
+  <div class="card card-green">
+    <div class="card-label lbl-green">When to relax vs act fast</div>
+    <table class="kv">
+      <tr><td>✓ Relax if</td><td>Model doesn't converge in Week 1 · Accuracy is low at first · You don't understand a paper fully · One bug takes 3 sessions to fix. All normal.</td></tr>
+      <tr><td>⚡ Act fast if</td><td>No supervisor meeting by end of Month 3 · Dataset unavailable · Zero pages written by end of Month 3 · 3+ consecutive weeks missed.</td></tr>
+    </table>
+  </div>
+
+  <div class="insight" style="margin-top:12px; border-left-color: var(--purple); background: var(--purple-soft); color: var(--purple);">
+    <div class="insight-label" style="color:var(--purple)">Your entire thesis in one sentence</div>
+    <p style="color:#26215C; font-style:italic; font-size:0.9rem; line-height:1.7;">"I found that fine-tuned HuBERT outperforms CNN baselines for Bangla speech emotion recognition, with X% accuracy on the SUBESCO dataset, suggesting that self-supervised pretrained models transfer effectively to low-resource emotional speech tasks even with limited fine-tuning data."</p>
+    <p style="color:#534AB7; margin-top:8px; font-size:0.8rem;">Keep this sentence visible at all times. Everything you do over 6 months supports or refines it.</p>
+  </div>
+</div>
+
+</main>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Progress tracker
+const monthsDone = JSON.parse(localStorage.getItem('months') || '[]');
+monthsDone.forEach(m => document.getElementById('m'+m) && document.getElementById('m'+m).classList.add('done'));
+updateProgress();
+
+function toggleMonth(n) {
+  const el = document.getElementById('m'+n);
+  const idx = monthsDone.indexOf(n);
+  if (idx === -1) { monthsDone.push(n); el.classList.add('done'); }
+  else { monthsDone.splice(idx,1); el.classList.remove('done'); }
+  localStorage.setItem('months', JSON.stringify(monthsDone));
+  updateProgress();
+}
+function updateProgress() {
+  const pct = Math.round((monthsDone.length / 6) * 100);
+  document.getElementById('prog').style.width = pct + '%';
+  const msgs = ['Click a month to mark it complete','Month 1 done — keep going!','2 months down — you\'re building momentum','Halfway there! The hardest part is done.','Month 4 done — the end is in sight','One more month! Almost there 🎯','🎓 All done! Thesis submitted!'];
+  document.getElementById('prog-text').textContent = msgs[monthsDone.length] || msgs[0];
+}
+
+// Chapter tracker
+const chapters = ['Introduction','Literature Review','Methodology','Results','Discussion','Conclusion','Abstract'];
+const chapDone = JSON.parse(localStorage.getItem('chapters') || '[]');
+const chapDiv = document.getElementById('chapters');
+chapters.forEach((ch, i) => {
+  const row = document.createElement('div');
+  row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #E5E7EB;font-size:0.875rem;cursor:pointer;';
+  const isDone = chapDone.includes(i);
+  row.innerHTML = `<div style="width:18px;height:18px;border-radius:4px;border:2px solid ${isDone?'#0F6E56':'#D1D5DB'};background:${isDone?'#0F6E56':'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;">${isDone?'<svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>':''}</div><span style="color:${isDone?'#0F6E56':'#374151'};${isDone?'text-decoration:line-through;':''}">${ch}</span>`;
+  row.onclick = () => {
+    const idx = chapDone.indexOf(i);
+    if(idx===-1) chapDone.push(i); else chapDone.splice(idx,1);
+    localStorage.setItem('chapters', JSON.stringify(chapDone));
+    chapDiv.innerHTML=''; chapters.forEach((_,j)=>{ const r=chapDiv.children[j]; }); buildChapters();
+  };
+  chapDiv.appendChild(row);
+});
+function buildChapters() {
+  chapDiv.innerHTML='';
+  chapters.forEach((ch,i)=>{
+    const row=document.createElement('div');
+    const isDone=chapDone.includes(i);
+    row.style.cssText='display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #E5E7EB;font-size:0.875rem;cursor:pointer;';
+    row.innerHTML=`<div style="width:18px;height:18px;border-radius:4px;border:2px solid ${isDone?'#0F6E56':'#D1D5DB'};background:${isDone?'#0F6E56':'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;">${isDone?'<svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>':''}</div><span style="color:${isDone?'#0F6E56':'#374151'};${isDone?'text-decoration:line-through;':''}">${ch}</span>`;
+    row.onclick=()=>{const idx=chapDone.indexOf(i);if(idx===-1)chapDone.push(i);else chapDone.splice(idx,1);localStorage.setItem('chapters',JSON.stringify(chapDone));buildChapters();};
+    chapDiv.appendChild(row);
+  });
+}
+buildChapters();
+</script>
+</body>
+</html>
