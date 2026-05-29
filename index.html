@@ -82,7 +82,7 @@
   .kv tr:last-child { border-bottom: none; }
   .kv td { padding: 8px 10px; vertical-align: top; line-height: 1.55; }
   .kv td:first-child { font-weight: 600; color: var(--blue-dark); background: var(--blue-soft); width: 30%; min-width: 130px; border-radius: 4px 0 0 4px; }
-  .kv td:last-child  { color: var(--text-sec); }
+  .kv td:last-child  { color: var(--text-sec); word-break: break-word; overflow-wrap: anywhere; }
 
   /* ── badges ── */
   .badges { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
@@ -203,6 +203,7 @@
   <button class="nav-btn" onclick="show('tips',this)">💡 Survival Tips</button>
   <button class="nav-btn" onclick="show('music',this)">🎵 Music &amp; Sound Topics</button>
   <button class="nav-btn" onclick="show('ieee',this)">📄 IEEE Papers</button>
+  <button class="nav-btn" onclick="show('papers',this)">🗂 Paper Manager</button>
 </nav>
 
 <main class="main">
@@ -470,7 +471,7 @@
     </div>
     <div class="card card-green">
       <div class="card-label lbl-green">Datasets (all free)</div>
-      <table class="kv"><tr><td>SUBESCO</td><td>Bangla emotional speech. 7000 utterances, 7 emotions. Request from paper authors.</td></tr><tr><td>ESC-50</td><td>Environmental sounds backup. github.com/karolpiczak/ESC-50</td></tr><tr><td>Common Voice</td><td>Mozilla multilingual speech. commonvoice.mozilla.org</td></tr></table>
+      <table class="kv"><tr><td>SUBESCO</td><td>Bangla emotional speech. 7000 utterances, 7 emotions. Request from paper authors.</td></tr><tr><td>ESC-50</td><td>Environmental sounds backup.<br><a href="https://github.com/karolpiczak/ESC-50" target="_blank" style="color:var(--blue);word-break:break-all;">github.com/karolpiczak/ESC-50</a></td></tr><tr><td>Common Voice</td><td>Mozilla multilingual speech.<br><a href="https://commonvoice.mozilla.org" target="_blank" style="color:var(--blue);">commonvoice.mozilla.org</a></td></tr></table>
     </div>
     <div class="card card-coral">
       <div class="card-label lbl-coral">AI Help (use every day)</div>
@@ -1337,9 +1338,548 @@
 
 </div><!-- end sec-ieee -->
 
+<!-- ═══════════════════════════ PAPER MANAGER ═══════════════════════════ -->
+<div class="section" id="sec-papers">
+
+  <style>
+    .pm-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+    .pm-tab{padding:6px 14px;border:1px solid var(--gray-mid);border-radius:99px;font-size:12px;cursor:pointer;background:var(--white);color:var(--text-sec);transition:all .15s}
+    .pm-tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .pm-pane{display:none}.pm-pane.active{display:block}
+
+    /* add form */
+    .pm-form{background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1.1rem 1.2rem;margin-bottom:14px;box-shadow:var(--shadow)}
+    .pm-form h3{font-size:.9rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+    .pm-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .pm-field{display:flex;flex-direction:column;gap:4px}
+    .pm-field.full{grid-column:1/-1}
+    .pm-field label{font-size:11px;font-weight:500;color:var(--text-sec);text-transform:uppercase;letter-spacing:.04em}
+    .pm-field input,.pm-field select,.pm-field textarea{padding:7px 10px;border:1px solid var(--gray-mid);border-radius:6px;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg);transition:border-color .15s}
+    .pm-field input:focus,.pm-field select:focus,.pm-field textarea:focus{outline:none;border-color:var(--blue)}
+    .pm-field textarea{resize:vertical;min-height:70px}
+    .pm-btn{padding:8px 18px;border:none;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+    .pm-btn-primary{background:var(--blue);color:#fff}.pm-btn-primary:hover{background:#0C447C}
+    .pm-btn-danger{background:#FEF2F2;color:var(--coral);border:1px solid #FECACA}.pm-btn-danger:hover{background:#FECACA}
+    .pm-btn-ghost{background:var(--gray-light);color:var(--text-sec);border:1px solid var(--gray-mid)}.pm-btn-ghost:hover{background:var(--gray-mid)}
+    .pm-btn-green{background:var(--teal-soft);color:var(--teal);border:1px solid #9FE1CB}.pm-btn-green:hover{background:#9FE1CB}
+    .pm-btn-sm{padding:4px 10px;font-size:11px;border-radius:5px;border:none;cursor:pointer;font-weight:500}
+
+    /* paper cards */
+    .pm-list{display:flex;flex-direction:column;gap:10px}
+    .pm-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1rem 1.1rem;box-shadow:var(--shadow);position:relative}
+    .pm-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}
+    .pm-card-title{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.4;flex:1}
+    .pm-card-meta{display:flex;gap:5px;flex-wrap:wrap;margin:6px 0}
+    .pm-card-notes{font-size:.82rem;color:var(--text-sec);line-height:1.55;margin:6px 0;padding:7px 10px;background:var(--gray-light);border-radius:5px}
+    .pm-card-actions{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+    .status-pill{font-size:11px;padding:3px 10px;border-radius:99px;font-weight:500;cursor:pointer;border:none}
+    .s-unread{background:#FEF2F2;color:#991B1B}
+    .s-reading{background:#FAEEDA;color:#633806}
+    .s-done{background:#EAF3DE;color:#27500A}
+    .pri-pill{font-size:11px;padding:3px 9px;border-radius:99px;font-weight:500}
+    .p-high{background:#FAECE7;color:#712B13}
+    .p-med{background:#FAEEDA;color:#633806}
+    .p-low{background:#EAF3DE;color:#27500A}
+
+    /* empty state */
+    .pm-empty{text-align:center;padding:2.5rem 1rem;color:var(--text-sec);font-size:.875rem}
+    .pm-empty .emoji{font-size:2.5rem;margin-bottom:8px}
+
+    /* filter bar */
+    .pm-filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+    .pm-filter-row span{font-size:12px;color:var(--text-sec)}
+    .pm-filter-btn{padding:4px 11px;border:1px solid var(--gray-mid);border-radius:99px;font-size:11px;cursor:pointer;background:var(--white);color:var(--text-sec)}
+    .pm-filter-btn.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+    /* stats bar */
+    .pm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+    .pm-stat{background:var(--white);border:1px solid var(--gray-mid);border-radius:8px;padding:8px 10px;text-align:center}
+    .pm-stat-n{font-size:1.3rem;font-weight:600;color:var(--text)}
+    .pm-stat-l{font-size:10px;color:var(--text-sec);margin-top:1px}
+
+    /* export */
+    .export-box{background:var(--gray-light);border-radius:8px;padding:12px 14px;font-size:12px;font-family:monospace;white-space:pre-wrap;word-break:break-all;line-height:1.7;max-height:320px;overflow-y:auto;margin:10px 0}
+    .export-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+
+    /* link manager */
+    .lm-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .lm-title{flex:1;font-size:.85rem;font-weight:500;color:var(--text);min-width:140px}
+    .lm-url{font-size:11px;color:var(--blue);word-break:break-all;flex:2}
+    .lm-open{background:var(--blue-soft);color:var(--blue);border:none;border-radius:5px;padding:4px 10px;font-size:11px;cursor:pointer;font-weight:500;white-space:nowrap}
+    .lm-open:hover{background:var(--blue);color:#fff}
+  </style>
+
+  <!-- sub-tabs -->
+  <div class="pm-tabs">
+    <button class="pm-tab active" onclick="pmTab('tracker',this)">📋 Paper Tracker</button>
+    <button class="pm-tab" onclick="pmTab('links',this)">🔗 Link Manager</button>
+    <button class="pm-tab" onclick="pmTab('export',this)">📤 Export to Zotero</button>
+  </div>
+
+  <!-- ── TRACKER PANE ── -->
+  <div class="pm-pane active" id="pmt-tracker">
+
+    <!-- add form -->
+    <div class="pm-form">
+      <h3>➕ Add a paper</h3>
+      <div class="pm-grid">
+        <div class="pm-field full">
+          <label>Paper title *</label>
+          <input type="text" id="pm-title" placeholder="e.g. Musical Genre Classification of Audio Signals">
+        </div>
+        <div class="pm-field">
+          <label>Authors</label>
+          <input type="text" id="pm-authors" placeholder="e.g. Tzanetakis & Cook">
+        </div>
+        <div class="pm-field">
+          <label>Year</label>
+          <input type="text" id="pm-year" placeholder="e.g. 2002" maxlength="4">
+        </div>
+        <div class="pm-field">
+          <label>Journal / Venue</label>
+          <input type="text" id="pm-venue" placeholder="e.g. IEEE Trans. Speech Audio">
+        </div>
+        <div class="pm-field">
+          <label>DOI</label>
+          <input type="text" id="pm-doi" placeholder="e.g. 10.1109/TSA.2002.800560">
+        </div>
+        <div class="pm-field">
+          <label>Priority</label>
+          <select id="pm-pri">
+            <option value="high">🔴 High — read fully</option>
+            <option value="med" selected>🟠 Medium — read before coding</option>
+            <option value="low">🟡 Low — skim only</option>
+            <option value="cite">⬜ Cite only</option>
+          </select>
+        </div>
+        <div class="pm-field">
+          <label>Status</label>
+          <select id="pm-status">
+            <option value="unread">Unread</option>
+            <option value="reading">Currently reading</option>
+            <option value="done">Done ✓</option>
+          </select>
+        </div>
+        <div class="pm-field full">
+          <label>URL (IEEE / arxiv link)</label>
+          <input type="text" id="pm-url" placeholder="https://ieeexplore.ieee.org/document/...">
+        </div>
+        <div class="pm-field full">
+          <label>Your notes</label>
+          <textarea id="pm-notes" placeholder="What is this paper about? Why are you citing it? Key numbers to remember..."></textarea>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="pm-btn pm-btn-primary" onclick="pmAdd()">Save paper</button>
+        <button class="pm-btn pm-btn-ghost" onclick="pmClear()">Clear form</button>
+        <button class="pm-btn pm-btn-green" onclick="pmPreload()">⚡ Load all recommended papers</button>
+      </div>
+    </div>
+
+    <!-- stats -->
+    <div class="pm-stats" id="pm-stats">
+      <div class="pm-stat"><div class="pm-stat-n" id="ps-total">0</div><div class="pm-stat-l">Total papers</div></div>
+      <div class="pm-stat"><div class="pm-stat-n" id="ps-done">0</div><div class="pm-stat-l">Done reading</div></div>
+      <div class="pm-stat"><div class="pm-stat-n" id="ps-reading">0</div><div class="pm-stat-l">In progress</div></div>
+      <div class="pm-stat"><div class="pm-stat-n" id="ps-unread">0</div><div class="pm-stat-l">Not started</div></div>
+    </div>
+
+    <!-- filter -->
+    <div class="pm-filter-row">
+      <span>Filter:</span>
+      <button class="pm-filter-btn on" onclick="pmFilter('all',this)">All</button>
+      <button class="pm-filter-btn" onclick="pmFilter('unread',this)">Unread</button>
+      <button class="pm-filter-btn" onclick="pmFilter('reading',this)">Reading</button>
+      <button class="pm-filter-btn" onclick="pmFilter('done',this)">Done</button>
+      <button class="pm-filter-btn" onclick="pmFilter('high',this)">🔴 High priority</button>
+    </div>
+
+    <!-- list -->
+    <div class="pm-list" id="pm-list">
+      <div class="pm-empty"><div class="emoji">📄</div>No papers yet.<br>Add one above or click <strong>⚡ Load all recommended papers</strong> to get started instantly.</div>
+    </div>
+  </div>
+
+  <!-- ── LINK MANAGER PANE ── -->
+  <div class="pm-pane" id="pmt-links">
+    <div class="pm-form">
+      <h3>🔗 Save a paper link</h3>
+      <div class="pm-grid">
+        <div class="pm-field full">
+          <label>Paper title *</label>
+          <input type="text" id="lm-title" placeholder="e.g. PANNs: Pretrained Audio Neural Networks">
+        </div>
+        <div class="pm-field full">
+          <label>URL (IEEE Xplore / arxiv / ResearchGate) *</label>
+          <input type="text" id="lm-url" placeholder="https://ieeexplore.ieee.org/document/...">
+        </div>
+        <div class="pm-field">
+          <label>Type</label>
+          <select id="lm-type">
+            <option value="IEEE">IEEE Xplore</option>
+            <option value="arxiv">arxiv (free)</option>
+            <option value="ACM">ACM Digital Library</option>
+            <option value="ResearchGate">ResearchGate</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="pm-field">
+          <label>Topic</label>
+          <select id="lm-topic">
+            <option value="Genre">Genre Classification</option>
+            <option value="Mood">Mood Detection</option>
+            <option value="Instrument">Instrument Recognition</option>
+            <option value="Beat">Beat Tracking</option>
+            <option value="Tagging">Auto-Tagging</option>
+            <option value="General">General / Universal</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="pm-btn pm-btn-primary" onclick="lmAdd()">Save link</button>
+        <button class="pm-btn pm-btn-green" onclick="lmPreload()">⚡ Load all IEEE links</button>
+      </div>
+    </div>
+
+    <div class="pm-filter-row">
+      <span>Filter by topic:</span>
+      <button class="pm-filter-btn on" onclick="lmFilter('all',this)">All</button>
+      <button class="pm-filter-btn" onclick="lmFilter('Genre',this)">Genre</button>
+      <button class="pm-filter-btn" onclick="lmFilter('Mood',this)">Mood</button>
+      <button class="pm-filter-btn" onclick="lmFilter('Instrument',this)">Instrument</button>
+      <button class="pm-filter-btn" onclick="lmFilter('Beat',this)">Beat</button>
+      <button class="pm-filter-btn" onclick="lmFilter('Tagging',this)">Tagging</button>
+      <button class="pm-filter-btn" onclick="lmFilter('General',this)">General</button>
+    </div>
+
+    <div class="pm-list" id="lm-list">
+      <div class="pm-empty"><div class="emoji">🔗</div>No links saved yet.<br>Add one above or click <strong>⚡ Load all IEEE links</strong> to populate all paper links from your reading list instantly.</div>
+    </div>
+  </div>
+
+  <!-- ── EXPORT PANE ── -->
+  <div class="pm-pane" id="pmt-export">
+    <div class="card card-blue" style="margin-bottom:14px;">
+      <div class="card-label lbl-blue">How to use this with Zotero</div>
+      <div class="session-row"><div class="session-time">Option A</div><div><strong>Best:</strong> Copy the DOI list below → open Zotero → click the magic wand icon (Add by identifier) → paste DOIs one by one. Zotero fetches all metadata automatically.</div></div>
+      <div class="session-row"><div class="session-time">Option B</div><div>Copy the plain text citation list → paste into your thesis document as a starting point → then clean up in Overleaf.</div></div>
+      <div class="session-row" style="border-bottom:none"><div class="session-time">Option C</div><div>Copy the BibTeX block below → in Overleaf click Upload → paste as a <code>.bib</code> file → cite with <code>\cite{key}</code>.</div></div>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+      <button class="pm-btn pm-btn-primary" onclick="exportFormat('ieee')">IEEE Citation List</button>
+      <button class="pm-btn pm-btn-ghost" onclick="exportFormat('doi')">DOI List (for Zotero wand)</button>
+      <button class="pm-btn pm-btn-ghost" onclick="exportFormat('bibtex')">BibTeX (for Overleaf)</button>
+      <button class="pm-btn pm-btn-ghost" onclick="exportFormat('csv')">CSV (Excel / Sheets)</button>
+    </div>
+
+    <div id="export-label" style="font-size:12px;font-weight:600;color:var(--text-sec);margin-bottom:4px;">IEEE Citation List</div>
+    <div class="export-box" id="export-box">Add papers in the Paper Tracker tab first, then export here.</div>
+    <div class="export-actions">
+      <button class="pm-btn pm-btn-primary" onclick="copyExport()">📋 Copy to clipboard</button>
+      <button class="pm-btn pm-btn-ghost" onclick="downloadExport()">⬇ Download as text file</button>
+    </div>
+    <div id="copy-confirm" style="font-size:12px;color:var(--teal);margin-top:6px;display:none;">✓ Copied to clipboard!</div>
+  </div>
+
+</div><!-- end sec-papers -->
+
 </main>
 
 <script>
+// ══════════════════════════════════════════════════════
+// PAPER MANAGER — localStorage-backed
+// ══════════════════════════════════════════════════════
+
+let papers = JSON.parse(localStorage.getItem('pm_papers') || '[]');
+let links  = JSON.parse(localStorage.getItem('pm_links')  || '[]');
+let pmCurrentFilter = 'all';
+let lmCurrentFilter = 'all';
+let exportCurrentFormat = 'ieee';
+let exportCurrentText = '';
+
+// ── pre-loaded recommended papers ──
+const RECOMMENDED = [
+  {title:'Musical Genre Classification of Audio Signals',authors:'G. Tzanetakis and P. Cook',year:'2002',venue:'IEEE Trans. Speech Audio Process.',doi:'10.1109/TSA.2002.800560',url:'https://ieeexplore.ieee.org/document/1021072',priority:'high',status:'unread',notes:'MUST CITE — original GTZAN dataset paper. Read fully before writing intro.'},
+  {title:'Music Genre Classification Using Deep Learning',authors:'Various',year:'2022',venue:'IEEE Conference',doi:'',url:'https://ieeexplore.ieee.org/document/9753953/',priority:'low',status:'unread',notes:'Skim results table — note CNN accuracy on GTZAN as baseline comparison number.'},
+  {title:'Audio Spectrogram Transformer (AST)',authors:'Y. Gong et al.',year:'2021',venue:'Interspeech',doi:'',url:'https://arxiv.org/abs/2104.01778',priority:'med',status:'unread',notes:'Read before coding — this is the Transformer model you fine-tune. Focus on fine-tuning section.'},
+  {title:'PANNs: Pretrained Audio Neural Networks for Audio Pattern Recognition',authors:'Q. Kong et al.',year:'2020',venue:'IEEE/ACM TASLP',doi:'10.1109/TASLP.2020.2982014',url:'https://arxiv.org/abs/1912.10211',priority:'high',status:'unread',notes:'Universal read — understand CNN14 architecture and how AudioSet pretraining works.'},
+  {title:'On-line Continuous-Time Music Mood Regression with Deep Recurrent Neural Networks',authors:'S. Eerola et al.',year:'2014',venue:'IEEE ICASSP',doi:'10.1109/ICASSP.2014.6854637',url:'https://ieeexplore.ieee.org/document/6854637/',priority:'high',status:'unread',notes:'Mood detection topic — regression framing for valence/arousal. Read methodology carefully.'},
+  {title:'Dimensional Music Emotion Recognition by Valence-Arousal Regression',authors:'Various',year:'2017',venue:'IEEE ICME',doi:'10.1109/ICME.2017.7862063',url:'https://ieeexplore.ieee.org/document/7862063/',priority:'med',status:'unread',notes:'Justifies regression framing — cite in methodology section.'},
+  {title:'Deep CNNs for Predominant Instrument Recognition in Polyphonic Music',authors:'J. Han et al.',year:'2017',venue:'IEEE/ACM TASLP',doi:'10.1109/TASLP.2016.2623355',url:'https://ieeexplore.ieee.org/document/7755799/',priority:'high',status:'unread',notes:'Primary prior work for instrument recognition topic. Read fully — your thesis responds directly to this paper.'},
+  {title:'Beat Tracking with a Two-State Model',authors:'M. Davies et al.',year:'2005',venue:'IEEE ICASSP',doi:'10.1109/ICASSP.2005.1415691',url:'https://ieeexplore.ieee.org/document/1415691/',priority:'med',status:'unread',notes:'Foundational beat tracking — background for Bangla folk music topic.'},
+  {title:'Reliability-Informed Beat Tracking of Musical Signals',authors:'Various',year:'2011',venue:'IEEE Trans. Signal Process.',doi:'10.1109/TSP.2011.2158820',url:'https://ieeexplore.ieee.org/document/5934584/',priority:'cite',status:'unread',notes:'Cite only — assumes Western meter. Use to frame your research gap argument.'},
+  {title:'Multi-Level and Multi-Scale Feature Aggregation Using Pretrained CNNs for Music Auto-Tagging',authors:'J. Lee and J. Nam',year:'2017',venue:'IEEE Signal Process. Lett.',doi:'10.1109/LSP.2017.2710202',url:'https://ieeexplore.ieee.org/document/7944704/',priority:'high',status:'unread',notes:'Primary benchmark comparison for auto-tagging topic — note their ROC-AUC score.'},
+  {title:'Sample-Level CNN Architectures for Music Auto-Tagging Using Raw Waveforms',authors:'J. Lee et al.',year:'2018',venue:'IEEE ICASSP',doi:'10.1109/ICASSP.2018.8462046',url:'https://ieeexplore.ieee.org/document/8462046/',priority:'low',status:'unread',notes:'Skim — cite in methodology to justify mel spectrogram over raw waveform input.'},
+];
+
+const ALL_LINKS = [
+  {title:'Tzanetakis & Cook 2002 — GTZAN Dataset',url:'https://ieeexplore.ieee.org/document/1021072',type:'IEEE',topic:'Genre'},
+  {title:'Music Genre Classification Deep Learning 2022',url:'https://ieeexplore.ieee.org/document/9753953/',type:'IEEE',topic:'Genre'},
+  {title:'Enhanced CNN Architecture GTZAN 2024',url:'https://ieeexplore.ieee.org/document/11188194/',type:'IEEE',topic:'Genre'},
+  {title:'AST — Audio Spectrogram Transformer (arxiv)',url:'https://arxiv.org/abs/2104.01778',type:'arxiv',topic:'Genre'},
+  {title:'PANNs — Pretrained Audio Neural Networks (arxiv)',url:'https://arxiv.org/abs/1912.10211',type:'arxiv',topic:'General'},
+  {title:'Music Mood Regression with RNNs — IEEE ICASSP 2014',url:'https://ieeexplore.ieee.org/document/6854637/',type:'IEEE',topic:'Mood'},
+  {title:'Dimensional MER Valence-Arousal — IEEE ICME 2017',url:'https://ieeexplore.ieee.org/document/7862063/',type:'IEEE',topic:'Mood'},
+  {title:'Mood Detection Deep Learning — IEEE ICASSP 2021',url:'https://ieeexplore.ieee.org/document/9412361/',type:'IEEE',topic:'Mood'},
+  {title:'Deep CNNs Instrument Recognition — IEEE TASLP 2017',url:'https://ieeexplore.ieee.org/document/7755799/',type:'IEEE',topic:'Instrument'},
+  {title:'Towards Music Instrument Classification — IEEE 2024',url:'https://ieeexplore.ieee.org/document/10622136/',type:'IEEE',topic:'Instrument'},
+  {title:'Exploring NNs for Instrument Identification — IEEE 2024',url:'https://ieeexplore.ieee.org/document/10508457/',type:'IEEE',topic:'Instrument'},
+  {title:'Multi-Instrument Recognition Deep Learning — IEEE 2023',url:'https://ieeexplore.ieee.org/document/10213137/',type:'IEEE',topic:'Instrument'},
+  {title:'OpenMIC-2018 Dataset — GitHub',url:'https://github.com/cosmir/openmic-2018',type:'Other',topic:'Instrument'},
+  {title:'Beat Tracking Two-State Model — IEEE ICASSP 2005',url:'https://ieeexplore.ieee.org/document/1415691/',type:'IEEE',topic:'Beat'},
+  {title:'Reliability-Informed Beat Tracking — IEEE TSP 2011',url:'https://ieeexplore.ieee.org/document/5934584/',type:'IEEE',topic:'Beat'},
+  {title:'madmom Beat Tracker — GitHub',url:'https://github.com/CPJKU/madmom',type:'Other',topic:'Beat'},
+  {title:'BeatNet — GitHub',url:'https://github.com/mjhydri/BeatNet',type:'Other',topic:'Beat'},
+  {title:'Multi-Level CNN Music Auto-Tagging — IEEE SPL 2017',url:'https://ieeexplore.ieee.org/document/7944704/',type:'IEEE',topic:'Tagging'},
+  {title:'Sample-Level CNN Auto-Tagging — IEEE ICASSP 2018',url:'https://ieeexplore.ieee.org/document/8462046/',type:'IEEE',topic:'Tagging'},
+  {title:'How Low Can You Go — IEEE EUSIPCO 2020',url:'https://ieeexplore.ieee.org/document/9287769/',type:'IEEE',topic:'Tagging'},
+  {title:'GTZAN Dataset — HuggingFace',url:'https://huggingface.co/datasets/marsyas/gtzan',type:'Other',topic:'Genre'},
+  {title:'ESC-50 Dataset — GitHub',url:'https://github.com/karolpiczak/ESC-50',type:'Other',topic:'General'},
+  {title:'librosa — GitHub',url:'https://github.com/librosa/librosa',type:'Other',topic:'General'},
+  {title:'HuggingFace Audio Course',url:'https://huggingface.co/learn/audio-course',type:'Other',topic:'General'},
+  {title:'Valerio Velardo — Audio Signal Processing Playlist',url:'https://youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0',type:'Other',topic:'General'},
+];
+
+// ── save / load ──
+function pmSave(){ localStorage.setItem('pm_papers', JSON.stringify(papers)); }
+function lmSave(){ localStorage.setItem('pm_links',  JSON.stringify(links));  }
+
+// ── sub-tab switching ──
+function pmTab(id, btn){
+  document.querySelectorAll('.pm-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.pm-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pmt-'+id).classList.add('active');
+  if(id==='export') renderExport();
+}
+
+// ── add paper ──
+function pmAdd(){
+  const t = document.getElementById('pm-title').value.trim();
+  if(!t){ alert('Please enter a paper title.'); return; }
+  const p = {
+    id: Date.now(),
+    title: t,
+    authors: document.getElementById('pm-authors').value.trim(),
+    year:    document.getElementById('pm-year').value.trim(),
+    venue:   document.getElementById('pm-venue').value.trim(),
+    doi:     document.getElementById('pm-doi').value.trim(),
+    url:     document.getElementById('pm-url').value.trim(),
+    priority:document.getElementById('pm-pri').value,
+    status:  document.getElementById('pm-status').value,
+    notes:   document.getElementById('pm-notes').value.trim(),
+    added:   new Date().toLocaleDateString(),
+  };
+  papers.unshift(p);
+  pmSave();
+  pmClear();
+  pmRender();
+}
+
+function pmClear(){
+  ['pm-title','pm-authors','pm-year','pm-venue','pm-doi','pm-url','pm-notes'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.value='';
+  });
+  document.getElementById('pm-pri').value='med';
+  document.getElementById('pm-status').value='unread';
+}
+
+function pmPreload(){
+  if(papers.length>0 && !confirm('This will add all recommended papers to your list (duplicates may appear). Continue?')) return;
+  RECOMMENDED.forEach(r=>{ papers.push({...r, id:Date.now()+Math.random(), added:new Date().toLocaleDateString()}); });
+  pmSave(); pmRender();
+}
+
+// ── render papers ──
+function pmRender(){
+  const list = document.getElementById('pm-list');
+  let filtered = papers.filter(p=>{
+    if(pmCurrentFilter==='all') return true;
+    if(pmCurrentFilter==='high') return p.priority==='high';
+    return p.status===pmCurrentFilter;
+  });
+  if(filtered.length===0){
+    list.innerHTML='<div class="pm-empty"><div class="emoji">📄</div>No papers match this filter.<br>Try a different filter or add more papers.</div>';
+  } else {
+    list.innerHTML = filtered.map(p=>pmCardHTML(p)).join('');
+  }
+  // stats
+  document.getElementById('ps-total').textContent   = papers.length;
+  document.getElementById('ps-done').textContent    = papers.filter(p=>p.status==='done').length;
+  document.getElementById('ps-reading').textContent = papers.filter(p=>p.status==='reading').length;
+  document.getElementById('ps-unread').textContent  = papers.filter(p=>p.status==='unread').length;
+}
+
+function pmCardHTML(p){
+  const priMap   = {high:'🔴 High priority',med:'🟠 Medium',low:'🟡 Skim',cite:'⬜ Cite only'};
+  const priClass = {high:'p-high',med:'p-med',low:'p-low',cite:'pm-card-notes'};
+  const sMap     = {unread:'Unread',reading:'Reading…',done:'Done ✓'};
+  const sClass   = {unread:'s-unread',reading:'s-reading',done:'s-done'};
+  return `<div class="pm-card" id="pmc-${p.id}">
+    <div class="pm-card-head">
+      <div class="pm-card-title">${p.title}</div>
+      <button onclick="pmDelete(${p.id})" class="pm-btn-sm" style="background:#FEF2F2;color:#991B1B;flex-shrink:0;">✕</button>
+    </div>
+    <div class="pm-card-meta">
+      ${p.authors?`<span class="badge badge-gray">${p.authors}${p.year?' ('+p.year+')':''}</span>`:''}
+      ${p.venue?`<span class="badge badge-gray">${p.venue}</span>`:''}
+      <span class="pri-pill ${priClass[p.priority]||'p-low'}">${priMap[p.priority]||p.priority}</span>
+      <button class="status-pill ${sClass[p.status]}" onclick="pmCycleStatus(${p.id})">${sMap[p.status]}</button>
+    </div>
+    ${p.doi?`<div style="font-size:11px;color:var(--text-sec);margin:2px 0;">DOI: <code>${p.doi}</code></div>`:''}
+    ${p.notes?`<div class="pm-card-notes">${p.notes}</div>`:''}
+    <div class="pm-card-actions">
+      ${p.url?`<button class="pm-btn-sm" style="background:var(--blue-soft);color:var(--blue);" onclick="window.open('${p.url}','_blank')">🔗 Open paper</button>`:''}
+      ${p.doi?`<button class="pm-btn-sm" style="background:var(--blue-soft);color:var(--blue);" onclick="window.open('https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=${encodeURIComponent(p.doi)}','_blank')">IEEE Search</button>`:''}
+      <button class="pm-btn-sm" style="background:var(--gray-light);color:var(--text-sec);" onclick="pmEdit(${p.id})">✏ Edit notes</button>
+    </div>
+  </div>`;
+}
+
+function pmDelete(id){
+  if(!confirm('Remove this paper?')) return;
+  papers = papers.filter(p=>p.id!==id);
+  pmSave(); pmRender();
+}
+
+function pmCycleStatus(id){
+  const cycle={unread:'reading',reading:'done',done:'unread'};
+  const p=papers.find(p=>p.id===id);
+  if(p){ p.status=cycle[p.status]; pmSave(); pmRender(); }
+}
+
+function pmEdit(id){
+  const p = papers.find(p=>p.id===id);
+  if(!p) return;
+  const n = prompt('Edit notes:', p.notes||'');
+  if(n!==null){ p.notes=n; pmSave(); pmRender(); }
+}
+
+function pmFilter(f, btn){
+  pmCurrentFilter=f;
+  document.querySelectorAll('.pm-filter-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  pmRender();
+}
+
+// ── link manager ──
+function lmAdd(){
+  const t=document.getElementById('lm-title').value.trim();
+  const u=document.getElementById('lm-url').value.trim();
+  if(!t||!u){ alert('Please enter both a title and a URL.'); return; }
+  links.unshift({id:Date.now(), title:t, url:u,
+    type: document.getElementById('lm-type').value,
+    topic:document.getElementById('lm-topic').value});
+  lmSave(); lmRender();
+  document.getElementById('lm-title').value='';
+  document.getElementById('lm-url').value='';
+}
+
+function lmPreload(){
+  if(links.length>0 && !confirm('Add all recommended links? Duplicates may appear.')) return;
+  ALL_LINKS.forEach(l=>links.push({...l,id:Date.now()+Math.random()}));
+  lmSave(); lmRender();
+}
+
+function lmRender(){
+  const list=document.getElementById('lm-list');
+  const filtered = lmCurrentFilter==='all' ? links : links.filter(l=>l.topic===lmCurrentFilter);
+  if(!filtered.length){
+    list.innerHTML='<div class="pm-empty"><div class="emoji">🔗</div>No links saved yet.</div>'; return;
+  }
+  const typeColors={IEEE:'badge-blue',arxiv:'badge-teal',ACM:'badge-purple',ResearchGate:'badge-amber',Other:'badge-gray'};
+  list.innerHTML=filtered.map(l=>`
+    <div class="lm-card">
+      <div style="flex:2">
+        <div class="lm-title">${l.title}</div>
+        <div style="display:flex;gap:5px;margin-top:4px;flex-wrap:wrap">
+          <span class="badge ${typeColors[l.type]||'badge-gray'}">${l.type}</span>
+          <span class="badge badge-gray">${l.topic}</span>
+        </div>
+        <div class="lm-url" style="margin-top:4px;">${l.url}</div>
+      </div>
+      <div style="display:flex;gap:5px;flex-direction:column;align-items:flex-end;flex-shrink:0">
+        <button class="lm-open" onclick="window.open('${l.url}','_blank')">Open ↗</button>
+        <button class="pm-btn-sm" style="background:#FEF2F2;color:#991B1B;" onclick="lmDelete(${l.id})">✕</button>
+      </div>
+    </div>`).join('');
+}
+
+function lmDelete(id){
+  links=links.filter(l=>l.id!==id); lmSave(); lmRender();
+}
+
+function lmFilter(f,btn){
+  lmCurrentFilter=f;
+  document.querySelectorAll('.pm-filter-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  lmRender();
+}
+
+// ── export ──
+function exportFormat(fmt){
+  exportCurrentFormat=fmt;
+  const labels={ieee:'IEEE Citation List',doi:'DOI List (paste into Zotero magic wand)',bibtex:'BibTeX (for Overleaf)',csv:'CSV (Excel / Google Sheets)'};
+  document.getElementById('export-label').textContent=labels[fmt];
+  renderExport();
+}
+
+function renderExport(){
+  const fmt=exportCurrentFormat;
+  if(!papers.length){ document.getElementById('export-box').textContent='No papers saved yet. Add papers in the Paper Tracker tab first.'; return; }
+  let out='';
+  if(fmt==='ieee'){
+    out=papers.map((p,i)=>{
+      const a=p.authors||'Unknown';
+      const t=p.title;
+      const v=p.venue||'Unknown venue';
+      const y=p.year||'n.d.';
+      const d=p.doi?`doi: ${p.doi}.`:'';
+      return `[${i+1}] ${a}, "${t}," ${v}, ${y}. ${d}`;
+    }).join('\n\n');
+  } else if(fmt==='doi'){
+    const dois=papers.filter(p=>p.doi);
+    out=dois.length ? dois.map(p=>p.doi).join('\n') : '(No DOIs saved — add DOIs when adding papers)';
+  } else if(fmt==='bibtex'){
+    out=papers.map((p,i)=>{
+      const key=(p.authors?p.authors.split(' ')[0].replace(/[^a-zA-Z]/g,''):'Author')+(p.year||'0000');
+      return `@article{${key}${i},\n  author  = {${p.authors||''}},\n  title   = {${p.title}},\n  journal = {${p.venue||''}},\n  year    = {${p.year||''}},\n  doi     = {${p.doi||''}}\n}`;
+    }).join('\n\n');
+  } else if(fmt==='csv'){
+    out='Title,Authors,Year,Venue,DOI,URL,Priority,Status,Notes\n';
+    out+=papers.map(p=>[p.title,p.authors,p.year,p.venue,p.doi,p.url,p.priority,p.status,(p.notes||'').replace(/,/g,';')].map(v=>`"${v||''}"`).join(',')).join('\n');
+  }
+  exportCurrentText=out;
+  document.getElementById('export-box').textContent=out;
+}
+
+function copyExport(){
+  navigator.clipboard.writeText(exportCurrentText).then(()=>{
+    const c=document.getElementById('copy-confirm');
+    c.style.display='block';
+    setTimeout(()=>c.style.display='none',2500);
+  });
+}
+
+function downloadExport(){
+  const exts={ieee:'txt',doi:'txt',bibtex:'bib',csv:'csv'};
+  const ext=exts[exportCurrentFormat]||'txt';
+  const blob=new Blob([exportCurrentText],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`thesis_papers_${exportCurrentFormat}.${ext}`;
+  a.click();
+}
+
+// ── init ──
+pmRender();
+lmRender();
+renderExport();
+
+// ══════════════════════════════════════════════════════
+// ORIGINAL PLANNER FUNCTIONS
+// ══════════════════════════════════════════════════════
 function show(id, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
