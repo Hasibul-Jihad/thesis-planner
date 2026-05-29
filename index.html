@@ -590,7 +590,11 @@
         <div class="sec-h2" style="margin-top:0;">Full details</div>
         <table class="kv">
           <tr><td>Dataset</td><td>GTZAN — 1000 clips, 10 genres (blues, classical, country, disco, hip-hop, jazz, metal, pop, reggae, rock), 30 sec each. Free download.</td></tr>
-          <tr><td>Dataset link</td><td><a href="https://marsyas.info/downloads/datasets.html" target="_blank">marsyas.info/downloads/datasets.html</a> or search "GTZAN" on Kaggle</td></tr>
+          <tr><td>Dataset link</td><td>
+            <b>Option 1 (easiest):</b> <a href="https://huggingface.co/datasets/marsyas/gtzan" target="_blank">huggingface.co/datasets/marsyas/gtzan</a> — load directly in Python with <code>datasets.load_dataset("marsyas/gtzan")</code><br><br>
+            <b>Option 2 (Kaggle):</b> <a href="https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification" target="_blank">kaggle.com — GTZAN dataset</a> — download as zip, free Kaggle account needed<br><br>
+            <b>Note:</b> The original marsyas.info link has been broken since 2022. Use HuggingFace — it's the official mirror.
+          </td></tr>
           <tr><td>Model 1 (baseline)</td><td>CNN on mel spectrograms — 3 conv layers, max pooling, fully connected output layer</td></tr>
           <tr><td>Model 2</td><td>Audio Spectrogram Transformer (AST) — pretrained on AudioSet, fine-tuned on GTZAN via HuggingFace</td></tr>
           <tr><td>Metric</td><td>Accuracy + F1 per genre + confusion matrix showing which genres are confused</td></tr>
