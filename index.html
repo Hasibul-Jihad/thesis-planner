@@ -202,6 +202,7 @@
   <button class="nav-btn" onclick="show('tracker',this)">📊 My Progress</button>
   <button class="nav-btn" onclick="show('tips',this)">💡 Survival Tips</button>
   <button class="nav-btn" onclick="show('music',this)">🎵 Music &amp; Sound Topics</button>
+  <button class="nav-btn" onclick="show('ieee',this)">📄 IEEE Papers</button>
 </nav>
 
 <main class="main">
@@ -867,6 +868,474 @@
   </div>
 
 </div><!-- end sec-music -->
+
+<!-- ═══════════════════════════ IEEE PAPERS ═══════════════════════════ -->
+<div class="section" id="sec-ieee">
+
+  <!-- PRIORITY READING LIST -->
+  <div class="sec-h2" style="margin-top:0;">📚 Priority Reading List — What to Read, When, and How Deeply</div>
+
+  <div class="insight" style="margin-bottom:14px;">
+    <div class="insight-label">The honest truth about reading papers as a beginner</div>
+    You do not need to understand every equation. Read the <strong>Abstract → Introduction → Results → Conclusion</strong> first. Only go into the methodology if you are implementing that exact approach. A paper you "skim well" is more useful than a paper you avoided because it looked hard.
+  </div>
+
+  <!-- HOW TO READ -->
+  <div class="card card-blue" style="margin-bottom:14px;">
+    <div class="card-label lbl-blue">How to read a paper — the 3-pass method</div>
+    <table class="kv">
+      <tr><td>Pass 1 · 10 min</td><td><strong>Skim:</strong> Read title, abstract, intro first paragraph, all headings, conclusion. Answer: What problem? What did they do? Did it work? This is enough for papers you only need to cite.</td></tr>
+      <tr><td>Pass 2 · 30 min</td><td><strong>Read:</strong> Read intro fully, figures and tables, results, conclusion. Skip the math. Answer: How did they do it? What dataset? What metric? What result? Do this for your 5 core papers.</td></tr>
+      <tr><td>Pass 3 · 2 hrs</td><td><strong>Study:</strong> Read every section including methodology and equations. Take notes. Answer: Could you implement this? Do this only for the 1–2 papers whose exact method you are replicating.</td></tr>
+    </table>
+  </div>
+
+  <!-- UNIVERSAL READS — regardless of topic -->
+  <div class="sec-h2">🌍 Read These Regardless of Which Topic You Choose</div>
+  <div class="card card-blue" style="border:2px solid #185FA5;">
+    <div class="card-label lbl-blue">Priority 1 — Read fully in Month 2 (before touching any model)</div>
+
+    <div style="background:var(--blue-soft);border-radius:8px;padding:10px 12px;margin-bottom:10px;">
+      <div style="font-size:13px;font-weight:600;color:var(--blue-dark);margin-bottom:4px;">📄 Valerio Velardo — Sound of AI blog posts (not a paper, but essential)</div>
+      <div style="font-size:12.5px;color:var(--text-sec);line-height:1.6;">Read the written explanations on his website alongside watching the YouTube videos. Concepts: waveforms, sampling, STFT, Mel scale, MFCCs. <strong>This is not optional — understanding these is a prerequisite for every paper below.</strong><br><a href="https://valeriovelardo.com/the-sound-of-ai/" target="_blank" style="color:var(--blue);font-size:12px;">valeriovelardo.com/the-sound-of-ai</a></div>
+    </div>
+
+    <div style="background:var(--blue-soft);border-radius:8px;padding:10px 12px;margin-bottom:10px;">
+      <div style="font-size:13px;font-weight:600;color:var(--blue-dark);margin-bottom:4px;">📄 Kong et al. 2020 — PANNs: Pretrained Audio Neural Networks for Audio Pattern Recognition</div>
+      <div style="font-size:12.5px;color:var(--text-sec);line-height:1.6;">The pretrained model that powers 4 of the 6 topics here. <strong>Pass 2 read</strong> — understand what AudioSet is, what CNN14 is, and how fine-tuning works. You will use this model regardless of your topic.<br><a href="https://arxiv.org/abs/1912.10211" target="_blank" style="color:var(--blue);font-size:12px;">arxiv.org/abs/1912.10211 (free)</a></div>
+    </div>
+
+    <div style="background:var(--blue-soft);border-radius:8px;padding:10px 12px;">
+      <div style="font-size:13px;font-weight:600;color:var(--blue-dark);margin-bottom:4px;">📄 Gong et al. 2021 — AST: Audio Spectrogram Transformer</div>
+      <div style="font-size:12.5px;color:var(--text-sec);line-height:1.6;">The Transformer-based audio model used in genre classification and ESC-50 topics. <strong>Pass 2 read</strong> — understand how mel spectrograms are treated as image patches fed into a Vision Transformer. Foundational for understanding why Transformers beat CNNs on audio.<br><a href="https://arxiv.org/abs/2104.01778" target="_blank" style="color:var(--blue);font-size:12px;">arxiv.org/abs/2104.01778 (free)</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC-SPECIFIC PRIORITY -->
+  <div class="sec-h2">🎯 Topic-Specific Priority Reading Order</div>
+
+  <!-- GENRE -->
+  <div class="card" style="margin-bottom:10px;">
+    <div class="card-label lbl-blue">🎵 If you chose: Genre Classification (GTZAN)</div>
+    <table class="kv">
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Tzanetakis & Cook 2002</strong> — Musical Genre Classification of Audio Signals<br>
+        <small style="color:var(--text-sec);">Pass 3. Read every section. This is the GTZAN paper — you must know exactly what the dataset contains, how it was collected, its known faults, and what the original MFCC baseline achieved. Your introduction responds directly to this paper.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/1021072" target="_blank" style="font-size:12px;color:var(--blue);">IEEE · DOI: 10.1109/TSA.2002.800560</a></td>
+      </tr>
+      <tr>
+        <td style="background:#FAEEDA;color:#633806;">🟠 Read before coding<br><small>Month 3 Week 2</small></td>
+        <td><strong>Gong et al. 2021 — AST (Audio Spectrogram Transformer)</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. Understand the architecture you are fine-tuning. Focus on: how does the model take mel spectrogram input? What was it pretrained on? What fine-tuning steps do they recommend?</small><br>
+        <a href="https://arxiv.org/abs/2104.01778" target="_blank" style="font-size:12px;color:var(--blue);">Free on arxiv</a></td>
+      </tr>
+      <tr>
+        <td style="background:#EAF3DE;color:#27500A;">🟡 Skim<br><small>Month 3 Week 3</small></td>
+        <td><strong>IEEE 2022 — Music Genre Classification Using Deep Learning</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Read abstract, intro, results table. You only need to know: what accuracy did CNN get on GTZAN? That becomes the baseline number you compare against in your results chapter.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/9753953/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE Xplore</a></td>
+      </tr>
+      <tr>
+        <td style="background:#F3F4F6;color:#6B7280;">⬜ Cite only<br><small>Add to Zotero</small></td>
+        <td><strong>IEEE 2024 — Enhanced CNN Architecture for GTZAN</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Just read abstract. Cite in your literature review as "recent work" to show the topic is still active. You do not need to understand it deeply.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/11188194/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE Xplore</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- MOOD -->
+  <div class="card" style="margin-bottom:10px;">
+    <div class="card-label lbl-teal">😌 If you chose: Music Mood Detection (Valence & Arousal)</div>
+    <table class="kv">
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Russell 1980 — A Circumplex Model of Affect</strong> (Psychology paper — not IEEE)<br>
+        <small style="color:var(--text-sec);">Pass 2. This is a psychology paper, not ML. Read the intro and the circumplex diagram carefully. Every single mood detection thesis cites this. Your literature review needs to explain valence and arousal using Russell's framework before you mention any model. Find it on Google Scholar — free PDF widely available.</small></td>
+      </tr>
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Soleymani et al. 2016 — DEAM Dataset paper</strong><br>
+        <small style="color:var(--text-sec);">Pass 3. Read every section. You must know how the dataset was collected, how many annotators rated each clip, what the inter-rater agreement was, and how valence/arousal values were aggregated. This goes directly into your Methodology chapter.</small></td>
+      </tr>
+      <tr>
+        <td style="background:#FAEEDA;color:#633806;">🟠 Read before coding<br><small>Month 3 Week 2</small></td>
+        <td><strong>IEEE ICASSP 2014 — Continuous Music Mood Regression with Deep RNNs</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. This paper uses the same regression framing you will use. Focus on: what features did they extract? What loss function? What metric (RMSE, Pearson)? This tells you exactly what numbers to report in your results.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/6854637/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE · DOI: 10.1109/ICASSP.2014.6854637</a></td>
+      </tr>
+      <tr>
+        <td style="background:#EAF3DE;color:#27500A;">🟡 Skim<br><small>Month 3 Week 3</small></td>
+        <td><strong>IEEE ICME 2017 — Dimensional MER by Valence-Arousal Regression</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Read abstract and results. Cite in methodology to justify your regression framing.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/7862063/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE · DOI: 10.1109/ICME.2017.7862063</a></td>
+      </tr>
+      <tr>
+        <td style="background:#F3F4F6;color:#6B7280;">⬜ Cite only<br><small>Add to Zotero</small></td>
+        <td><strong>IEEE ICASSP 2021 — Mood Detection with Deep Learning Architectures</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Abstract only. Cite as recent related work in your introduction.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/9412361/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE Xplore</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- INSTRUMENT -->
+  <div class="card" style="margin-bottom:10px;">
+    <div class="card-label lbl-purple">🎻 If you chose: Instrument Recognition (OpenMIC-2018)</div>
+    <table class="kv">
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Han et al. 2017 — Deep CNNs for Predominant Instrument Recognition (IEEE TASLP)</strong><br>
+        <small style="color:var(--text-sec);">Pass 3. This is your primary prior work. Read every section. Your entire thesis responds to this paper — you replicate their CNN approach then improve it with PANNs. Know their exact accuracy numbers, their dataset, their training procedure.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/7755799/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE · DOI: 10.1109/TASLP.2016.2623355</a></td>
+      </tr>
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Humphrey et al. 2018 — OpenMIC-2018 Dataset Paper</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. Read fully. Know how the dataset was collected, what the 20 instrument classes are, what the label confidence scores mean, and what the official train/test split is. Goes directly into your Methodology chapter.</small><br>
+        <small style="color:var(--text-sec);">Search Google Scholar: "OpenMIC-2018 instrument" — free PDF available.</small></td>
+      </tr>
+      <tr>
+        <td style="background:#FAEEDA;color:#633806;">🟠 Read before coding<br><small>Month 3 Week 2</small></td>
+        <td><strong>Kong et al. 2020 — PANNs</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. Focus on CNN14 architecture section and how to use pretrained features for downstream tasks. This is the model you fine-tune.</small><br>
+        <a href="https://arxiv.org/abs/1912.10211" target="_blank" style="font-size:12px;color:var(--blue);">arxiv.org/abs/1912.10211 (free)</a></td>
+      </tr>
+      <tr>
+        <td style="background:#EAF3DE;color:#27500A;">🟡 Skim<br><small>Month 3 Week 3</small></td>
+        <td><strong>IEEE 2024 — Exploring Neural Networks for Musical Instrument Identification</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Abstract + results table only. Shows current state of the art — cite in introduction as motivation.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/10508457/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE Xplore</a></td>
+      </tr>
+      <tr>
+        <td style="background:#F3F4F6;color:#6B7280;">⬜ Cite only<br><small>Add to Zotero</small></td>
+        <td><strong>IEEE 2023 — Novel Deep Learning Multi-Instrument Recognition</strong> + <strong>IEEE 2024 — Towards Music Instrument Classification</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Abstract only. Both cited in literature review to show the field is active.</small></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- BEAT TRACKING -->
+  <div class="card" style="margin-bottom:10px;">
+    <div class="card-label lbl-amber">🥁 If you chose: Beat Tracking on Bangla Folk Music</div>
+    <table class="kv">
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Böck et al. 2014 — Joint Beat and Downbeat Tracking with RNNs (madmom)</strong><br>
+        <small style="color:var(--text-sec);">Pass 3. This is the model you evaluate on Bangla music. Read every section. Know exactly what it assumes about rhythm, what tempo range it was trained on, and what datasets it was evaluated on. Every failure you find on Bangla music is a result compared against this paper.</small><br>
+        <small style="color:var(--text-sec);">Search Google Scholar: "Joint beat downbeat tracking recurrent neural networks Böck 2014" — free PDF.</small></td>
+      </tr>
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Davies et al. 2009 — Evaluation Methods for Musical Audio Beat Tracking</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. Read fully — especially the F-measure at 0.07s tolerance section. This paper defines the metric you will use to report results. You cannot write your methodology chapter without understanding this.</small><br>
+        <small style="color:var(--text-sec);">Search Google Scholar: "Evaluation methods musical audio beat tracking Davies 2009"</small></td>
+      </tr>
+      <tr>
+        <td style="background:#FAEEDA;color:#633806;">🟠 Read before coding<br><small>Month 3 Week 2</small></td>
+        <td><strong>IEEE ICASSP 2005 — Beat Tracking with a Two-State Model</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. Foundational beat tracking. Understand onset detection functions and how beat period is estimated. Gives you the vocabulary for your literature review.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/1415691/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE · DOI: 10.1109/ICASSP.2005.1415691</a></td>
+      </tr>
+      <tr>
+        <td style="background:#EAF3DE;color:#27500A;">🟡 Skim<br><small>Month 3 Week 3</small></td>
+        <td><strong>Clayton 2000 — Time in Indian Music (Oxford University Press)</strong><br>
+        <small style="color:var(--text-sec);">Not a paper — a book chapter. Read Chapter 1 only. Gives you the musicological framework for taal cycles (Dadra, Kaharwa, Teentaal). You need this for your literature review to explain WHY Bangla rhythms are structurally different from Western meter. Your university library almost certainly has this.</small></td>
+      </tr>
+      <tr>
+        <td style="background:#F3F4F6;color:#6B7280;">⬜ Cite only<br><small>Add to Zotero</small></td>
+        <td><strong>IEEE TSP 2011 — Reliability-Informed Beat Tracking</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Abstract only. Cite in literature review as an example of probabilistic beat tracking that assumes Western meter assumptions.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/5934584/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE Xplore</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- AUTO-TAGGING -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-label lbl-coral">🏷 If you chose: Music Auto-Tagging (MagnaTagATune)</div>
+    <table class="kv">
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Law et al. 2009 — MagnaTagATune Dataset Paper</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. Read fully. Know how tags were collected (pairwise game annotation), what the 188 tags are, why you should restrict to top-50, and what the official train/validation/test split is. Goes directly into Methodology chapter.</small><br>
+        <small style="color:var(--text-sec);">Search Google Scholar: "MagnaTagATune Law 2009" — free PDF available.</small></td>
+      </tr>
+      <tr>
+        <td style="background:#FAECE7;color:#712B13;">🔴 Read fully<br><small>Month 3 Week 1</small></td>
+        <td><strong>Lee & Nam 2017 — Multi-Level Multi-Scale CNN for Music Auto-Tagging (IEEE Signal Processing Letters)</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. This is your primary comparison paper. Know their ROC-AUC score on MagnaTagATune — you will include their number in your results table as your comparison baseline.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/7944704/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE · DOI: 10.1109/LSP.2017.2710202</a></td>
+      </tr>
+      <tr>
+        <td style="background:#FAEEDA;color:#633806;">🟠 Read before coding<br><small>Month 3 Week 2</small></td>
+        <td><strong>Kong et al. 2020 — PANNs</strong><br>
+        <small style="color:var(--text-sec);">Pass 2. Focus on fine-tuning section and how to adapt CNN14 for multi-label classification with sigmoid output. This tells you exactly how to set up your model.</small><br>
+        <a href="https://arxiv.org/abs/1912.10211" target="_blank" style="font-size:12px;color:var(--blue);">arxiv.org/abs/1912.10211 (free)</a></td>
+      </tr>
+      <tr>
+        <td style="background:#EAF3DE;color:#27500A;">🟡 Skim<br><small>Month 3 Week 3</small></td>
+        <td><strong>IEEE ICASSP 2018 — Sample-Level CNN for Auto-Tagging Using Raw Waveforms</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Abstract + results table. Read to understand the alternative (raw waveform input) — then cite it in your methodology to justify why you chose mel spectrograms instead.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/8462046/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE · DOI: 10.1109/ICASSP.2018.8462046</a></td>
+      </tr>
+      <tr>
+        <td style="background:#F3F4F6;color:#6B7280;">⬜ Cite only<br><small>Add to Zotero</small></td>
+        <td><strong>IEEE EUSIPCO 2020 — How Low Can You Go? Mel Spectrogram Resolution</strong><br>
+        <small style="color:var(--text-sec);">Pass 1. Abstract only. Cite in experimental setup section when justifying your spectrogram parameters.</small><br>
+        <a href="https://ieeexplore.ieee.org/document/9287769/" target="_blank" style="font-size:12px;color:var(--blue);">IEEE Xplore</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- READING SCHEDULE -->
+  <div class="sec-h2">📅 Reading Schedule Mapped to Your 6-Month Plan</div>
+  <div class="card card-blue">
+    <table class="kv">
+      <tr><td>Month 1</td><td>No papers yet. Focus entirely on Python and NumPy. Reading papers before you understand basic ML is overwhelming and counterproductive.</td></tr>
+      <tr><td>Month 2</td><td>Read Velardo blog posts alongside his YouTube videos. Skim the PANNs paper abstract so you know what's coming. That's it.</td></tr>
+      <tr><td>Month 3 · Week 1</td><td><strong>🔴 Red papers only</strong> — your 2 "read fully" papers for your chosen topic. Block 3 hrs Saturday + 3 hrs Sunday. Take handwritten notes: What problem? What method? What result? What gap remains?</td></tr>
+      <tr><td>Month 3 · Week 2</td><td><strong>🟠 Orange paper</strong> — read before coding starts in Month 4. Focus on methodology and experimental setup sections. Note down: what hyperparameters? What train/val/test split? What metric?</td></tr>
+      <tr><td>Month 3 · Week 3</td><td><strong>🟡 Yellow papers</strong> — skim in 1 weekday session each. Abstract + results table + conclusion. Add to Zotero. One sentence note: "This paper did X and got Y — I cite it because Z."</td></tr>
+      <tr><td>Month 3 · Week 4</td><td><strong>⬜ Cite-only papers</strong> — abstract only, add to Zotero, move on. Do not spend more than 10 min per paper here.</td></tr>
+      <tr><td>Month 4–5</td><td>No new papers unless you hit a specific problem that needs a citation. If you find a bug, search for a paper that describes the issue — don't browse randomly.</td></tr>
+      <tr><td>Month 6</td><td>During writing, you may realise you need 1–2 more citations for specific claims. That's normal — search for them then and add to Zotero.</td></tr>
+    </table>
+  </div>
+
+  <div class="insight warn">
+    <div class="insight-label">The biggest mistake BSc students make with papers</div>
+    <p>Reading too many papers in Month 3 and running out of time for Month 4. You need <strong>5 papers maximum</strong> for a BSc thesis literature review. 2 you read fully, 2 you skim, 1 dataset paper. That is enough. Quality of understanding beats quantity of citations every time.</p>
+  </div>
+
+  <div class="sec-h2" style="margin-top:16px;">How to Access IEEE Papers via University WiFi</div>
+
+  <div class="card card-blue">
+    <div class="card-label lbl-blue">Step-by-step access instructions</div>
+    <div class="session-row"><div class="session-time">Step 1</div><div><strong>Connect to university WiFi</strong> on your phone or laptop. If you are off-campus, connect via your university's VPN first (ask your IT department for the VPN link — it's free for students).</div></div>
+    <div class="session-row"><div class="session-time">Step 2</div><div>Open your browser and go to <a href="https://ieeexplore.ieee.org" target="_blank" style="color:var(--blue)">ieeexplore.ieee.org</a>. You should see "Institutional Sign In" or your university name in the top right — that means access is active.</div></div>
+    <div class="session-row"><div class="session-time">Step 3</div><div>In the search bar, paste the <strong>DOI</strong> (e.g. <code>10.1109/TSA.2002.800560</code>) or the paper title. Hit Enter.</div></div>
+    <div class="session-row"><div class="session-time">Step 4</div><div>On the paper page, click <strong>"Full Text PDF"</strong> or <strong>"Download PDF"</strong>. It will open directly — no payment needed while on university WiFi.</div></div>
+    <div class="session-row"><div class="session-time">If blocked</div><div>Search the paper title on <a href="https://scholar.google.com" target="_blank" style="color:var(--blue)">scholar.google.com</a> → click <strong>"All versions"</strong> → look for a free arxiv or ResearchGate link. Every paper below has a free preprint somewhere.</div></div>
+    <div class="session-row" style="border-bottom:none;"><div class="session-time">Save papers</div><div>Download to a folder named <code>thesis/papers/</code>. Add each one to <a href="https://zotero.org" target="_blank" style="color:var(--blue)">Zotero</a> (free) — it auto-generates your bibliography in IEEE or APA format.</div></div>
+  </div>
+
+  <div class="insight" style="margin-bottom:16px;">
+    <div class="insight-label">How to cite in your thesis</div>
+    For IEEE format: [1] G. Tzanetakis and P. Cook, "Musical genre classification of audio signals," <em>IEEE Trans. Speech Audio Process.</em>, vol. 10, no. 5, pp. 293–302, Jul. 2002. — Use Zotero to generate this automatically. Never type references by hand.
+  </div>
+
+  <!-- GENRE CLASSIFICATION -->
+  <div class="sec-h2">🎵 Genre Classification (GTZAN) — 3 Papers</div>
+
+  <div class="card card-blue">
+    <div class="card-label lbl-blue">MUST CITE — The GTZAN dataset paper</div>
+    <div class="card-title">Tzanetakis & Cook — Musical Genre Classification of Audio Signals</div>
+    <table class="kv">
+      <tr><td>Journal</td><td>IEEE Transactions on Speech and Audio Processing, Vol. 10, No. 5, 2002</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/TSA.2002.800560</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/1021072" target="_blank">ieeexplore.ieee.org/document/1021072</a></td></tr>
+      <tr><td>Citations</td><td>5000+ — the most cited music ML paper ever</td></tr>
+      <tr><td>Why cite it</td><td>This paper created the GTZAN dataset. You MUST cite it every time you mention GTZAN. Your supervisor will check for this immediately.</td></tr>
+      <tr><td>Where to use</td><td>Introduction (when describing dataset) · Methodology (when explaining data source) · References list</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Music Genre Classification Using Deep Learning (CNN vs SVM vs XGBoost on GTZAN)</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE Conference Publication, 2022</td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/9753953/" target="_blank">ieeexplore.ieee.org/document/9753953</a></td></tr>
+      <tr><td>Why cite it</td><td>Compares CNN vs SVM, Random Forest, XGBoost on GTZAN — shows CNN outperforms all traditional ML. Use this to motivate why you start with CNN as your baseline and then step up to a Transformer.</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Introduction (motivating deep learning over ML baselines)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">An Enhanced CNN Architecture for Music Genre Classification on GTZAN</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE Conference Publication, 2024</td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/11188194/" target="_blank">ieeexplore.ieee.org/document/11188194</a></td></tr>
+      <tr><td>Why cite it</td><td>Recent 2024 IEEE paper directly on GTZAN + CNN. Cite in literature review as strong prior work, then argue your Transformer comparison adds something this paper didn't do.</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Related work section</td></tr>
+    </table>
+  </div>
+
+  <!-- MOOD DETECTION -->
+  <div class="sec-h2">😌 Music Mood Detection (Valence & Arousal) — 3 Papers</div>
+
+  <div class="card card-teal">
+    <div class="card-label lbl-teal">Core methodology paper</div>
+    <div class="card-title">On-line Continuous-Time Music Mood Regression with Deep Recurrent Neural Networks</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE ICASSP 2014</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/ICASSP.2014.6854637</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/6854637/" target="_blank">ieeexplore.ieee.org/document/6854637</a></td></tr>
+      <tr><td>Why cite it</td><td>Proposes deep RNN for continuous valence/arousal prediction from audio. This is your closest methodological prior — your thesis extends this with more modern architectures. Read it fully before writing your methodology chapter.</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Methodology (framing your regression approach)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Dimensional Music Emotion Recognition by Valence-Arousal Regression</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE ICME 2017</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/ICME.2017.7862063</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/7862063/" target="_blank">ieeexplore.ieee.org/document/7862063</a></td></tr>
+      <tr><td>Why cite it</td><td>Frames music emotion recognition as valence-arousal regression — exactly your thesis framing. Cite in methodology to justify why you use regression and not classification.</td></tr>
+      <tr><td>Where to use</td><td>Methodology · Literature review</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Mood Detection Analyzing Lyrics and Audio Signal Based on Deep Learning Architectures</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE ICASSP 2021</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/ICASSP39728.2021.9412361</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/9412361/" target="_blank">ieeexplore.ieee.org/document/9412361</a></td></tr>
+      <tr><td>Why cite it</td><td>Recent deep learning mood detection. Cite in literature review as current work — then explain how valence/arousal regression is more fine-grained than 4-class mood classification.</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Introduction</td></tr>
+    </table>
+  </div>
+
+  <!-- INSTRUMENT RECOGNITION -->
+  <div class="sec-h2">🎻 Music Instrument Recognition (OpenMIC-2018) — 4 Papers</div>
+
+  <div class="card card-purple">
+    <div class="card-label lbl-purple">Most important citation for this topic</div>
+    <div class="card-title">Deep Convolutional Neural Networks for Predominant Instrument Recognition in Polyphonic Music</div>
+    <table class="kv">
+      <tr><td>Journal</td><td>IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2017</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/TASLP.2016.2623355</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/7755799/" target="_blank">ieeexplore.ieee.org/document/7755799</a></td></tr>
+      <tr><td>Why cite it</td><td>The most-cited IEEE paper on instrument recognition in polyphonic music using CNN. Your thesis is essentially "we replicate this with better pretrained models (PANNs)." Read it fully — your introduction and methodology directly respond to this paper.</td></tr>
+      <tr><td>Where to use</td><td>Introduction · Literature review · Methodology · Results (compare your numbers)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Towards Music Instrument Classification using Convolutional Neural Networks</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE Conference 2024</td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/10622136/" target="_blank">ieeexplore.ieee.org/document/10622136</a></td></tr>
+      <tr><td>Why cite it</td><td>Recent 2024 paper — shows this is still an active research area. Cite in introduction to prove your thesis is timely.</td></tr>
+      <tr><td>Where to use</td><td>Introduction · Related work</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Exploring Neural Networks for Musical Instrument Identification in Polyphonic Audio</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE Access Journal 2024</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/ACCESS.2024.10508457</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/10508457/" target="_blank">ieeexplore.ieee.org/document/10508457</a></td></tr>
+      <tr><td>Why cite it</td><td>Compares CNN, CRNN, and novel architectures. Use in literature review to justify your architecture choices and show awareness of the current landscape.</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Methodology justification</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">A Novel Deep Learning-Based Multi-Instrument Recognition Method for Polyphonic Music</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE Conference 2023</td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/10213137/" target="_blank">ieeexplore.ieee.org/document/10213137</a></td></tr>
+      <tr><td>Why cite it</td><td>Attention-based instrument recognition — recent state of the art. Cite in introduction to show this is an active and important problem worth a BSc thesis.</td></tr>
+      <tr><td>Where to use</td><td>Introduction · Literature review</td></tr>
+    </table>
+  </div>
+
+  <!-- BEAT TRACKING -->
+  <div class="sec-h2">🥁 Beat Tracking on Bangla Folk Music — 2 Papers</div>
+
+  <div class="card card-amber">
+    <div class="card-label lbl-amber">Your core argument: these papers assume Western meter — Bangla breaks that</div>
+    <div class="card-title">Beat Tracking with a Two-State Model</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE ICASSP 2005</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/ICASSP.2005.1415691</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/1415691/" target="_blank">ieeexplore.ieee.org/document/1415691</a></td></tr>
+      <tr><td>Why cite it</td><td>Classic IEEE beat tracking paper using onset detection functions. Cite as historical foundation in your literature review before discussing modern deep learning approaches.</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Background section</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Reliability-Informed Beat Tracking of Musical Signals</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE Transactions on Signal Processing 2011</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/TSP.2011.2158820</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/5934584/" target="_blank">ieeexplore.ieee.org/document/5934584</a></td></tr>
+      <tr><td>Why cite it</td><td>Probabilistic beat tracking with explicit non-beat state modelling. Cite in methodology when explaining what existing beat trackers assume — then argue those assumptions break down for Bangla rhythmic structures (Dadra=6, Kaharwa=8, Teentaal=16 beats).</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Methodology · Introduction (to frame your research gap)</td></tr>
+    </table>
+    <div class="insight good" style="margin-top:10px;">
+      <div class="insight-label">Your research gap argument</div>
+      Both these papers assume Western 4/4 or 3/4 meter. Your thesis states: "Bangla taals have cyclic structures (Dadra: 6 beats, Kaharwa: 8, Teentaal: 16) that fundamentally differ from Western meter assumptions embedded in existing beat trackers." That one sentence is your entire novel contribution.
+    </div>
+  </div>
+
+  <!-- AUTO-TAGGING -->
+  <div class="sec-h2">🏷 Music Auto-Tagging (MagnaTagATune) — 3 Papers</div>
+
+  <div class="card card-coral">
+    <div class="card-label lbl-coral">Primary benchmark comparison paper</div>
+    <div class="card-title">Multi-Level and Multi-Scale Feature Aggregation Using Pretrained CNNs for Music Auto-Tagging</div>
+    <table class="kv">
+      <tr><td>Journal</td><td>IEEE Signal Processing Letters, 2017</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/LSP.2017.2710202</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/7944704/" target="_blank">ieeexplore.ieee.org/document/7944704</a></td></tr>
+      <tr><td>Why cite it</td><td>Multi-level CNN features for auto-tagging on MagnaTagATune — exactly your benchmark. Compare your PANNs ROC-AUC results directly against this paper's numbers in your results table. This is your primary prior work.</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Results table (direct comparison) · Methodology</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Sample-Level CNN Architectures for Music Auto-Tagging Using Raw Waveforms</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE ICASSP 2018</td></tr>
+      <tr><td>DOI</td><td><code>10.1109/ICASSP.2018.8462046</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/8462046/" target="_blank">ieeexplore.ieee.org/document/8462046</a></td></tr>
+      <tr><td>Why cite it</td><td>End-to-end CNN on raw waveforms for MagnaTagATune. Cite to show you are aware of waveform-based approaches and justify why you chose mel spectrogram input instead of raw audio.</td></tr>
+      <tr><td>Where to use</td><td>Literature review · Methodology (justifying your input representation choice)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">How Low Can You Go? Reducing Frequency and Time Resolution in CNN for Music Auto-Tagging</div>
+    <table class="kv">
+      <tr><td>Venue</td><td>IEEE EUSIPCO 2020</td></tr>
+      <tr><td>DOI</td><td><code>10.23919/Eusipco47968.2020.9287769</code></td></tr>
+      <tr><td>IEEE link</td><td><a href="https://ieeexplore.ieee.org/document/9287769/" target="_blank">ieeexplore.ieee.org/document/9287769</a></td></tr>
+      <tr><td>Why cite it</td><td>Analyses different mel spectrogram resolutions on MagnaTagATune. Directly useful for your methodology section when you justify your spectrogram parameters (n_mels, hop_length, window size).</td></tr>
+      <tr><td>Where to use</td><td>Methodology · Experimental setup section</td></tr>
+    </table>
+  </div>
+
+  <!-- GENERAL TIPS -->
+  <div class="sec-h2">📝 How to Use These Papers in Your Thesis</div>
+  <div class="card card-blue">
+    <div class="card-label lbl-blue">Where each paper type goes</div>
+    <table class="kv">
+      <tr><td>Introduction</td><td>Cite 2–3 recent papers to prove the problem is real and active. "Previous work such as [1],[2] shows that..."</td></tr>
+      <tr><td>Literature review</td><td>Cite all papers above for your topic. Group them by theme: classical ML approaches → CNN approaches → Transformer approaches.</td></tr>
+      <tr><td>Methodology</td><td>Cite the paper whose method you follow most closely. "Following the approach of [X], we..."</td></tr>
+      <tr><td>Results</td><td>Cite papers whose numbers you compare against. Put their results in your results table with the citation.</td></tr>
+      <tr><td>Dataset paper</td><td>Always cite it the first time you mention the dataset. Every single time.</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-teal">
+    <div class="card-label lbl-teal">Zotero — never type a reference by hand</div>
+    <div class="card-body">
+      1. Install Zotero free at <a href="https://zotero.org" target="_blank" style="color:var(--teal)">zotero.org</a> and the browser extension.<br><br>
+      2. Open any IEEE Xplore paper page → click the Zotero browser extension icon → it saves automatically with all metadata.<br><br>
+      3. In your Overleaf thesis → click Insert → Citation → pick from your Zotero library → IEEE format generated instantly.<br><br>
+      4. Never manually type [Author, Year, Journal, Volume, Page, DOI] again. Zotero does it all.
+    </div>
+  </div>
+
+</div><!-- end sec-ieee -->
 
 </main>
 
