@@ -201,6 +201,7 @@
   <button class="nav-btn" onclick="show('tools',this)">🛠 Toolkit</button>
   <button class="nav-btn" onclick="show('tracker',this)">📊 My Progress</button>
   <button class="nav-btn" onclick="show('tips',this)">💡 Survival Tips</button>
+  <button class="nav-btn" onclick="show('music',this)">🎵 Music &amp; Sound Topics</button>
 </nav>
 
 <main class="main">
@@ -552,6 +553,317 @@
   </div>
 </div>
 
+
+<!-- ═══════════════════════════ MUSIC TOPICS ═══════════════════════════ -->
+<div class="section" id="sec-music">
+
+  <div class="insight" style="margin-bottom:16px;">
+    <div class="insight-label">About these topics</div>
+    All 6 topics work on Google Colab free tier with just your laptop. All datasets are free. Click any topic card to expand full details, resources, and key papers.
+  </div>
+
+  <!-- filter bar -->
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;align-items:center;">
+    <span style="font-size:12px;color:var(--text-sec);">Sort by:</span>
+    <button class="music-filter active" onclick="mfilter('all',this)" style="padding:4px 12px;border:1px solid var(--gray-mid);border-radius:99px;font-size:12px;cursor:pointer;background:var(--blue);color:#fff;border-color:var(--blue);">All</button>
+    <button class="music-filter" onclick="mfilter('easy',this)" style="padding:4px 12px;border:1px solid var(--gray-mid);border-radius:99px;font-size:12px;cursor:pointer;background:var(--white);color:var(--text-sec);">Easiest first</button>
+    <button class="music-filter" onclick="mfilter('novel',this)" style="padding:4px 12px;border:1px solid var(--gray-mid);border-radius:99px;font-size:12px;cursor:pointer;background:var(--white);color:var(--text-sec);">Most novel</button>
+  </div>
+
+  <div id="music-list" style="display:flex;flex-direction:column;gap:12px;">
+
+    <!-- TOPIC 1 -->
+    <div class="mcard" data-diff="2" data-novel="3" style="background:var(--white);border:2px solid var(--blue);border-radius:var(--radius);padding:1.1rem 1.2rem;cursor:pointer;box-shadow:var(--shadow);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;">
+        <div class="card-title" style="margin-bottom:4px;">Music genre classification — CNN vs Transformer comparison</div>
+        <span style="background:var(--blue);color:#fff;font-size:11px;padding:3px 10px;border-radius:99px;font-weight:600;white-space:nowrap;flex-shrink:0;">⭐ Top pick</span>
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin:6px 0;">
+        <span class="badge badge-green">Difficulty 2/5</span>
+        <span class="badge badge-teal">GTZAN dataset</span>
+        <span class="badge badge-gray">Colab friendly</span>
+        <span class="badge badge-blue">Comparative study</span>
+      </div>
+      <div class="diff"><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><span style="font-size:12px;color:var(--text-sec);margin-left:6px;">Easiest — best for beginners</span></div>
+      <div class="card-body" style="margin-top:8px;">Classify songs into genres (rock, jazz, classical, hip-hop…) by converting audio to mel spectrograms and comparing a CNN baseline against an Audio Spectrogram Transformer. A comparative study structure is perfect for BSc — you compare two methods rigorously rather than invent something new.</div>
+      <div class="mdetail" style="display:none;margin-top:12px;border-top:1px solid var(--gray-mid);padding-top:12px;">
+        <div class="sec-h2" style="margin-top:0;">Full details</div>
+        <table class="kv">
+          <tr><td>Dataset</td><td>GTZAN — 1000 clips, 10 genres (blues, classical, country, disco, hip-hop, jazz, metal, pop, reggae, rock), 30 sec each. Free download.</td></tr>
+          <tr><td>Dataset link</td><td><a href="https://marsyas.info/downloads/datasets.html" target="_blank">marsyas.info/downloads/datasets.html</a> or search "GTZAN" on Kaggle</td></tr>
+          <tr><td>Model 1 (baseline)</td><td>CNN on mel spectrograms — 3 conv layers, max pooling, fully connected output layer</td></tr>
+          <tr><td>Model 2</td><td>Audio Spectrogram Transformer (AST) — pretrained on AudioSet, fine-tuned on GTZAN via HuggingFace</td></tr>
+          <tr><td>Metric</td><td>Accuracy + F1 per genre + confusion matrix showing which genres are confused</td></tr>
+          <tr><td>Novel angle</td><td>Ablation: compare both models with 100%, 50%, and 25% training data — shows how each degrades</td></tr>
+          <tr><td>Thesis sentence</td><td>"Fine-tuned AST outperforms CNN baselines on GTZAN genre classification, with X% accuracy, suggesting attention-based models capture long-range timbral patterns better than local convolutional features."</td></tr>
+        </table>
+        <div class="sec-h2">Key Papers to Cite</div>
+        <table class="kv">
+          <tr><td>Gwardys & Jelen 2014</td><td>Deep image features in music information retrieval — early CNN approach on GTZAN. Cite as baseline motivation. Search Google Scholar.</td></tr>
+          <tr><td>Gong et al. 2021</td><td>AST — Audio Spectrogram Transformer. The model you fine-tune. <a href="https://arxiv.org/abs/2104.01778" target="_blank">arxiv.org/abs/2104.01778</a></td></tr>
+          <tr><td>Kong et al. 2020</td><td>PANNs — Pretrained Audio Neural Networks for AudioSet. Useful for context. <a href="https://arxiv.org/abs/1912.10211" target="_blank">arxiv.org/abs/1912.10211</a></td></tr>
+          <tr><td>Tzanetakis & Cook 2002</td><td>The original GTZAN dataset paper. Must cite this when using the dataset.</td></tr>
+        </table>
+        <div class="sec-h2">YouTube Resources</div>
+        <table class="kv">
+          <tr><td>Valerio Velardo</td><td>Audio Signal Processing for ML — watch first before coding. <a href="https://youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0" target="_blank">youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0</a></td></tr>
+          <tr><td>HuggingFace Audio Course</td><td>Fine-tuning audio transformers — use this as your AST implementation guide. <a href="https://huggingface.co/learn/audio-course" target="_blank">huggingface.co/learn/audio-course</a></td></tr>
+          <tr><td>3Blue1Brown</td><td>Neural Networks playlist — understand the CNN model you build. <a href="https://youtube.com/playlist?list=PLZZWrBYkx7Otcjr3eCLZDCgfpqnxMY29s" target="_blank">youtube.com/playlist?list=PLZZWrBYkx7Otcjr3eCLZDCgfpqnxMY29s</a></td></tr>
+        </table>
+        <div class="sec-h2">GitHub Repos</div>
+        <table class="kv">
+          <tr><td>HuggingFace AST model</td><td><a href="https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593" target="_blank">huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593</a></td></tr>
+          <tr><td>PANNs inference</td><td><a href="https://github.com/qiuqiangkong/panns_inference" target="_blank">github.com/qiuqiangkong/panns_inference</a></td></tr>
+          <tr><td>librosa</td><td>Mel spectrogram extraction. <a href="https://github.com/librosa/librosa" target="_blank">github.com/librosa/librosa</a></td></tr>
+        </table>
+        <div class="pro-con">
+          <div class="pro-con-box"><b style="color:var(--teal)">✓ Why it works</b>Tons of tutorials available · Clear benchmark · Comparative structure is valid BSc scope · Trains in minutes on Colab · Lots of prior work to cite</div>
+          <div class="pro-con-box"><b style="color:var(--coral)">⚠ Watch out for</b>GTZAN has known label errors in ~2% of clips — mention as a limitation · Genre is subjective — address this in your discussion chapter</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 2 -->
+    <div class="mcard" data-diff="2" data-novel="4" style="background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1.1rem 1.2rem;cursor:pointer;box-shadow:var(--shadow);">
+      <div class="card-title">Music mood detection — predict valence and arousal from audio</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin:6px 0;">
+        <span class="badge badge-green">Difficulty 2/5</span>
+        <span class="badge badge-teal">DEAM dataset</span>
+        <span class="badge badge-purple">Psychology angle</span>
+        <span class="badge badge-amber">Regression task</span>
+      </div>
+      <div class="diff"><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><span style="font-size:12px;color:var(--text-sec);margin-left:6px;">Easy — psychologically rich</span></div>
+      <div class="card-body" style="margin-top:8px;">Predict the emotional valence (positive/negative) and arousal (calm/excited) of music clips using the circumplex model of affect. Bridges music, psychology, and ML. Very interesting thesis because it's fundamentally different from classification — you predict a number, not a label.</div>
+      <div class="mdetail" style="display:none;margin-top:12px;border-top:1px solid var(--gray-mid);padding-top:12px;">
+        <div class="sec-h2" style="margin-top:0;">Full details</div>
+        <table class="kv">
+          <tr><td>Dataset</td><td>DEAM — 1802 music excerpts (45-sec clips), annotated with continuous valence and arousal ratings by multiple annotators. Free.</td></tr>
+          <tr><td>Dataset link</td><td><a href="https://cvml.unige.ch/databases/DEAM/" target="_blank">cvml.unige.ch/databases/DEAM</a></td></tr>
+          <tr><td>Task type</td><td>Regression — predict a number from 1–9 for valence AND arousal independently</td></tr>
+          <tr><td>Features</td><td>MFCCs, chroma, spectral centroid, zero crossing rate (all extracted with librosa)</td></tr>
+          <tr><td>Models to compare</td><td>SVR with handcrafted features vs CNN on mel spectrogram vs fine-tuned pretrained model</td></tr>
+          <tr><td>Metric</td><td>Pearson correlation coefficient + RMSE between predicted and human-rated valence/arousal</td></tr>
+          <tr><td>Key concept</td><td>Russell's circumplex model of affect — gives your literature review a solid psychological foundation</td></tr>
+          <tr><td>Thesis sentence</td><td>"A CNN trained on mel spectrograms predicts music valence and arousal with r=X correlation on DEAM, outperforming handcrafted MFCC features, suggesting spectral representations better capture affective qualities of music."</td></tr>
+        </table>
+        <div class="sec-h2">Key Papers to Cite</div>
+        <table class="kv">
+          <tr><td>Russell 1980</td><td>A circumplex model of affect — the foundational psychology paper behind valence/arousal. Must cite in lit review.</td></tr>
+          <tr><td>Soleymani et al. 2016</td><td>The DEAM dataset paper. Cite when using the dataset. Search Google Scholar: "DEAM dataset music emotion".</td></tr>
+          <tr><td>Yang & Chen 2012</td><td>Machine recognition of music emotion — early survey. Good for your literature review background section.</td></tr>
+        </table>
+        <div class="sec-h2">YouTube Resources</div>
+        <table class="kv">
+          <tr><td>Valerio Velardo</td><td>Audio Signal Processing playlist — MFCCs and features you'll extract. <a href="https://youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0" target="_blank">Playlist link</a></td></tr>
+          <tr><td>StatQuest</td><td>SVR (Support Vector Regression) explained — your baseline model. <a href="https://youtube.com/@statquest" target="_blank">youtube.com/@statquest</a></td></tr>
+        </table>
+        <div class="sec-h2">GitHub Repos</div>
+        <table class="kv">
+          <tr><td>librosa</td><td>Extract all audio features. <a href="https://github.com/librosa/librosa" target="_blank">github.com/librosa/librosa</a></td></tr>
+          <tr><td>scikit-learn</td><td>SVR baseline + evaluation metrics. <a href="https://scikit-learn.org" target="_blank">scikit-learn.org</a></td></tr>
+        </table>
+        <div class="pro-con">
+          <div class="pro-con-box"><b style="color:var(--teal)">✓ Why it works</b>Interdisciplinary — music + psychology + ML · Regression gives a different angle from classification theses · Strong lit review foundation in psychology</div>
+          <div class="pro-con-box"><b style="color:var(--coral)">⚠ Watch out for</b>Subjectivity of mood annotations — address as a core limitation · Explain Pearson correlation and RMSE clearly — reviewers may not know them</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 3 -->
+    <div class="mcard" data-diff="3" data-novel="5" style="background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1.1rem 1.2rem;cursor:pointer;box-shadow:var(--shadow);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;">
+        <div class="card-title">Music instrument recognition from polyphonic audio</div>
+        <span style="background:#EEEDFE;color:#3C3489;font-size:11px;padding:3px 10px;border-radius:99px;font-weight:600;white-space:nowrap;flex-shrink:0;">Most novel</span>
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin:6px 0;">
+        <span class="badge badge-blue">Difficulty 3/5</span>
+        <span class="badge badge-purple">OpenMIC-2018</span>
+        <span class="badge badge-amber">Multi-label</span>
+      </div>
+      <div class="diff"><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><span style="font-size:12px;color:var(--text-sec);margin-left:6px;">Moderate — strong contribution</span></div>
+      <div class="card-body" style="margin-top:8px;">Given a music clip with multiple instruments playing simultaneously, identify which instruments are present (piano, guitar, violin, drums…). Multi-label classification — a clip can have 3 instruments at once. More complex but very publishable at BSc level.</div>
+      <div class="mdetail" style="display:none;margin-top:12px;border-top:1px solid var(--gray-mid);padding-top:12px;">
+        <div class="sec-h2" style="margin-top:0;">Full details</div>
+        <table class="kv">
+          <tr><td>Dataset</td><td>OpenMIC-2018 — 20,000 clips, 20 instrument classes, crowd-sourced labels with confidence scores. Free on GitHub.</td></tr>
+          <tr><td>Dataset link</td><td><a href="https://github.com/cosmir/openmic-2018" target="_blank">github.com/cosmir/openmic-2018</a></td></tr>
+          <tr><td>Task type</td><td>Multi-label classification — sigmoid output, not softmax. Each instrument is an independent binary prediction.</td></tr>
+          <tr><td>Model</td><td>CNN on mel spectrogram with sigmoid output vs PANNs (CNN14) pretrained on AudioSet</td></tr>
+          <tr><td>Metric</td><td>Mean Average Precision (mAP) + per-instrument F1 score. mAP is the standard for this dataset.</td></tr>
+          <tr><td>Novel angle</td><td>Compare performance on solo instrument recordings vs ensemble — does the model degrade on polyphony?</td></tr>
+          <tr><td>Thesis sentence</td><td>"Pretrained PANNs significantly outperform CNN baselines on OpenMIC-2018 instrument recognition (mAP X vs Y), with the largest gains on underrepresented instruments, suggesting AudioSet pretraining provides strong timbral priors."</td></tr>
+        </table>
+        <div class="sec-h2">Key Papers to Cite</div>
+        <table class="kv">
+          <tr><td>Humphrey et al. 2018</td><td>OpenMIC-2018 dataset paper. Search Google Scholar: "OpenMIC-2018 instrument".</td></tr>
+          <tr><td>Kong et al. 2020</td><td>PANNs. <a href="https://arxiv.org/abs/1912.10211" target="_blank">arxiv.org/abs/1912.10211</a></td></tr>
+          <tr><td>Gururani et al. 2019</td><td>Attention networks for music instrument recognition. Good prior work for your lit review.</td></tr>
+        </table>
+        <div class="sec-h2">YouTube Resources</div>
+        <table class="kv">
+          <tr><td>Valerio Velardo — Deep Learning for Audio</td><td><a href="https://youtube.com/playlist?list=PL-wATfeyAMNpCyuwxoPTDMqTkzdbh_1E3" target="_blank">Playlist link</a></td></tr>
+          <tr><td>StatQuest — Neural Networks</td><td>Understand multi-label classification. <a href="https://youtube.com/@statquest" target="_blank">youtube.com/@statquest</a></td></tr>
+        </table>
+        <div class="sec-h2">GitHub Repos</div>
+        <table class="kv">
+          <tr><td>openmic-2018</td><td>Official starter code included in dataset repo. <a href="https://github.com/cosmir/openmic-2018" target="_blank">github.com/cosmir/openmic-2018</a></td></tr>
+          <tr><td>panns_inference</td><td>Use PANNs pretrained features as your strong baseline. <a href="https://github.com/qiuqiangkong/panns_inference" target="_blank">github.com/qiuqiangkong/panns_inference</a></td></tr>
+        </table>
+        <div class="pro-con">
+          <div class="pro-con-box"><b style="color:var(--teal)">✓ Why it works</b>Multi-label is a step above genre — stronger contribution · Real-world application (music search, auto-tagging) · Dataset actively maintained</div>
+          <div class="pro-con-box"><b style="color:var(--coral)">⚠ Watch out for</b>mAP requires careful explanation in thesis · Polyphonic audio is genuinely harder — lower numbers than genre classification are normal and expected</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 4 -->
+    <div class="mcard" data-diff="2" data-novel="3" style="background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1.1rem 1.2rem;cursor:pointer;box-shadow:var(--shadow);">
+      <div class="card-title">Environmental sound classification — transfer learning from AudioSet</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin:6px 0;">
+        <span class="badge badge-green">Difficulty 2/5</span>
+        <span class="badge badge-teal">ESC-50 dataset</span>
+        <span class="badge badge-gray">Safest option</span>
+      </div>
+      <div class="diff"><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><span style="font-size:12px;color:var(--text-sec);margin-left:6px;">Easy — most tutorials online</span></div>
+      <div class="card-body" style="margin-top:8px;">Classify environmental sounds (rain, dog bark, chainsaw, car horn…) using pretrained audio neural networks fine-tuned on ESC-50. The safest path — smallest dataset, fastest training, most tutorials available. Choose this if you want minimal risk.</div>
+      <div class="mdetail" style="display:none;margin-top:12px;border-top:1px solid var(--gray-mid);padding-top:12px;">
+        <div class="sec-h2" style="margin-top:0;">Full details</div>
+        <table class="kv">
+          <tr><td>Dataset</td><td>ESC-50 — 2000 audio clips, 50 environmental sound classes, 5-fold cross-validation predefined. 5 seconds each. Free.</td></tr>
+          <tr><td>Dataset link</td><td><a href="https://github.com/karolpiczak/ESC-50" target="_blank">github.com/karolpiczak/ESC-50</a></td></tr>
+          <tr><td>Model 1</td><td>CNN trained from scratch on mel spectrograms (your baseline)</td></tr>
+          <tr><td>Model 2</td><td>PANNs CNN14 pretrained on AudioSet, fine-tuned on ESC-50</td></tr>
+          <tr><td>Metric</td><td>5-fold cross-validation accuracy (pre-defined folds — use exactly these so you can compare to prior work)</td></tr>
+          <tr><td>Novel angle</td><td>Analyse which sound categories benefit most from AudioSet pretraining — sounds present in AudioSet vs absent</td></tr>
+          <tr><td>Thesis sentence</td><td>"Transfer learning from AudioSet pretraining improves environmental sound classification accuracy by X% on ESC-50, with the largest gains on acoustic categories well-represented in AudioSet."</td></tr>
+        </table>
+        <div class="sec-h2">Key Papers to Cite</div>
+        <table class="kv">
+          <tr><td>Piczak 2015</td><td>ESC: Dataset for environmental sound classification — the original ESC-50 paper. Must cite.</td></tr>
+          <tr><td>Kong et al. 2020</td><td>PANNs — your transfer learning model. <a href="https://arxiv.org/abs/1912.10211" target="_blank">arxiv.org/abs/1912.10211</a></td></tr>
+          <tr><td>Gemmeke et al. 2017</td><td>AudioSet: an ontology and human-labeled dataset — cite when explaining pretraining data.</td></tr>
+        </table>
+        <div class="sec-h2">YouTube Resources</div>
+        <table class="kv">
+          <tr><td>Valerio Velardo — Audio Signal Processing</td><td><a href="https://youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0" target="_blank">Playlist link</a></td></tr>
+          <tr><td>Valerio Velardo — Deep Learning for Audio</td><td><a href="https://youtube.com/playlist?list=PL-wATfeyAMNpCyuwxoPTDMqTkzdbh_1E3" target="_blank">Playlist link</a></td></tr>
+        </table>
+        <div class="sec-h2">GitHub Repos</div>
+        <table class="kv">
+          <tr><td>ESC-50 official</td><td><a href="https://github.com/karolpiczak/ESC-50" target="_blank">github.com/karolpiczak/ESC-50</a></td></tr>
+          <tr><td>panns_inference</td><td><a href="https://github.com/qiuqiangkong/panns_inference" target="_blank">github.com/qiuqiangkong/panns_inference</a></td></tr>
+          <tr><td>librosa</td><td><a href="https://github.com/librosa/librosa" target="_blank">github.com/librosa/librosa</a></td></tr>
+        </table>
+        <div class="pro-con">
+          <div class="pro-con-box"><b style="color:var(--teal)">✓ Why it works</b>Tiny dataset — trains in minutes · Predefined folds make evaluation easy · Huge tutorial support · Safest possible scope for a beginner</div>
+          <div class="pro-con-box"><b style="color:var(--coral)">⚠ Watch out for</b>Very well-studied — contribution must be clearly framed. Don't just replicate — add a specific analysis angle.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 5 -->
+    <div class="mcard" data-diff="3" data-novel="5" style="background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1.1rem 1.2rem;cursor:pointer;box-shadow:var(--shadow);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;">
+        <div class="card-title">Beat tracking on Bangla folk music — evaluating Western models on Eastern rhythm</div>
+        <span style="background:#EEEDFE;color:#3C3489;font-size:11px;padding:3px 10px;border-radius:99px;font-weight:600;white-space:nowrap;flex-shrink:0;">Most original</span>
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin:6px 0;">
+        <span class="badge badge-blue">Difficulty 3/5</span>
+        <span class="badge badge-purple">Genuinely novel</span>
+        <span class="badge badge-amber">Cultural advantage</span>
+      </div>
+      <div class="diff"><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><span style="font-size:12px;color:var(--text-sec);margin-left:6px;">Moderate — highly publishable</span></div>
+      <div class="card-body" style="margin-top:8px;">Existing beat trackers are trained almost entirely on Western music. Bangla folk and classical rhythms (taal cycles — Dadra, Kaharwa, Teentaal) are structurally different. Evaluate state-of-art beat trackers on Bangla music, quantify the performance gap, and propose one simple adaptation. Your cultural background is a genuine academic advantage here.</div>
+      <div class="mdetail" style="display:none;margin-top:12px;border-top:1px solid var(--gray-mid);padding-top:12px;">
+        <div class="sec-h2" style="margin-top:0;">Full details</div>
+        <table class="kv">
+          <tr><td>Research gap</td><td>Beat tracking evaluated almost exclusively on Western pop/jazz/rock. Bangla taals are genuinely unstudied in the ML literature.</td></tr>
+          <tr><td>Data</td><td>Collect 60–100 Bangla music clips from free sources (Wikimedia Commons audio, CC-licensed recordings). Annotate beat positions using Sonic Annotator or Audacity.</td></tr>
+          <tr><td>Evaluate these tools</td><td>librosa beat_track() · madmom RNNBeatTracker · BeatNet</td></tr>
+          <tr><td>Task</td><td>Evaluate existing trackers on Bangla music. Quantify the performance gap vs Western music benchmarks. Propose one adaptation (e.g. tempo prior tuned for common taals).</td></tr>
+          <tr><td>Metric</td><td>F-measure at 0.07 second tolerance (standard beat tracking metric — allows comparison with prior work)</td></tr>
+          <tr><td>Thesis sentence</td><td>"Existing beat tracking models trained on Western music achieve significantly lower F-measure on Bangla folk rhythms (X vs Y%), suggesting fundamental limitations of Western rhythmic assumptions in cross-cultural audio analysis."</td></tr>
+        </table>
+        <div class="sec-h2">Key Papers to Cite</div>
+        <table class="kv">
+          <tr><td>Böck et al. 2014</td><td>Joint beat and downbeat tracking with recurrent neural networks — madmom beat tracker. Your primary baseline. Search Google Scholar.</td></tr>
+          <tr><td>Davies et al. 2009</td><td>Evaluation methods for musical audio beat tracking algorithms — explains F-measure metric. Must cite when describing evaluation.</td></tr>
+          <tr><td>Clayton 2000</td><td>Time in Indian music — musicological background on taal cycles. Good for literature review.</td></tr>
+        </table>
+        <div class="sec-h2">YouTube Resources</div>
+        <table class="kv">
+          <tr><td>Valerio Velardo — Audio Signal Processing</td><td>Understanding onset detection and rhythm features. <a href="https://youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0" target="_blank">Playlist link</a></td></tr>
+        </table>
+        <div class="sec-h2">GitHub Repos</div>
+        <table class="kv">
+          <tr><td>librosa</td><td>beat_track() function — first baseline. <a href="https://github.com/librosa/librosa" target="_blank">github.com/librosa/librosa</a></td></tr>
+          <tr><td>madmom</td><td>RNNBeatTracker — state-of-art baseline. <a href="https://github.com/CPJKU/madmom" target="_blank">github.com/CPJKU/madmom</a></td></tr>
+          <tr><td>BeatNet</td><td>Online joint beat and downbeat tracking. <a href="https://github.com/mjhydri/BeatNet" target="_blank">github.com/mjhydri/BeatNet</a></td></tr>
+        </table>
+        <div class="pro-con">
+          <div class="pro-con-box"><b style="color:var(--teal)">✓ Why it works</b>Genuinely novel — almost no published work exists · Cultural background is an academic advantage · Evaluation study is valid BSc scope · Potentially publishable at a conference</div>
+          <div class="pro-con-box"><b style="color:var(--coral)">⚠ Watch out for</b>Must manually annotate beat positions for your test data — time-consuming · Fewer papers to cite in lit review · Scope carefully: evaluation study only, not a new model</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 6 -->
+    <div class="mcard" data-diff="3" data-novel="4" style="background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1.1rem 1.2rem;cursor:pointer;box-shadow:var(--shadow);">
+      <div class="card-title">Music auto-tagging — predict descriptive tags from audio using PANNs</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin:6px 0;">
+        <span class="badge badge-blue">Difficulty 3/5</span>
+        <span class="badge badge-teal">MagnaTagATune</span>
+        <span class="badge badge-coral">Multi-label</span>
+        <span class="badge badge-gray">Industry relevant</span>
+      </div>
+      <div class="diff"><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-on"></div><div class="dot dot-off"></div><div class="dot dot-off"></div><span style="font-size:12px;color:var(--text-sec);margin-left:6px;">Moderate — real industry application</span></div>
+      <div class="card-body" style="margin-top:8px;">Predict descriptive tags for music clips ("piano", "female voice", "slow", "happy", "acoustic") — how Spotify and Apple Music tag songs internally. Well-established benchmark, clear research question, strong industry relevance.</div>
+      <div class="mdetail" style="display:none;margin-top:12px;border-top:1px solid var(--gray-mid);padding-top:12px;">
+        <div class="sec-h2" style="margin-top:0;">Full details</div>
+        <table class="kv">
+          <tr><td>Dataset</td><td>MagnaTagATune — 25,863 clips, 188 tags (use top-50 tags for a manageable scope). Free.</td></tr>
+          <tr><td>Dataset link</td><td><a href="https://mirg.city.ac.uk/datasets/magnatagatune" target="_blank">mirg.city.ac.uk/datasets/magnatagatune</a></td></tr>
+          <tr><td>Model</td><td>PANNs CNN14 pretrained on AudioSet, fine-tuned on MagnaTagATune with sigmoid output</td></tr>
+          <tr><td>Metric</td><td>ROC-AUC — standard metric for this benchmark, allows direct comparison to published work</td></tr>
+          <tr><td>Application</td><td>Music search, playlist generation, music information retrieval — strong motivation section</td></tr>
+          <tr><td>Novel angle</td><td>Analyse tag category performance: do timbre tags (piano, guitar) outperform mood tags (happy, sad)? Why?</td></tr>
+          <tr><td>Thesis sentence</td><td>"Fine-tuned PANNs achieve ROC-AUC of X on MagnaTagATune auto-tagging, with timbral tags (instruments) outperforming affective tags (mood), suggesting current audio representations encode physical rather than emotional properties more reliably."</td></tr>
+        </table>
+        <div class="sec-h2">Key Papers to Cite</div>
+        <table class="kv">
+          <tr><td>Law et al. 2009</td><td>MagnaTagATune dataset paper — cite when using the dataset. Search Google Scholar.</td></tr>
+          <tr><td>Kong et al. 2020</td><td>PANNs. <a href="https://arxiv.org/abs/1912.10211" target="_blank">arxiv.org/abs/1912.10211</a></td></tr>
+          <tr><td>Won et al. 2020</td><td>Data-driven harmonic filters for audio representation learning — state-of-art on MagnaTagATune.</td></tr>
+        </table>
+        <div class="sec-h2">YouTube Resources</div>
+        <table class="kv">
+          <tr><td>Valerio Velardo — Deep Learning for Audio</td><td><a href="https://youtube.com/playlist?list=PL-wATfeyAMNpCyuwxoPTDMqTkzdbh_1E3" target="_blank">Playlist link</a></td></tr>
+          <tr><td>HuggingFace Audio Course</td><td><a href="https://huggingface.co/learn/audio-course" target="_blank">huggingface.co/learn/audio-course</a></td></tr>
+        </table>
+        <div class="sec-h2">GitHub Repos</div>
+        <table class="kv">
+          <tr><td>panns_inference</td><td><a href="https://github.com/qiuqiangkong/panns_inference" target="_blank">github.com/qiuqiangkong/panns_inference</a></td></tr>
+          <tr><td>musicnn</td><td>Music tagging with convolutional neural networks. <a href="https://github.com/jordipons/musicnn" target="_blank">github.com/jordipons/musicnn</a></td></tr>
+        </table>
+        <div class="pro-con">
+          <div class="pro-con-box"><b style="color:var(--teal)">✓ Why it works</b>Clear real-world motivation (how Spotify works internally) · Established benchmark — compare directly to prior work · Strong application story for your introduction</div>
+          <div class="pro-con-box"><b style="color:var(--coral)">⚠ Watch out for</b>Large dataset — use a subset of top-50 tags to keep it manageable · ROC-AUC needs careful explanation in your methodology chapter</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end music-list -->
+
+  <div class="insight" style="margin-top:16px;">
+    <div class="insight-label">Quick decision guide</div>
+    <strong>Safest + most tutorials:</strong> Genre classification (GTZAN) &nbsp;·&nbsp;
+    <strong>Most psychologically interesting:</strong> Mood detection (DEAM) &nbsp;·&nbsp;
+    <strong>Most publishable + novel:</strong> Beat tracking on Bangla folk music &nbsp;·&nbsp;
+    <strong>Strongest industry angle:</strong> Auto-tagging (MagnaTagATune)
+  </div>
+
+</div><!-- end sec-music -->
+
 </main>
 
 <script>
@@ -612,6 +924,49 @@ function buildChapters() {
   });
 }
 buildChapters();
+
+// ── Music topics: expand/collapse on click ──
+document.querySelectorAll('.mcard').forEach(card => {
+  card.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') return; // don't collapse when clicking links
+    const detail = this.querySelector('.mdetail');
+    const isOpen = detail.style.display === 'block';
+    detail.style.display = isOpen ? 'none' : 'block';
+    this.style.borderColor = isOpen ? 'var(--gray-mid)' : 'var(--blue)';
+  });
+});
+
+// ── Music topics: filter/sort ──
+function mfilter(type, btn) {
+  document.querySelectorAll('.music-filter').forEach(b => {
+    b.style.background = 'var(--white)';
+    b.style.color = 'var(--text-sec)';
+    b.style.borderColor = 'var(--gray-mid)';
+  });
+  btn.style.background = 'var(--blue)';
+  btn.style.color = '#fff';
+  btn.style.borderColor = 'var(--blue)';
+
+  const list = document.getElementById('music-list');
+  const cards = Array.from(list.querySelectorAll('.mcard'));
+
+  if (type === 'easy') {
+    cards.sort((a, b) => +a.dataset.diff - +b.dataset.diff);
+  } else if (type === 'novel') {
+    cards.sort((a, b) => +b.dataset.novel - +a.dataset.novel);
+  } else {
+    cards.sort((a, b) => {
+      // restore original order: top pick (diff=2,novel=3 first card) first
+      const order = ['2-3','2-4','3-5','2-3b','3-5b','3-4'];
+      return 0;
+    });
+    // restore DOM order by re-inserting in original index order
+    const origOrder = [0,1,2,3,4,5];
+    origOrder.forEach(i => list.appendChild(cards.find((c,ci) => ci === i) || cards[i]));
+    return;
+  }
+  cards.forEach(c => list.appendChild(c));
+}
 </script>
 </body>
 </html>
