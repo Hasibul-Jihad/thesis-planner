@@ -204,6 +204,7 @@
   <button class="nav-btn" onclick="show('music',this)">🎵 Music &amp; Sound Topics</button>
   <button class="nav-btn" onclick="show('ieee',this)">📄 IEEE Papers</button>
   <button class="nav-btn" onclick="show('papers',this)">🗂 Paper Manager</button>
+  <button class="nav-btn" onclick="show('books',this)">📚 Books</button>
 </nav>
 
 <main class="main">
@@ -1583,6 +1584,162 @@
   </div>
 
 </div><!-- end sec-papers -->
+
+<!-- ═══════════════════════════ BOOKS ═══════════════════════════ -->
+<div class="section" id="sec-books">
+<style>
+  .bk-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1.1rem 1.2rem;margin-bottom:14px;box-shadow:var(--shadow);display:grid;grid-template-columns:64px 1fr;gap:1rem;align-items:start}
+  .bk-card.featured{border:2px solid var(--blue)}
+  .bk-cover{width:64px;height:84px;border-radius:6px;object-fit:cover;background:var(--blue-soft);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+  .bk-body{}
+  .bk-tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+  .bk-title{font-size:.92rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:2px}
+  .bk-author{font-size:.8rem;color:var(--text-sec);margin-bottom:7px}
+  .bk-desc{font-size:.82rem;color:var(--text-sec);line-height:1.6;margin-bottom:10px}
+  .bk-links{display:flex;gap:6px;flex-wrap:wrap}
+  .bk-btn{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;border:none;transition:all .15s}
+  .bk-btn-primary{background:var(--blue);color:#fff}
+  .bk-btn-primary:hover{background:#0C447C;color:#fff}
+  .bk-btn-ghost{background:var(--blue-soft);color:var(--blue);border:1px solid #BFDBFE}
+  .bk-btn-ghost:hover{background:var(--blue);color:#fff}
+  .bk-btn-teal{background:var(--teal-soft);color:var(--teal);border:1px solid #9FE1CB}
+  .bk-btn-teal:hover{background:var(--teal);color:#fff}
+  .bk-btn-green{background:var(--green-soft);color:var(--green);border:1px solid #BEE5A0}
+  .bk-btn-green:hover{background:var(--green);color:#fff}
+  .bk-access{background:var(--gray-light);border-radius:6px;padding:7px 10px;font-size:11.5px;color:var(--text-sec);margin-top:8px;line-height:1.55}
+  .bk-access b{color:var(--text)}
+  @media(max-width:480px){.bk-card{grid-template-columns:1fr}.bk-cover{display:none}}
+</style>
+
+  <div class="insight" style="margin-bottom:16px;">
+    <div class="insight-label">About this section</div>
+    All books here are either <strong>officially free</strong> from their authors/publishers, or have a <strong>legal free access path</strong> via your university library or Internet Archive. Aurélien Géron's book is included with every legitimate way to access it for free as a student.
+  </div>
+
+  <!-- ── GÉRON — FEATURED ── -->
+  <div class="sec-h2">📖 Aurélien Géron — Your Main ML Textbook</div>
+
+  <div class="bk-card featured">
+    <div class="bk-cover" style="background:linear-gradient(135deg,#1E3A5F,#185FA5);color:#fff;font-size:1.8rem;">🤖</div>
+    <div class="bk-body">
+      <div class="bk-tag lbl-blue">O'Reilly · 3rd Edition · 2022 · The book you uploaded</div>
+      <div class="bk-title">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</div>
+      <div class="bk-author">Aurélien Géron — Former Googler, YouTube video classification lead</div>
+      <div class="bk-desc">The most practical ML book available. Covers everything from linear regression to transformers, GANs, and diffusion models with real code. Uses Scikit-Learn + Keras + TensorFlow. Every chapter has exercises. This is the book you build real projects from, not just read.</div>
+      <div class="bk-links">
+        <a class="bk-btn bk-btn-primary" href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/" target="_blank">O'Reilly (free via uni WiFi)</a>
+        <a class="bk-btn bk-btn-ghost" href="https://github.com/ageron/handson-ml3" target="_blank">GitHub — all notebooks free</a>
+        <a class="bk-btn bk-btn-teal" href="https://archive.org/details/handson-machine-learning-with-scikit-2-e-1" target="_blank">Internet Archive — borrow free</a>
+        <a class="bk-btn bk-btn-ghost" href="https://colab.research.google.com/github/ageron/handson-ml3/blob/main/index.ipynb" target="_blank">Open in Colab directly</a>
+      </div>
+      <div class="bk-access">
+        <b>How to access free as a student:</b><br>
+        <b>Option 1 (best):</b> Connect to your university WiFi → go to oreilly.com → click "Sign In" → choose "Sign in through your institution" → search your university → full access instantly. Most Bangladeshi universities have O'Reilly subscriptions.<br><br>
+        <b>Option 2:</b> The author's GitHub (<a href="https://github.com/ageron/handson-ml3" target="_blank" style="color:var(--blue)">github.com/ageron/handson-ml3</a>) has every Jupyter notebook from every chapter — free, no account needed. Open directly in Colab.<br><br>
+        <b>Option 3:</b> Internet Archive — create a free account → borrow the book for 1 hour at a time, unlimited times. Fully legal digital lending.<br><br>
+        <b>Chapter notebooks on Colab:</b> Each chapter's code runs instantly in the browser. You never need to install anything locally.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FREE BOOKS ── -->
+  <div class="sec-h2">📗 Officially Free ML Books — Download Anytime</div>
+
+  <div class="bk-card">
+    <div class="bk-cover" style="background:linear-gradient(135deg,#065F46,#0F6E56);color:#fff;font-size:1.8rem;">🧠</div>
+    <div class="bk-body">
+      <div class="bk-tag lbl-teal">MIT Press · Free official PDF · deeplearningbook.org</div>
+      <div class="bk-title">Deep Learning</div>
+      <div class="bk-author">Ian Goodfellow, Yoshua Bengio, Aaron Courville</div>
+      <div class="bk-desc">The academic bible of deep learning. Written by three of the field's founding researchers. Covers the mathematical foundations: probability, linear algebra, optimization, then every major architecture. Harder than Géron but deeper. Use it to understand the "why" behind what Géron shows you "how" to do.</div>
+      <div class="bk-links">
+        <a class="bk-btn bk-btn-teal" href="https://www.deeplearningbook.org/" target="_blank">Read free online</a>
+        <a class="bk-btn bk-btn-ghost" href="https://github.com/janishar/mit-deep-learning-book-pdf" target="_blank">PDF on GitHub</a>
+      </div>
+      <div class="bk-access"><b>Access:</b> Completely free — official from the authors at deeplearningbook.org. Every chapter readable in browser. PDF also freely available.</div>
+    </div>
+  </div>
+
+  <div class="bk-card">
+    <div class="bk-cover" style="background:linear-gradient(135deg,#854F0B,#D97706);color:#fff;font-size:1.8rem;">🔥</div>
+    <div class="bk-body">
+      <div class="bk-tag lbl-amber">Free · Interactive · d2l.ai · Updated 2023</div>
+      <div class="bk-title">Dive into Deep Learning (D2L)</div>
+      <div class="bk-author">Aston Zhang, Zachary Lipton, Mu Li, Alexander Smola (Amazon scientists)</div>
+      <div class="bk-desc">The most modern free ML textbook. Every equation has a runnable Colab notebook next to it. Covers PyTorch, JAX, TensorFlow simultaneously. Includes attention, Transformers, BERT, diffusion models, and reinforcement learning. Updated regularly. If Géron is your practical guide, D2L is your interactive reference.</div>
+      <div class="bk-links">
+        <a class="bk-btn bk-btn-green" href="https://d2l.ai/" target="_blank">Read free online</a>
+        <a class="bk-btn bk-btn-ghost" href="https://github.com/d2l-ai/d2l-en" target="_blank">GitHub (PDF + notebooks)</a>
+        <a class="bk-btn bk-btn-teal" href="https://colab.research.google.com/github/d2l-ai/d2l-pytorch-colab/blob/master/chapter_introduction/intro.ipynb" target="_blank">Open in Colab</a>
+      </div>
+      <div class="bk-access"><b>Access:</b> Entirely free at d2l.ai. Every chapter has a "Run in Colab" button. No account needed.</div>
+    </div>
+  </div>
+
+  <div class="bk-card">
+    <div class="bk-cover" style="background:linear-gradient(135deg,#4C1D95,#534AB7);color:#fff;font-size:1.8rem;">📐</div>
+    <div class="bk-body">
+      <div class="bk-tag lbl-purple">Cambridge University Press · Free official PDF</div>
+      <div class="bk-title">Mathematics for Machine Learning</div>
+      <div class="bk-author">Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong</div>
+      <div class="bk-desc">If you ever feel lost with the math in any ML paper or textbook, this is the fix. Covers linear algebra, multivariate calculus, probability theory, and optimization — all in the context of ML. The authors officially made the full PDF free. Read Chapters 2–5 alongside Géron for maximum understanding.</div>
+      <div class="bk-links">
+        <a class="bk-btn bk-btn-ghost" href="https://mml-book.github.io/" target="_blank">Free PDF (official)</a>
+        <a class="bk-btn bk-btn-ghost" href="https://github.com/mml-book/mml-book.github.io" target="_blank">GitHub</a>
+      </div>
+      <div class="bk-access"><b>Access:</b> Free PDF at mml-book.github.io — published by Cambridge, made free by the authors officially.</div>
+    </div>
+  </div>
+
+  <div class="bk-card">
+    <div class="bk-cover" style="background:linear-gradient(135deg,#991B1B,#DC2626);color:#fff;font-size:1.8rem;">📊</div>
+    <div class="bk-body">
+      <div class="bk-tag lbl-coral">Stanford · Free official PDF · ESL</div>
+      <div class="bk-title">The Elements of Statistical Learning (ESL)</div>
+      <div class="bk-author">Hastie, Tibshirani, Friedman — Stanford University</div>
+      <div class="bk-desc">The statistical foundation of machine learning. Covers all classical methods rigorously: regression, classification, SVM, ensemble methods, neural networks, unsupervised learning. The authors officially provide the PDF free. Graduate-level but worth knowing exists. Use it when you need the statistical proof behind something Géron explains intuitively.</div>
+      <div class="bk-links">
+        <a class="bk-btn bk-btn-ghost" href="https://hastie.su.domains/ElemStatLearn/printings/ESLII_print12_toc.pdf" target="_blank">Free PDF (official)</a>
+        <a class="bk-btn bk-btn-ghost" href="https://www.statlearning.com/" target="_blank">statlearning.com</a>
+      </div>
+      <div class="bk-access"><b>Access:</b> Officially free PDF from Stanford authors. Also see the easier companion: "Introduction to Statistical Learning" (ISL) — also free at statlearning.com, much more approachable for BSc level.</div>
+    </div>
+  </div>
+
+  <div class="bk-card">
+    <div class="bk-cover" style="background:linear-gradient(135deg,#0F6E56,#34D399);color:#fff;font-size:1.8rem;">🎵</div>
+    <div class="bk-body">
+      <div class="bk-tag lbl-teal">Free online · Audio ML specific · Your thesis topic</div>
+      <div class="bk-title">Audio Signal Processing for Machine Learning — Course Notes</div>
+      <div class="bk-author">Valerio Velardo — The Sound of AI</div>
+      <div class="bk-desc">Not a traditional book — but Valerio's written course notes and slides cover everything you need for audio ML: waveforms, Fourier transforms, spectrograms, MFCCs, deep learning for audio. This is the written companion to his YouTube playlists. Directly relevant to every topic in your thesis.</div>
+      <div class="bk-links">
+        <a class="bk-btn bk-btn-teal" href="https://valeriovelardo.com/the-sound-of-ai/" target="_blank">Sound of AI website</a>
+        <a class="bk-btn bk-btn-ghost" href="https://github.com/musikalkemist/AudioSignalProcessingForML" target="_blank">GitHub — slides + code</a>
+      </div>
+      <div class="bk-access"><b>Access:</b> Completely free. GitHub has all slides as PDFs — download directly.</div>
+    </div>
+  </div>
+
+  <!-- READING ORDER -->
+  <div class="sec-h2">📅 Recommended Reading Order for Your Thesis</div>
+  <div class="card card-blue">
+    <table class="kv">
+      <tr><td>Month 1</td><td><strong>Géron Ch. 1–4</strong> — What is ML? Training models, classification, regression. Read alongside coding practice. Don't read ahead of what you're implementing.</td></tr>
+      <tr><td>Month 2</td><td><strong>Velardo course notes</strong> — Read every page alongside his YouTube videos. This is your audio foundation. Then <strong>Géron Ch. 10–11</strong> — Neural networks intro.</td></tr>
+      <tr><td>Month 3</td><td><strong>Your 2 core IEEE papers</strong> (see IEEE Papers tab). Then <strong>Géron Ch. 14–16</strong> — CNNs, RNNs, Attention. Skim the relevant chapter before writing your literature review.</td></tr>
+      <tr><td>Month 4</td><td><strong>Géron Ch. 12–13</strong> — Custom models and training loops. Read when you hit problems in your implementation that tutorials don't cover.</td></tr>
+      <tr><td>When stuck on math</td><td><strong>Maths for ML</strong> — look up the specific topic (e.g. "eigenvalues" for PCA, "gradient" for backprop). Don't read cover to cover.</td></tr>
+      <tr><td>After thesis</td><td><strong>Deep Learning (Goodfellow)</strong> and <strong>D2L</strong> — for going deeper after your BSc is submitted.</td></tr>
+    </table>
+  </div>
+
+  <div class="insight warn" style="margin-top:4px;">
+    <div class="insight-label">One rule about reading books during a thesis</div>
+    <p>Read only the chapters directly relevant to what you are coding that week. Reading ahead feels productive but eats your implementation time. Géron Ch. 1–4 + your 2 IEEE papers + Velardo notes is genuinely all you need to read before Month 4.</p>
+  </div>
+
+</div><!-- end sec-books -->
 
 </main>
 
