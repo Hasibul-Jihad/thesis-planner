@@ -205,6 +205,7 @@
   <button class="nav-btn" onclick="show('ieee',this)">📄 IEEE Papers</button>
   <button class="nav-btn" onclick="show('papers',this)">🗂 Paper Manager</button>
   <button class="nav-btn" onclick="show('books',this)">📚 Books</button>
+  <button class="nav-btn" onclick="show('resources',this)">🗃 Topic Resources</button>
 </nav>
 
 <main class="main">
@@ -281,9 +282,27 @@
     <div class="card-label lbl-blue">Month 1 — Python & ML Foundations · 44 hours</div>
     <div class="card-title">Learn to code. Understand what ML is. Do not touch audio yet.</div>
     <div class="milestones">
-      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Weeks 1–2 (22 hrs):</b> Python fundamentals — variables, loops, functions, lists, dicts. Use Claude/ChatGPT to explain every error. Work through freeCodeCamp Python or CS50P daily. Goal: write a script that reads a CSV and prints averages.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> NumPy and Pandas basics. Load data, slice arrays, compute statistics. Kaggle micro-courses are free and take ~1 hr each.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Watch 3Blue1Brown Neural Networks playlist (8 videos). Read Chapters 1–2 of the ML guide. No coding this week — understanding only.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Weeks 1–2 (22 hrs):</b> Python fundamentals — variables, loops, functions, lists, dicts. Use Claude/ChatGPT to explain every error. Work through one of these daily:
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://www.freecodecamp.org/learn/scientific-computing-with-python/" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">freeCodeCamp Python</a>
+          <a href="https://cs50.harvard.edu/python/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">CS50P (Harvard free)</a>
+          <a href="https://colab.research.google.com/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Google Colab</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> NumPy and Pandas basics. Load data, slice arrays, compute statistics.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://www.kaggle.com/learn/pandas" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Kaggle Pandas (free)</a>
+          <a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Kaggle Intro to ML</a>
+          <a href="https://numpy.org/learn/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">NumPy quickstart</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--blue)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Conceptual understanding — no coding.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://www.youtube.com/playlist?list=PLZZWrBYkx7Otcjr3eCLZDCgfpqnxMY29s" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">3Blue1Brown Neural Nets (8 videos)</a>
+          <a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Géron Ch. 1–2 (O'Reilly)</a>
+          <a href="https://github.com/ageron/handson-ml3/blob/main/01_the_machine_learning_landscape.ipynb" target="_blank" class="bk-btn bk-btn-teal" style="font-size:11px;padding:4px 10px;">Géron Ch.1 notebook (Colab)</a>
+        </div>
+      </div></div>
     </div>
     <div class="insight" style="margin-top:12px;"><div class="insight-label">Month 1 Checkpoint</div>You can write a Python script that loads data, filters it, and prints results without help.</div>
   </div>
@@ -292,10 +311,33 @@
     <div class="card-label lbl-teal">Month 2 — Audio Signal Processing · 44 hours</div>
     <div class="card-title">Learn the language of audio. Build your first audio classifier.</div>
     <div class="milestones">
-      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Valerio Velardo — Audio Signal Processing for ML playlist, first 8 videos. Re-watch with a Colab notebook open. Plot waveforms and spectrograms in Python.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> MFCCs and Mel spectrograms using librosa. Extract features from 10 audio files. Understand what each feature means physically.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> HuggingFace Audio Course, Section 1 — Audio classification. Copy the tutorial exactly; understanding comes from running it.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Download ESC-50. Build a mel spectrogram + CNN classifier end to end. Doesn't need good accuracy — just working.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Audio signal processing foundations. Re-watch with a Colab notebook open. Plot waveforms and spectrograms in Python.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://www.youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">Velardo — Audio Signal Processing (playlist)</a>
+          <a href="https://github.com/musikalkemist/AudioSignalProcessingForML" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Velardo slides + code (GitHub)</a>
+          <a href="https://colab.research.google.com/github/musikalkemist/AudioSignalProcessingForML/blob/master/02-Sound%20Waves%20in%20Digital%20Audio/sound-waves-in-digital-audio.ipynb" target="_blank" class="bk-btn bk-btn-teal" style="font-size:11px;padding:4px 10px;">Week 1 Colab notebook</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> MFCCs and Mel spectrograms. Extract features from 10 audio files.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://librosa.org/doc/latest/tutorial.html" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">librosa tutorial (official)</a>
+          <a href="https://colab.research.google.com/github/musikalkemist/AudioSignalProcessingForML/blob/master/13-MFCCs/MFCCs.ipynb" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">MFCC notebook (Colab)</a>
+          <a href="https://colab.research.google.com/github/musikalkemist/AudioSignalProcessingForML/blob/master/12-Mel%20Spectrogram/mel-spectrogram.ipynb" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Mel spectrogram notebook</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> HuggingFace Audio Course — audio classification. Copy tutorial exactly.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://huggingface.co/learn/audio-course/chapter3/introduction" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">HuggingFace Audio Course Ch.3</a>
+          <a href="https://huggingface.co/learn/audio-course" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Full Audio Course</a>
+          <a href="https://www.youtube.com/playlist?list=PL-wATfeyAMNpCyuwxoPTDMqTkzdbh_1E3" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Velardo Deep Learning for Audio</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--teal)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Download ESC-50. Build mel spectrogram + CNN classifier end to end.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://github.com/karolpiczak/ESC-50" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">ESC-50 dataset (GitHub)</a>
+          <a href="https://colab.research.google.com/github/musikalkemist/pytorchforaudio/blob/main/10%20Training%20an%20audio%20classifier/training-urban-sound-classifier.ipynb" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">CNN audio classifier (Colab)</a>
+        </div>
+      </div></div>
     </div>
     <div class="insight good" style="margin-top:12px;"><div class="insight-label">Month 2 Checkpoint</div>You can load any audio file, extract a mel spectrogram, and run it through a classifier.</div>
   </div>
@@ -304,10 +346,32 @@
     <div class="card-label lbl-amber">Month 3 — Literature Review & Topic Lock · 44 hours</div>
     <div class="card-title">Read 5 papers. Lock your scope. Write introduction and literature review.</div>
     <div class="milestones">
-      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Read 5 papers: wav2vec 2.0 (arxiv 2006.11477), HuBERT (arxiv 2106.07447), SUBESCO dataset paper, + 2 papers on Bangla speech emotion recognition. Ask AI to explain any paragraph you don't understand.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Finalise research question with supervisor. Write thesis introduction (1–2 pages). Question: "How does fine-tuned HuBERT compare to a CNN baseline for Bangla SER?"</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Write literature review (4–6 pages). Cover: speech emotion recognition, transfer learning for audio, Bangla speech processing state of the art.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Download SUBESCO dataset. Explore its structure. Write methodology chapter outline.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Read your 5 core papers. Open each on university WiFi.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://arxiv.org/abs/2006.11477" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">wav2vec 2.0 (arxiv — free)</a>
+          <a href="https://arxiv.org/abs/2106.07447" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">HuBERT (arxiv — free)</a>
+          <a href="https://ieeexplore.ieee.org/document/1021072" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Tzanetakis 2002 (IEEE)</a>
+          <a href="https://scholar.google.com/scholar?q=SUBESCO+Bangla+emotional+speech+corpus" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">SUBESCO paper (Google Scholar)</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Finalise research question with supervisor. Write thesis introduction (1–2 pages).
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://www.overleaf.com/latex/templates/tagged/thesis" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">Overleaf thesis templates</a>
+          <a href="https://www.zotero.org/download/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Download Zotero (free)</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Write literature review (4–6 pages). Cover: speech emotion recognition, transfer learning for audio, Bangla speech processing state of the art.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://scholar.google.com/scholar?q=Bangla+speech+emotion+recognition" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Search: Bangla SER papers</a>
+          <a href="https://scholar.google.com/scholar?q=speech+emotion+recognition+transfer+learning" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Search: SER transfer learning</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--amber)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Download SUBESCO dataset. Explore its structure. Write methodology chapter outline.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://scholar.google.com/scholar?q=SUBESCO+dataset+download" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">Find SUBESCO on Scholar</a>
+          <a href="https://commonvoice.mozilla.org/bn/datasets" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Common Voice Bangla (backup)</a>
+        </div>
+      </div></div>
     </div>
     <div class="insight warn" style="margin-top:12px;"><div class="insight-label">Month 3 Checkpoint</div><p>Research question finalised. Introduction + literature review drafted. Dataset downloaded and explored.</p></div>
   </div>
@@ -316,10 +380,33 @@
     <div class="card-label lbl-green">Month 4 — Baseline Implementation · 44 hours</div>
     <div class="card-title">Build CNN baseline. Fine-tune HuBERT. Run first experiments.</div>
     <div class="milestones">
-      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Preprocess SUBESCO: load audio, extract mel spectrograms, create 70/15/15 train/val/test splits. Write the data loading pipeline.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Build CNN baseline: mel spectrogram → 3-layer CNN → emotion class. Train on Colab free GPU. Record accuracy and F1 per emotion class.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Fine-tune HuBERT using HuggingFace Trainer API. Use the audio course fine-tuning tutorial as your exact template.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Compare CNN vs HuBERT: accuracy, F1, confusion matrix per emotion. Write methodology chapter. Produce results table.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Preprocess SUBESCO: load audio, extract mel spectrograms, create 70/15/15 splits.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://colab.research.google.com/" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">Open Google Colab (free GPU)</a>
+          <a href="https://librosa.org/doc/latest/generated/librosa.feature.melspectrogram.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">librosa mel spectrogram docs</a>
+          <a href="https://huggingface.co/datasets/facebook/voxpopuli" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">HuggingFace audio datasets</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Build CNN baseline: mel spectrogram → 3-layer CNN → emotion class. Train on Colab free GPU.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://colab.research.google.com/github/musikalkemist/pytorchforaudio/blob/main/10%20Training%20an%20audio%20classifier/training-urban-sound-classifier.ipynb" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">CNN audio template (Colab)</a>
+          <a href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">PyTorch CNN tutorial</a>
+          <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">sklearn F1 / accuracy docs</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Fine-tune HuBERT using HuggingFace Trainer API.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://huggingface.co/learn/audio-course/chapter4/fine-tuning" target="_blank" class="bk-btn bk-btn-primary" style="font-size:11px;padding:4px 10px;">HuggingFace fine-tuning tutorial</a>
+          <a href="https://huggingface.co/facebook/hubert-base-ls960" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">HuBERT model (HuggingFace)</a>
+          <a href="https://huggingface.co/docs/transformers/training" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Trainer API docs</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--green)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Compare CNN vs HuBERT: accuracy, F1, confusion matrix. Write methodology chapter.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Confusion matrix (sklearn)</a>
+          <a href="https://www.overleaf.com" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Overleaf — write methodology</a>
+        </div>
+      </div></div>
     </div>
     <div class="insight good" style="margin-top:12px;"><div class="insight-label">Month 4 Checkpoint</div>Both models trained. Results table complete. Methodology chapter written.</div>
   </div>
@@ -328,9 +415,24 @@
     <div class="card-label" style="color:#555;">Month 5 — Analysis, Ablations & Results Writing · 44 hours</div>
     <div class="card-title">Dig into results. Run extra experiments. Write results and discussion.</div>
     <div class="milestones">
-      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Error analysis: which emotions are confused? Listen to misclassified clips. Try data augmentation (pitch shift, noise) and retrain.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Ablation: what happens with 50% / 25% of training data? How does HuBERT degrade vs CNN? This is a genuine contribution at BSc level.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Weeks 3–4 (22 hrs):</b> Write results chapter (all tables, confusion matrix figures) and discussion chapter (why does HuBERT outperform? what are the limitations?).</div></div>
+      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Error analysis: which emotions are confused? Try data augmentation.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://pytorch.org/audio/stable/transforms.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">torchaudio augmentation docs</a>
+          <a href="https://librosa.org/doc/latest/effects.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">librosa pitch shift / time stretch</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Ablation study: 50% / 25% training data. How does HuBERT degrade vs CNN?
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://scikit-learn.org/stable/modules/learning_curve.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Learning curve docs (sklearn)</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:#888"></div><div class="ms-text"><b>Weeks 3–4 (22 hrs):</b> Write results and discussion chapters. Produce all figures.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://matplotlib.org/stable/gallery/index.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">matplotlib figure gallery</a>
+          <a href="https://seaborn.pydata.org/examples/index.html" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">seaborn (nicer charts)</a>
+          <a href="https://www.overleaf.com" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Overleaf — write chapters</a>
+        </div>
+      </div></div>
     </div>
     <div class="insight" style="margin-top:12px;"><div class="insight-label">Month 5 Checkpoint</div>Results + discussion chapters complete. Thesis ~70% written.</div>
   </div>
@@ -339,10 +441,28 @@
     <div class="card-label lbl-coral">Month 6 — Writing, Polishing & Submission · 44 hours</div>
     <div class="card-title">Write conclusion. Revise everything. Submit.</div>
     <div class="milestones">
-      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Write conclusion: what you found, why it matters, limitations, future work. Write abstract last — easiest when done.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Full readthrough — fix structure, transitions, grammar. Every figure needs a caption. Every claim needs a citation.</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Supervisor review round. Apply feedback. Format references (IEEE or APA per your department).</div></div>
-      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Buffer week — final supervisor comments, viva/defence slides if required, final submission.</div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 1 (11 hrs):</b> Write conclusion: what you found, why it matters, limitations, future work. Write abstract last.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://www.overleaf.com/latex/templates/tagged/thesis" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Overleaf thesis templates</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 2 (11 hrs):</b> Full readthrough — fix structure, transitions, grammar. Every figure needs a caption. Every claim needs a citation.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://www.zotero.org/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Zotero — auto-generate references</a>
+          <a href="https://www.grammarly.com/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Grammarly (free tier)</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 3 (11 hrs):</b> Supervisor review round. Apply feedback. Format references (IEEE or APA).
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://ieeeauthorcenter.ieee.org/wp-content/uploads/IEEE_Style_Manual_2023.pdf" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">IEEE Style Manual (PDF)</a>
+        </div>
+      </div></div>
+      <div class="ms"><div class="ms-dot" style="background:var(--coral)"></div><div class="ms-text"><b>Week 4 (11 hrs):</b> Buffer week — final supervisor comments, viva/defence slides if required, final submission.
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">
+          <a href="https://www.canva.com/presentations/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Canva — defence slides (free)</a>
+          <a href="https://docs.google.com/presentation/" target="_blank" class="bk-btn bk-btn-ghost" style="font-size:11px;padding:4px 10px;">Google Slides (free)</a>
+        </div>
+      </div></div>
     </div>
   </div>
 </div>
@@ -1740,6 +1860,429 @@
   </div>
 
 </div><!-- end sec-books -->
+
+<!-- ═══════════════════════════ TOPIC RESOURCES ═══════════════════════════ -->
+<div class="section" id="sec-resources">
+<style>
+  .tr-tabs{display:flex;gap:0;margin-bottom:20px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--gray-mid)}
+  .tr-tab{flex:1;padding:11px 10px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
+  .tr-tab.t-bangla{background:var(--white);color:var(--blue)}
+  .tr-tab.t-genre{background:var(--white);color:var(--teal)}
+  .tr-tab.t-bangla.active{background:var(--blue);color:#fff}
+  .tr-tab.t-genre.active{background:var(--teal);color:#fff}
+  .tr-pane{display:none}.tr-pane.active{display:block}
+
+  .rs-h2{font-size:.95rem;font-weight:700;color:#fff;padding:9px 14px;border-radius:7px;margin:18px 0 10px}
+  .rs-h2.bangla{background:var(--blue)}
+  .rs-h2.genre{background:var(--teal)}
+  .rs-h3{font-size:.88rem;font-weight:600;padding:6px 12px;border-radius:6px;margin:12px 0 7px}
+  .rs-h3.bangla{background:var(--blue-soft);color:var(--blue-dark);border-left:3px solid var(--blue)}
+  .rs-h3.genre{background:var(--teal-soft);color:var(--teal);border-left:3px solid var(--teal)}
+
+  .rs-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1rem 1.1rem;margin-bottom:10px;box-shadow:var(--shadow)}
+  .rs-card.bangla{border-left:4px solid var(--blue)}
+  .rs-card.genre{border-left:4px solid var(--teal)}
+  .rs-card.both{border-left:4px solid var(--purple)}
+  .rs-card-title{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.4}
+  .rs-card-desc{font-size:.81rem;color:var(--text-sec);line-height:1.6;margin-bottom:9px}
+  .rs-links{display:flex;gap:6px;flex-wrap:wrap}
+  .rs-btn{padding:5px 11px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;border:none;white-space:nowrap}
+  .rs-btn.blue{background:var(--blue);color:#fff}
+  .rs-btn.blue:hover{background:#0C447C;color:#fff}
+  .rs-btn.blue-soft{background:var(--blue-soft);color:var(--blue);border:1px solid #BFDBFE}
+  .rs-btn.blue-soft:hover{background:var(--blue);color:#fff}
+  .rs-btn.teal{background:var(--teal);color:#fff}
+  .rs-btn.teal:hover{background:#085041;color:#fff}
+  .rs-btn.teal-soft{background:var(--teal-soft);color:var(--teal);border:1px solid #9FE1CB}
+  .rs-btn.teal-soft:hover{background:var(--teal);color:#fff}
+  .rs-btn.gray{background:var(--gray-light);color:var(--text-sec);border:1px solid var(--gray-mid)}
+  .rs-btn.gray:hover{background:var(--gray-mid);color:var(--text)}
+  .rs-btn.amber{background:var(--amber-soft);color:var(--amber);border:1px solid #FCD34D}
+  .rs-btn.purple{background:var(--purple-soft);color:var(--purple);border:1px solid #C4B5FD}
+  .rs-note{font-size:11px;color:var(--text-sec);margin-top:6px;padding:5px 8px;background:var(--gray-light);border-radius:5px}
+  .rs-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+  .rs-tag.bangla{color:var(--blue)}
+  .rs-tag.genre{color:var(--teal)}
+  .rs-tag.both{color:var(--purple)}
+</style>
+
+  <!-- selector -->
+  <div class="tr-tabs">
+    <button class="tr-tab t-bangla active" onclick="trSwitch('bangla',this)">🗣 Bangla Speech Emotion Recognition</button>
+    <button class="tr-tab t-genre" onclick="trSwitch('genre',this)">🎵 Music Genre Classification (GTZAN)</button>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       BANGLA PANE
+  ════════════════════════════════════════════ -->
+  <div class="tr-pane active" id="trp-bangla">
+
+    <div class="insight" style="margin-bottom:14px;border-left-color:var(--blue)">
+      <div class="insight-label" style="color:var(--blue)">What this topic involves</div>
+      Fine-tune a pretrained HuBERT or wav2vec 2.0 model to classify emotions (happy, sad, angry, neutral, fear, disgust, surprise) from Bangla speech. Dataset: SUBESCO (7000 utterances, 7 emotions, CC BY 4.0 — direct download available). You build two models: a CNN baseline + a fine-tuned HuBERT, compare them, and analyse where each fails.
+    </div>
+
+    <!-- DATASET -->
+    <div class="rs-h2 bangla">📦 Dataset</div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Primary dataset — direct download</div>
+      <div class="rs-card-title">SUBESCO — SUST Bangla Emotional Speech Corpus</div>
+      <div class="rs-card-desc">7000 utterances · 7 emotions (happy, sad, angry, fear, disgust, surprise, neutral) · 20 native speakers (gender balanced) · 7+ hours of audio · CC BY 4.0 license — completely free to download and use. This is the only human-validated, gender-balanced emotional speech corpus for Bangla. Direct download from Zenodo — no request needed.</div>
+      <div class="rs-links">
+        <a href="https://doi.org/10.5281/zenodo.4526477" target="_blank" class="rs-btn blue">⬇ Download from Zenodo (direct)</a>
+        <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0250173" target="_blank" class="rs-btn blue-soft">Dataset paper (PLoS ONE)</a>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/33930026/" target="_blank" class="rs-btn gray">PubMed entry</a>
+      </div>
+      <div class="rs-note">⭐ Cite as: Sultana et al. (2021) "SUST Bangla Emotional Speech Corpus (SUBESCO)." PLoS ONE. DOI: 10.1371/journal.pone.0250173</div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Backup dataset</div>
+      <div class="rs-card-title">BanSpEmo — Bangla Emotional Speech Dataset (2022)</div>
+      <div class="rs-card-desc">Another Bangla emotional speech corpus with balanced emotion classes. Smaller than SUBESCO but can be used to validate that your model generalises beyond SUBESCO, which strengthens your thesis contribution.</div>
+      <div class="rs-links">
+        <a href="https://arxiv.org/abs/2312.14020" target="_blank" class="rs-btn blue-soft">BanSpEmo paper (arxiv)</a>
+        <a href="https://scholar.google.com/scholar?q=BanSpEmo+Bangla+emotional+speech" target="_blank" class="rs-btn gray">Google Scholar</a>
+      </div>
+    </div>
+
+    <!-- PRETRAINED MODELS -->
+    <div class="rs-h2 bangla">🤗 Pretrained Models to Fine-Tune</div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Primary model — what you fine-tune</div>
+      <div class="rs-card-title">HuBERT Base (facebook/hubert-base-ls960)</div>
+      <div class="rs-card-desc">The HuBERT model pretrained on 960 hours of English speech (LibriSpeech). You add a classification head on top and fine-tune on SUBESCO. This is the main model your thesis evaluates. Works on Colab free T4 GPU. Load with one line of HuggingFace code.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/facebook/hubert-base-ls960" target="_blank" class="rs-btn blue">HuBERT model (HuggingFace)</a>
+        <a href="https://arxiv.org/abs/2106.07447" target="_blank" class="rs-btn blue-soft">HuBERT paper (arxiv)</a>
+      </div>
+      <div class="rs-note">Fine-tune command: AutoModelForAudioClassification.from_pretrained("facebook/hubert-base-ls960", num_labels=7)</div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Alternative model — for comparison</div>
+      <div class="rs-card-title">wav2vec 2.0 Base (facebook/wav2vec2-base)</div>
+      <div class="rs-card-desc">Earlier model, slightly less powerful than HuBERT but faster to fine-tune. Use as a second comparison point: CNN baseline vs wav2vec2 vs HuBERT. Three-way comparison strengthens your results section significantly.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/facebook/wav2vec2-base" target="_blank" class="rs-btn blue">wav2vec2-base (HuggingFace)</a>
+        <a href="https://arxiv.org/abs/2006.11477" target="_blank" class="rs-btn blue-soft">wav2vec 2.0 paper (arxiv)</a>
+      </div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Reference — pretrained SER model to compare against</div>
+      <div class="rs-card-title">wav2vec2-emotion-recognition (Dpngtm)</div>
+      <div class="rs-card-desc">A publicly available wav2vec2 model already fine-tuned for emotion recognition (on English data). Load it, run your SUBESCO test set through it, and report how it performs without Bangla fine-tuning. This becomes your "zero-shot baseline" — showing why Bangla-specific fine-tuning matters.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/Dpngtm/wav2vec2-emotion-recognition" target="_blank" class="rs-btn blue-soft">Pre-tuned SER model (HuggingFace)</a>
+        <a href="https://huggingface.co/r-f/wav2vec-english-speech-emotion-recognition" target="_blank" class="rs-btn gray">Another SER model (English)</a>
+      </div>
+    </div>
+
+    <!-- TUTORIALS -->
+    <div class="rs-h2 bangla">📖 Step-by-Step Tutorials</div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Most important tutorial — follow this exactly</div>
+      <div class="rs-card-title">HuggingFace Audio Course — Ch.4: Fine-tuning for Audio Classification</div>
+      <div class="rs-card-desc">The official HuggingFace tutorial that fine-tunes a Transformer for audio classification on GTZAN. The code structure is identical to what you need for SUBESCO — just swap the dataset and change num_labels to 7. Written for Colab free tier T4 GPU. This is your implementation template.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/learn/audio-course/chapter4/fine-tuning" target="_blank" class="rs-btn blue">Tutorial (start here)</a>
+        <a href="https://colab.research.google.com/github/huggingface/audio-transformers-course/blob/main/chapters/en/chapter4/fine-tuning.ipynb" target="_blank" class="rs-btn blue-soft">Open in Colab</a>
+      </div>
+      <div class="rs-note">Adaptation for SUBESCO: Replace load_dataset("marsyas/gtzan") with your SUBESCO audio loader. Change num_labels=10 to num_labels=7. Everything else stays the same.</div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Detailed HuBERT fine-tuning walkthrough</div>
+      <div class="rs-card-title">Fine-tuning HuBERT for Emotion Recognition — Medium / TDS</div>
+      <div class="rs-card-desc">Step-by-step article fine-tuning HuBERT specifically for emotion recognition on custom audio data using HuggingFace. Covers: loading audio, feature extraction with Wav2Vec2FeatureExtractor, training loop, evaluation. Closest existing tutorial to exactly what your thesis does.</div>
+      <div class="rs-links">
+        <a href="https://medium.com/data-science/fine-tuning-hubert-for-emotion-recognition-in-custom-audio-data-using-huggingface-c2d516b41cd8" target="_blank" class="rs-btn blue">Read tutorial</a>
+        <a href="https://huggingface.co/facebook/hubert-base-ls960" target="_blank" class="rs-btn blue-soft">HuBERT model page</a>
+      </div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">CNN baseline implementation</div>
+      <div class="rs-card-title">Valerio Velardo — PyTorch Audio Classifier (Colab)</div>
+      <div class="rs-card-desc">Complete Colab notebook for building a CNN audio classifier on Urban Sound dataset using mel spectrograms and PyTorch. Adapt this for your SUBESCO CNN baseline — same architecture, different dataset. Your CNN baseline is complete once you run this with SUBESCO data.</div>
+      <div class="rs-links">
+        <a href="https://colab.research.google.com/github/musikalkemist/pytorchforaudio/blob/main/10%20Training%20an%20audio%20classifier/training-urban-sound-classifier.ipynb" target="_blank" class="rs-btn blue">CNN Baseline Colab notebook</a>
+        <a href="https://github.com/musikalkemist/pytorchforaudio" target="_blank" class="rs-btn blue-soft">Full GitHub repo</a>
+        <a href="https://www.youtube.com/playlist?list=PL-wATfeyAMNpCyuwxoPTDMqTkzdbh_1E3" target="_blank" class="rs-btn gray">Velardo Deep Learning for Audio (YouTube)</a>
+      </div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">wav2vec2 + SpeechBrain alternative approach</div>
+      <div class="rs-card-title">SpeechBrain — Fine-tuning wav2vec2 / HuBERT tutorial</div>
+      <div class="rs-card-desc">Official SpeechBrain tutorial for using wav2vec2 and HuBERT from HuggingFace with SpeechBrain's training recipe. If HuggingFace Trainer gives you trouble, SpeechBrain is a clean alternative with the same models. Both are valid for a BSc thesis.</div>
+      <div class="rs-links">
+        <a href="https://speechbrain.readthedocs.io/en/v1.0.2/tutorials/nn/using-wav2vec-2.0-hubert-wavlm-and-whisper-from-huggingface-with-speechbrain.html" target="_blank" class="rs-btn blue-soft">SpeechBrain wav2vec2 tutorial</a>
+        <a href="https://github.com/speechbrain/speechbrain" target="_blank" class="rs-btn gray">SpeechBrain GitHub</a>
+      </div>
+    </div>
+
+    <!-- PAPERS -->
+    <div class="rs-h2 bangla">📄 Papers to Cite</div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Must cite — your methodological foundation</div>
+      <div class="rs-card-title">Wang et al. 2021 — Fine-tuned wav2vec2/HuBERT Benchmark for SER</div>
+      <div class="rs-card-desc">Explores fine-tuning wav2vec2 and HuBERT specifically for Speech Emotion Recognition. Achieves 79.58% weighted accuracy on IEMOCAP. This is your closest prior work — cite in methodology to justify using HuBERT for emotion recognition, and compare your Bangla results to their English baseline.</div>
+      <div class="rs-links">
+        <a href="https://arxiv.org/abs/2111.02735" target="_blank" class="rs-btn blue">Paper (arxiv — free)</a>
+      </div>
+      <div class="rs-note">Cite as: Wang et al. (2021) "A Fine-tuned Wav2vec 2.0/HuBERT Benchmark for Speech Emotion Recognition..." arXiv:2111.02735</div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Must cite — HuBERT model paper</div>
+      <div class="rs-card-title">Hsu et al. 2021 — HuBERT: Self-Supervised Speech Representation Learning</div>
+      <div class="rs-card-desc">The original HuBERT paper. You MUST cite this every time you mention HuBERT in your thesis. Read the abstract and introduction fully — your methodology section directly explains what HuBERT is and why you chose it.</div>
+      <div class="rs-links">
+        <a href="https://arxiv.org/abs/2106.07447" target="_blank" class="rs-btn blue">HuBERT paper (arxiv)</a>
+        <a href="https://ieeexplore.ieee.org/document/9585401" target="_blank" class="rs-btn blue-soft">IEEE version (university WiFi)</a>
+      </div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Must cite — wav2vec 2.0 paper</div>
+      <div class="rs-card-title">Baevski et al. 2020 — wav2vec 2.0: A Framework for Self-Supervised Learning</div>
+      <div class="rs-card-desc">The original wav2vec 2.0 paper. Cite in your literature review when introducing self-supervised speech models. Read the abstract and Section 2 (model architecture) to understand what you are actually using.</div>
+      <div class="rs-links">
+        <a href="https://arxiv.org/abs/2006.11477" target="_blank" class="rs-btn blue">wav2vec 2.0 paper (arxiv)</a>
+      </div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Must cite — your dataset paper</div>
+      <div class="rs-card-title">Sultana et al. 2021 — SUBESCO Dataset Paper</div>
+      <div class="rs-card-desc">Cite every time you mention SUBESCO. Read Section 2 (corpus development) and Section 3 (evaluation) fully — your methodology chapter describes this dataset and you need to know its details precisely.</div>
+      <div class="rs-links">
+        <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0250173" target="_blank" class="rs-btn blue">PLoS ONE (open access)</a>
+        <a href="https://doi.org/10.1371/journal.pone.0250173" target="_blank" class="rs-btn blue-soft">DOI link</a>
+      </div>
+    </div>
+
+    <!-- CODE SNIPPETS -->
+    <div class="rs-h2 bangla">💻 Key Code References</div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Code — load SUBESCO and extract features</div>
+      <div class="rs-card-title">Loading audio + HuBERT feature extraction template</div>
+      <div class="rs-card-desc">The three HuggingFace classes you need: AutoFeatureExtractor (processes raw audio), AutoModelForAudioClassification (adds classification head to HuBERT), Trainer (handles training loop, evaluation, checkpointing). All documented below.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/docs/transformers/model_doc/hubert" target="_blank" class="rs-btn blue">HuBERT API docs</a>
+        <a href="https://huggingface.co/docs/transformers/main_classes/trainer" target="_blank" class="rs-btn blue-soft">Trainer API docs</a>
+        <a href="https://huggingface.co/docs/transformers/model_doc/auto#transformers.AutoModelForAudioClassification" target="_blank" class="rs-btn gray">AutoModelForAudioClassification</a>
+        <a href="https://librosa.org/doc/latest/generated/librosa.load.html" target="_blank" class="rs-btn gray">librosa.load docs</a>
+      </div>
+    </div>
+
+    <div class="rs-card bangla">
+      <div class="rs-tag bangla">Code — evaluation metrics</div>
+      <div class="rs-card-title">F1 score, confusion matrix, classification report</div>
+      <div class="rs-card-desc">Three sklearn functions you will use in your results chapter. classification_report() produces precision, recall, F1 per emotion class in one call. confusion_matrix() + seaborn heatmap produces the figure your results chapter needs.</div>
+      <div class="rs-links">
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html" target="_blank" class="rs-btn blue">classification_report docs</a>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html" target="_blank" class="rs-btn blue-soft">confusion_matrix docs</a>
+        <a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html" target="_blank" class="rs-btn gray">seaborn heatmap (for figure)</a>
+      </div>
+    </div>
+
+  </div><!-- end bangla pane -->
+
+  <!-- ════════════════════════════════════════════
+       GENRE PANE
+  ════════════════════════════════════════════ -->
+  <div class="tr-pane" id="trp-genre">
+
+    <div class="insight" style="margin-bottom:14px;border-left-color:var(--teal);">
+      <div class="insight-label" style="color:var(--teal)">What this topic involves</div>
+      Fine-tune an Audio Spectrogram Transformer (AST) on the GTZAN dataset and compare it against a CNN baseline. GTZAN has 1000 clips across 10 genres, 30 seconds each. The HuggingFace audio course has an official step-by-step tutorial for this exact task on Colab free tier — it is the most tutorial-supported thesis topic available.
+    </div>
+
+    <!-- DATASET -->
+    <div class="rs-h2 genre">📦 Dataset</div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Primary dataset — load in one line of Python</div>
+      <div class="rs-card-title">GTZAN — Music Genre Collection (Tzanetakis & Cook 2002)</div>
+      <div class="rs-card-desc">1000 audio clips · 10 genres (blues, classical, country, disco, hip-hop, jazz, metal, pop, reggae, rock) · 30 seconds each · 22050 Hz mono WAV. The "MNIST of audio." Load directly from HuggingFace Datasets with one line — no manual download needed. One corrupted file is already removed in the HuggingFace version.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/datasets/marsyas/gtzan" target="_blank" class="rs-btn teal">GTZAN on HuggingFace (official)</a>
+        <a href="https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification" target="_blank" class="rs-btn teal-soft">GTZAN on Kaggle (zip download)</a>
+      </div>
+      <div class="rs-note">⭐ Load in Python: from datasets import load_dataset; gtzan = load_dataset("marsyas/gtzan", "all") — no manual download needed.</div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Known dataset issues — mention in thesis</div>
+      <div class="rs-card-title">GTZAN Fault-filtered version (Kereliuk et al.)</div>
+      <div class="rs-card-desc">GTZAN has ~3% mislabeled tracks identified by researchers. There is a "fault-filtered" version with these removed. Mentioning this in your methodology chapter shows academic awareness. The HuggingFace version already removes the one corrupted file — cite the original fault-filtered paper as a limitation.</div>
+      <div class="rs-links">
+        <a href="https://scholar.google.com/scholar?q=GTZAN+fault+filtered+Kereliuk" target="_blank" class="rs-btn gray">Fault-filtered paper (Google Scholar)</a>
+      </div>
+    </div>
+
+    <!-- PRETRAINED MODELS -->
+    <div class="rs-h2 genre">🤗 Pretrained Models to Fine-Tune</div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Primary model — your Transformer</div>
+      <div class="rs-card-title">Audio Spectrogram Transformer — MIT/ast-finetuned-audioset</div>
+      <div class="rs-card-desc">AST pretrained on AudioSet (2M+ clips). You fine-tune this on GTZAN. This is your "advanced model" that you compare against the CNN baseline. The HuggingFace audio course tutorial uses exactly this model on exactly GTZAN — follow it step by step.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593" target="_blank" class="rs-btn teal">AST model (HuggingFace)</a>
+        <a href="https://arxiv.org/abs/2104.01778" target="_blank" class="rs-btn teal-soft">AST paper — Gong et al. 2021 (arxiv)</a>
+      </div>
+      <div class="rs-note">Fine-tune command: AutoModelForAudioClassification.from_pretrained("MIT/ast-finetuned-audioset-10-10-0.4593", num_labels=10, ignore_mismatched_sizes=True)</div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Alternative Transformer model</div>
+      <div class="rs-card-title">distilHuBERT — Compact audio Transformer for Colab</div>
+      <div class="rs-card-desc">A smaller, distilled version of HuBERT. Trains faster than AST and is less likely to hit Colab RAM limits. If AST fine-tuning runs out of memory on free Colab, switch to distilHuBERT. Results are still strong and the methodology is identical.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/ntu-spml/distilhubert" target="_blank" class="rs-btn teal-soft">distilHuBERT (HuggingFace)</a>
+      </div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Existing fine-tuned GTZAN model — compare against</div>
+      <div class="rs-card-title">Transformer fine-tuned on GTZAN (mahimairaja)</div>
+      <div class="rs-card-desc">A publicly available Transformer model already fine-tuned on GTZAN. Load it and report its accuracy on your test split as a reference point. Comparing against an existing fine-tuned model shows what the upper bound looks like without your specific training choices.</div>
+      <div class="rs-links">
+        <a href="https://github.com/mahimairaja/music-genre-gtzan-classification" target="_blank" class="rs-btn teal-soft">GitHub — fine-tuned GTZAN model</a>
+      </div>
+    </div>
+
+    <!-- TUTORIALS -->
+    <div class="rs-h2 genre">📖 Step-by-Step Tutorials</div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Most important — official tutorial, exact topic match</div>
+      <div class="rs-card-title">HuggingFace Audio Course — Fine-tuning for Music Classification (GTZAN)</div>
+      <div class="rs-card-desc">The official HuggingFace step-by-step tutorial that fine-tunes a Transformer on GTZAN genre classification. Runs on Colab free T4 GPU. Covers: loading GTZAN, preprocessing, feature extraction, training with Trainer API, evaluation. This is your exact thesis task — follow it completely before writing your methodology.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/learn/audio-course/chapter4/fine-tuning" target="_blank" class="rs-btn teal">Tutorial (start here)</a>
+        <a href="https://colab.research.google.com/github/huggingface/audio-transformers-course/blob/main/chapters/en/chapter4/fine-tuning.ipynb" target="_blank" class="rs-btn teal-soft">Open in Colab directly</a>
+      </div>
+      <div class="rs-note">⭐ This tutorial is exactly your thesis task. Run it first end-to-end, then adapt it for your CNN baseline comparison.</div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">CNN baseline implementation</div>
+      <div class="rs-card-title">CNN + GTZAN Colab notebook (trong0dn)</div>
+      <div class="rs-card-desc">Complete Colab notebook for CNN genre classification on GTZAN using mel spectrograms. Includes data loading from Kaggle, mel spectrogram extraction with librosa, CNN architecture, training, and evaluation. This is your CNN baseline — run it first, then compare against your AST fine-tuning.</div>
+      <div class="rs-links">
+        <a href="https://github.com/trong0dn/music-genre-classification" target="_blank" class="rs-btn teal">CNN GTZAN GitHub repo</a>
+        <a href="https://colab.research.google.com/github/trong0dn/music-genre-classification/blob/main/Music_Genre_Classification.ipynb" target="_blank" class="rs-btn teal-soft">Open CNN notebook in Colab</a>
+      </div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">CNN + Transformer combined — reference implementation</div>
+      <div class="rs-card-title">Music Genre Classification with CNN + Transformer (bakalianosm)</div>
+      <div class="rs-card-desc">GitHub repo that implements both CNN and Transformer models on GTZAN with real-time inference. Very close to your thesis scope. Study the architecture before writing your own — it shows how the two approaches are structured differently and what the comparison looks like in practice.</div>
+      <div class="rs-links">
+        <a href="https://github.com/bakalianosm/Music-Genre-Classification" target="_blank" class="rs-btn teal-soft">GitHub — CNN + Transformer on GTZAN</a>
+      </div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Velardo — audio foundations (watch first)</div>
+      <div class="rs-card-title">Audio Signal Processing for ML — full playlist</div>
+      <div class="rs-card-desc">Watch the first 8 videos before touching any code. Covers waveforms, STFT, mel spectrograms, MFCCs — all the features you extract for the CNN baseline. Without understanding what a mel spectrogram is, you cannot write your methodology chapter.</div>
+      <div class="rs-links">
+        <a href="https://www.youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0" target="_blank" class="rs-btn teal">Velardo playlist (YouTube)</a>
+        <a href="https://github.com/musikalkemist/AudioSignalProcessingForML" target="_blank" class="rs-btn teal-soft">Slides + code (GitHub)</a>
+      </div>
+    </div>
+
+    <!-- PAPERS -->
+    <div class="rs-h2 genre">📄 Papers to Cite</div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Must cite — created the dataset</div>
+      <div class="rs-card-title">Tzanetakis & Cook 2002 — Musical Genre Classification of Audio Signals</div>
+      <div class="rs-card-desc">The paper that created GTZAN. Cite every single time you mention GTZAN. 5000+ citations. Your supervisor will check for this on day one. Read the full paper — know exactly what the dataset contains and what the original MFCC baseline accuracy was.</div>
+      <div class="rs-links">
+        <a href="https://ieeexplore.ieee.org/document/1021072" target="_blank" class="rs-btn teal">IEEE Xplore (university WiFi)</a>
+      </div>
+      <div class="rs-note">DOI: 10.1109/TSA.2002.800560 — paste into ieeexplore.ieee.org on university WiFi for full PDF</div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Must cite — AST model paper</div>
+      <div class="rs-card-title">Gong et al. 2021 — AST: Audio Spectrogram Transformer</div>
+      <div class="rs-card-desc">The paper introducing the AST model you fine-tune. Cite in methodology when you explain why you chose AST. Read the abstract, Section 3 (model architecture), and Table 2 (results on AudioSet) before writing your methodology.</div>
+      <div class="rs-links">
+        <a href="https://arxiv.org/abs/2104.01778" target="_blank" class="rs-btn teal">AST paper (arxiv — free)</a>
+      </div>
+      <div class="rs-note">Cite as: Gong et al. (2021) "AST: Audio Spectrogram Transformer." Interspeech 2021. arXiv:2104.01778</div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Cite as: CNN baseline motivation</div>
+      <div class="rs-card-title">IEEE 2022 — Music Genre Classification Using Deep Learning</div>
+      <div class="rs-card-desc">Compares CNN against SVM and XGBoost on GTZAN. Note the CNN accuracy — that number becomes your baseline reference in your results table. Skim: abstract + results table only.</div>
+      <div class="rs-links">
+        <a href="https://ieeexplore.ieee.org/document/9753953/" target="_blank" class="rs-btn teal-soft">IEEE Xplore</a>
+      </div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Cite as: recent related work</div>
+      <div class="rs-card-title">Sridhar 2024 — Attention-guided Spectrogram Sequence Modeling for Genre Classification</div>
+      <div class="rs-card-desc">Recent 2024 paper combining CNN with multi-head attention on GTZAN. Shows the field is active. Cite in your introduction to prove this is a current research problem, then explain how your AST comparison is different from this attention-guided CNN approach.</div>
+      <div class="rs-links">
+        <a href="https://arxiv.org/abs/2411.14474" target="_blank" class="rs-btn teal-soft">Paper (arxiv — free)</a>
+      </div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Cite as: PANNs pretrained features baseline</div>
+      <div class="rs-card-title">Kong et al. 2020 — PANNs: Pretrained Audio Neural Networks</div>
+      <div class="rs-card-desc">The PANNs paper introducing CNN14 pretrained on AudioSet. Cite in related work to show you are aware of AudioSet-pretrained CNN alternatives to AST. Explains why AudioSet pretraining (which AST also uses) gives such a strong advantage over training from scratch.</div>
+      <div class="rs-links">
+        <a href="https://arxiv.org/abs/1912.10211" target="_blank" class="rs-btn teal-soft">PANNs paper (arxiv — free)</a>
+      </div>
+    </div>
+
+    <!-- CODE -->
+    <div class="rs-h2 genre">💻 Key Code References</div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Code — GTZAN loading + preprocessing</div>
+      <div class="rs-card-title">Dataset loading, feature extraction, train/test split</div>
+      <div class="rs-card-desc">Three things you need before training: load GTZAN from HuggingFace, apply AutoFeatureExtractor to convert audio to model inputs, split into train/test. All three are covered in the HuggingFace tutorial above. Additional references below.</div>
+      <div class="rs-links">
+        <a href="https://huggingface.co/docs/datasets/audio_load" target="_blank" class="rs-btn teal">HuggingFace audio loading docs</a>
+        <a href="https://librosa.org/doc/latest/generated/librosa.feature.melspectrogram.html" target="_blank" class="rs-btn teal-soft">librosa mel spectrogram (CNN baseline)</a>
+        <a href="https://huggingface.co/docs/transformers/model_doc/audio-spectrogram-transformer" target="_blank" class="rs-btn gray">AST model API docs</a>
+      </div>
+    </div>
+
+    <div class="rs-card genre">
+      <div class="rs-tag genre">Code — evaluation and results figures</div>
+      <div class="rs-card-title">Accuracy, F1, confusion matrix, per-genre analysis</div>
+      <div class="rs-card-desc">Your results section needs: overall accuracy, weighted F1, per-genre F1 table, and a confusion matrix heatmap. The confusion matrix is the most visually compelling figure in a genre classification thesis — it shows which genres are confused with which (e.g., jazz vs blues).</div>
+      <div class="rs-links">
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html" target="_blank" class="rs-btn teal">classification_report docs</a>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html" target="_blank" class="rs-btn teal-soft">confusion_matrix docs</a>
+        <a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html" target="_blank" class="rs-btn gray">seaborn heatmap</a>
+        <a href="https://matplotlib.org/stable/gallery/images_contours_and_fields/image_annotated_heatmap.html" target="_blank" class="rs-btn gray">matplotlib annotated heatmap</a>
+      </div>
+    </div>
+
+  </div><!-- end genre pane -->
+
+</div><!-- end sec-resources -->
 
 </main>
 
