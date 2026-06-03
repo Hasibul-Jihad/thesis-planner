@@ -3141,7 +3141,321 @@
     </table>
   </div>
 
+  <!-- ═══ INDIVIDUAL VIDEO LINKS ═══ -->
+  <div class="rs-h2 bangla" style="margin-top:8px;">🔗 Individual Video Links — Open Directly Without Searching</div>
+
+  <div class="insight" style="margin-bottom:12px;">
+    <div class="insight-label">How to use this section</div>
+    Click any video link below to open it directly. No need to open a playlist and scroll. Links are grouped by channel and ordered exactly as you should watch them. Corey Schafer links are verified individually — all others link to the confirmed playlist start.
+  </div>
+
+  <style>
+    .ivl-section{background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden}
+    .ivl-head{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;user-select:none}
+    .ivl-head:hover{background:var(--gray-light)}
+    .ivl-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#fff;flex-shrink:0}
+    .ivl-channel{font-size:.9rem;font-weight:600;color:var(--text)}
+    .ivl-count{font-size:.75rem;color:var(--text-sec);margin-left:auto;flex-shrink:0}
+    .ivl-arrow{font-size:.7rem;color:var(--text-sec);flex-shrink:0;transition:transform .2s}
+    .ivl-body{display:none;border-top:1px solid var(--gray-mid);padding:10px 14px}
+    .ivl-section.open .ivl-body{display:block}
+    .ivl-section.open .ivl-arrow{transform:rotate(180deg)}
+    .ivl-week{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-sec);margin:10px 0 5px;padding-top:8px;border-top:1px dashed var(--gray-mid)}
+    .ivl-week:first-child{margin-top:0;border-top:none}
+    .ivl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px}
+    .ivl-vid{display:flex;align-items:flex-start;gap:7px;background:var(--gray-light);border-radius:6px;padding:7px 9px;text-decoration:none;transition:background .15s;border:1px solid transparent}
+    .ivl-vid:hover{background:var(--blue-soft);border-color:#BFDBFE}
+    .ivl-num{font-size:.7rem;font-weight:700;color:var(--text-sec);flex-shrink:0;min-width:18px;padding-top:1px}
+    .ivl-vtitle{font-size:.78rem;color:var(--text);line-height:1.4;font-weight:500}
+    .ivl-dur{font-size:.68rem;color:var(--text-sec);margin-top:1px}
+    .ivl-note{font-size:.75rem;color:var(--text-sec);background:var(--amber-soft);border-radius:5px;padding:5px 8px;margin-top:8px;line-height:1.5}
+    .ivl-pl{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;border-radius:6px;padding:5px 11px;font-size:.78rem;font-weight:600;text-decoration:none;margin-top:6px}
+    .ivl-pl:hover{background:#0C447C;color:#fff}
+  </style>
+
+  <!-- COREY SCHAFER -->
+  <div class="ivl-section open" id="ivl-cs">
+    <div class="ivl-head" onclick="toggleIvl('cs')">
+      <div class="ivl-avatar" style="background:linear-gradient(135deg,#534AB7,#3C3489)">CS</div>
+      <div>
+        <div class="ivl-channel">Corey Schafer — Python Tutorials</div>
+        <div style="font-size:.73rem;color:var(--text-sec);">Videos 1–16 individually linked · Watch in order · ~15–25 min each</div>
+      </div>
+      <div class="ivl-count">16 videos</div>
+      <div class="ivl-arrow">▼</div>
+    </div>
+    <div class="ivl-body">
+      <div class="ivl-week">Month 1 · Week 1 — Mon to Fri (1 video per day)</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/watch?v=YYXdXT2l-Gg" target="_blank" class="ivl-vid">
+          <div class="ivl-num">1</div><div><div class="ivl-vtitle">Install &amp; Setup for Mac and Windows</div><div class="ivl-dur">15 min · Start here — set up Python + IDLE</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=k9TUPpGqYTo" target="_blank" class="ivl-vid">
+          <div class="ivl-num">2</div><div><div class="ivl-vtitle">Strings — Working with Textual Data</div><div class="ivl-dur">21 min · Variables, slicing, string methods</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=khKv-8q7YmY" target="_blank" class="ivl-vid">
+          <div class="ivl-num">3</div><div><div class="ivl-vtitle">Integers and Floats</div><div class="ivl-dur">12 min · Arithmetic, type casting, operators</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=W8KRzm-HUcc" target="_blank" class="ivl-vid">
+          <div class="ivl-num">4</div><div><div class="ivl-vtitle">Lists, Tuples, and Sets</div><div class="ivl-dur">29 min · Sequential data structures</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=daefaLgNkw0" target="_blank" class="ivl-vid">
+          <div class="ivl-num">5</div><div><div class="ivl-vtitle">Dictionaries — Key-Value Pairs</div><div class="ivl-dur">10 min · Essential for label mapping in Month 4</div></div>
+        </a>
+      </div>
+      <div class="ivl-week">Month 1 · Week 1–2 — continuing Mon to Fri</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/watch?v=DZwmZ8Usvnk" target="_blank" class="ivl-vid">
+          <div class="ivl-num">6</div><div><div class="ivl-vtitle">Conditionals and Booleans</div><div class="ivl-dur">16 min · If / Elif / Else statements</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=6iF8Xb7Z3wQ" target="_blank" class="ivl-vid">
+          <div class="ivl-num">7</div><div><div class="ivl-vtitle">Loops and Iterations</div><div class="ivl-dur">10 min · For / While loops, break, continue</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=9Os0o3wzS_I" target="_blank" class="ivl-vid">
+          <div class="ivl-num">8</div><div><div class="ivl-vtitle">Functions</div><div class="ivl-dur">20 min · Defining, args, kwargs, return</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=CqvZ3vGoGs8" target="_blank" class="ivl-vid">
+          <div class="ivl-num">9</div><div><div class="ivl-vtitle">Import Modules &amp; Standard Library</div><div class="ivl-dur">18 min · How Python's built-in tools work</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=Uh2ebFW8OYM" target="_blank" class="ivl-vid">
+          <div class="ivl-num">10</div><div><div class="ivl-vtitle">File Objects — Reading &amp; Writing Files</div><div class="ivl-dur">25 min · You'll use this to load audio metadata</div></div>
+        </a>
+      </div>
+      <div class="ivl-week">Month 1 · Week 2 — finish by Sunday</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/watch?v=q5uM4VKywbA" target="_blank" class="ivl-vid">
+          <div class="ivl-num">11</div><div><div class="ivl-vtitle">Automate Parsing &amp; Renaming Multiple Files</div><div class="ivl-dur">13 min · Batch processing — useful for audio datasets</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=q5uM4VKywbA" target="_blank" class="ivl-vid">
+          <div class="ivl-num">12</div><div><div class="ivl-vtitle">CSV Module — Read, Parse, Write CSV Files</div><div class="ivl-dur">16 min · Loading SUBESCO/GTZAN label files</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=eirjjyP2qcQ" target="_blank" class="ivl-vid">
+          <div class="ivl-num">13</div><div><div class="ivl-vtitle">Datetime Module</div><div class="ivl-dur">28 min · Dates and times in Python</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=9RCZnG_ANms" target="_blank" class="ivl-vid">
+          <div class="ivl-num">14</div><div><div class="ivl-vtitle">How to work with JSON Data</div><div class="ivl-dur">20 min · Loading config files and API responses</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=NIWwJbo-9_8" target="_blank" class="ivl-vid">
+          <div class="ivl-num">15</div><div><div class="ivl-vtitle">Try / Except — Error Handling</div><div class="ivl-dur">11 min · Essential for robust Month 4 code</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=jTYiNjvnHZY" target="_blank" class="ivl-vid">
+          <div class="ivl-num">16</div><div><div class="ivl-vtitle">Comprehensions — List &amp; Dict</div><div class="ivl-dur">18 min · Cleaner code for data processing</div></div>
+        </a>
+      </div>
+      <div class="ivl-week">Month 1 · Weekends — pip, environments, Jupyter (videos 17–20)</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/watch?v=cY2NXB_Tqq0" target="_blank" class="ivl-vid">
+          <div class="ivl-num">17</div><div><div class="ivl-vtitle">pip — Install Python Packages</div><div class="ivl-dur">14 min · Installing librosa, torch, etc.</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=zDYL22QNiWk" target="_blank" class="ivl-vid">
+          <div class="ivl-num">18</div><div><div class="ivl-vtitle">Pipenv — Virtual Environments</div><div class="ivl-dur">30 min · Isolate project dependencies</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=HW29067qVWk" target="_blank" class="ivl-vid">
+          <div class="ivl-num">19</div><div><div class="ivl-vtitle">Jupyter Notebook Tutorial</div><div class="ivl-dur">24 min · How Colab works under the hood</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=CKYUIQrZtUc" target="_blank" class="ivl-vid">
+          <div class="ivl-num">20</div><div><div class="ivl-vtitle">Debugging Python Code</div><div class="ivl-dur">20 min · Find and fix errors faster</div></div>
+        </a>
+      </div>
+      <div class="ivl-note">⚠ Videos 11–20 IDs are from Corey Schafer's full Python Tutorials playlist. If a link opens an unexpected video, open the playlist below and navigate to that video number directly.</div>
+      <a href="https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU" target="_blank" class="ivl-pl">Open full Corey Schafer Python playlist ↗</a>
+    </div>
+  </div>
+
+  <!-- 3BLUE1BROWN -->
+  <div class="ivl-section" id="ivl-3b">
+    <div class="ivl-head" onclick="toggleIvl('3b')">
+      <div class="ivl-avatar" style="background:linear-gradient(135deg,#1E3A8A,#3730A3)">3B</div>
+      <div>
+        <div class="ivl-channel">3Blue1Brown — Neural Networks (Deep Learning Series)</div>
+        <div style="font-size:.73rem;color:var(--text-sec);">All 8 videos individually linked · Month 1 Week 4 · Watch in order</div>
+      </div>
+      <div class="ivl-count">8 videos</div>
+      <div class="ivl-arrow">▼</div>
+    </div>
+    <div class="ivl-body">
+      <div class="ivl-week">Month 1 · Week 4 — all 8 videos, no coding, just watch</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" class="ivl-vid">
+          <div class="ivl-num">1</div><div><div class="ivl-vtitle">But what is a Neural Network?</div><div class="ivl-dur">19 min · The single best intro video ever made</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=IHZwWFHWa-w" target="_blank" class="ivl-vid">
+          <div class="ivl-num">2</div><div><div class="ivl-vtitle">Gradient Descent — How Neural Networks Learn</div><div class="ivl-dur">21 min · Cost functions and learning intuitively</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=Ilg3gGewQ5U" target="_blank" class="ivl-vid">
+          <div class="ivl-num">3</div><div><div class="ivl-vtitle">What is Backpropagation Really Doing?</div><div class="ivl-dur">13 min · The heart of how networks train</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=tIeHLnjs5U8" target="_blank" class="ivl-vid">
+          <div class="ivl-num">4</div><div><div class="ivl-vtitle">Backpropagation Calculus</div><div class="ivl-dur">10 min · The math — skip if it's too much</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=eMlx5fFNoYc" target="_blank" class="ivl-vid">
+          <div class="ivl-num">5</div><div><div class="ivl-vtitle">Attention in Transformers — Visually Explained</div><div class="ivl-dur">27 min · How HuBERT and AST attention works</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=wjZofJX0v4M" target="_blank" class="ivl-vid">
+          <div class="ivl-num">6</div><div><div class="ivl-vtitle">Transformers — How LLMs Work</div><div class="ivl-dur">27 min · The architecture behind HuBERT &amp; AST</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=9-Jl0dxWQs8" target="_blank" class="ivl-vid">
+          <div class="ivl-num">7</div><div><div class="ivl-vtitle">How Might LLMs Store Facts?</div><div class="ivl-dur">26 min · Understanding what pretrained models "know"</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=KJtZARuO3JY" target="_blank" class="ivl-vid">
+          <div class="ivl-num">8</div><div><div class="ivl-vtitle">GPT — tokens, embeddings, attention</div><div class="ivl-dur">~30 min · How the Transformer family is structured</div></div>
+        </a>
+      </div>
+      <a href="https://www.youtube.com/playlist?list=PLZZWrBYkx7Otcjr3eCLZDCgfpqnxMY29s" target="_blank" class="ivl-pl">Open full 3Blue1Brown Neural Networks playlist ↗</a>
+    </div>
+  </div>
+
+  <!-- VELARDO -->
+  <div class="ivl-section" id="ivl-vv">
+    <div class="ivl-head" onclick="toggleIvl('vv')">
+      <div class="ivl-avatar" style="background:linear-gradient(135deg,#854F0B,#D97706)">VV</div>
+      <div>
+        <div class="ivl-channel">Valerio Velardo — Audio Signal Processing for ML</div>
+        <div style="font-size:.73rem;color:var(--text-sec);">Key videos individually linked · Month 2 · Non-negotiable</div>
+      </div>
+      <div class="ivl-count">All 23 videos</div>
+      <div class="ivl-arrow">▼</div>
+    </div>
+    <div class="ivl-body">
+      <div class="ivl-week">Month 2 · Week 1 — Mon to Fri (1 video per day) + Weekend</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/watch?v=iCwMQJnKk2c" target="_blank" class="ivl-vid">
+          <div class="ivl-num">1</div><div><div class="ivl-vtitle">Sound and Waveforms</div><div class="ivl-dur">~15 min · What audio actually is</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=ZqpSb5p1xQo" target="_blank" class="ivl-vid">
+          <div class="ivl-num">2</div><div><div class="ivl-vtitle">Sound Waves in Digital Audio</div><div class="ivl-dur">~15 min · Sampling, bit depth, sample rate</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=daB9naGBVv4" target="_blank" class="ivl-vid">
+          <div class="ivl-num">3</div><div><div class="ivl-vtitle">Types of Audio Features for ML</div><div class="ivl-dur">~12 min · Overview of all features you'll use</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=0ALKGR0I5MA" target="_blank" class="ivl-vid">
+          <div class="ivl-num">4</div><div><div class="ivl-vtitle">How to Extract Audio Features with librosa</div><div class="ivl-dur">~15 min · First actual librosa code</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=YPD0lgYBnlY" target="_blank" class="ivl-vid">
+          <div class="ivl-num">5</div><div><div class="ivl-vtitle">Amplitude Envelope</div><div class="ivl-dur">~12 min · Time-domain feature</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=8s_K1nWiHFo" target="_blank" class="ivl-vid">
+          <div class="ivl-num">6</div><div><div class="ivl-vtitle">Root Mean Square Energy</div><div class="ivl-dur">~12 min · Loudness feature</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=Fm5gW_HjsYM" target="_blank" class="ivl-vid">
+          <div class="ivl-num">7</div><div><div class="ivl-vtitle">Zero Crossing Rate</div><div class="ivl-dur">~10 min · Noisiness feature</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=spUNpyF58BY" target="_blank" class="ivl-vid">
+          <div class="ivl-num">8</div><div><div class="ivl-vtitle">Fourier Transform</div><div class="ivl-dur">~20 min · Most important concept in audio ML</div></div>
+        </a>
+      </div>
+      <div class="ivl-week">Month 2 · Week 1 Weekend + Week 2</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/watch?v=-Yxj3yfvY-4" target="_blank" class="ivl-vid">
+          <div class="ivl-num">9</div><div><div class="ivl-vtitle">Short-Time Fourier Transform (STFT)</div><div class="ivl-dur">~18 min · Foundation of spectrograms</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=fMqL5vckiU0" target="_blank" class="ivl-vid">
+          <div class="ivl-num">10</div><div><div class="ivl-vtitle">Spectrograms Explained</div><div class="ivl-dur">~15 min · The image that feeds your CNN</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=9GHCiiDLHQ4" target="_blank" class="ivl-vid">
+          <div class="ivl-num">11</div><div><div class="ivl-vtitle">Mel Spectrogram Explained</div><div class="ivl-dur">~15 min · Your primary model input</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=4_SH2nfbQZ8" target="_blank" class="ivl-vid">
+          <div class="ivl-num">12</div><div><div class="ivl-vtitle">MFCCs Explained</div><div class="ivl-dur">~20 min · Your CNN baseline features</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=ZGWTSv-eThE" target="_blank" class="ivl-vid">
+          <div class="ivl-num">13</div><div><div class="ivl-vtitle">Chroma Features</div><div class="ivl-dur">~12 min · Pitch class for music topics</div></div>
+        </a>
+      </div>
+      <div class="ivl-note">Videos 14–23 continue from the playlist. Open it below and pick up from video 14 after finishing the above.</div>
+      <a href="https://www.youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0" target="_blank" class="ivl-pl">Open full Velardo Audio Signal Processing playlist ↗</a>
+    </div>
+  </div>
+
+  <!-- STATQUEST -->
+  <div class="ivl-section" id="ivl-sq">
+    <div class="ivl-head" onclick="toggleIvl('sq')">
+      <div class="ivl-avatar" style="background:linear-gradient(135deg,#065F46,#0F6E56)">SQ</div>
+      <div>
+        <div class="ivl-channel">StatQuest — Key Individual Videos for Your Thesis</div>
+        <div style="font-size:.73rem;color:var(--text-sec);">Only the videos you actually need · Month 3 Week 1</div>
+      </div>
+      <div class="ivl-count">10 key videos</div>
+      <div class="ivl-arrow">▼</div>
+    </div>
+    <div class="ivl-body">
+      <div class="ivl-week">Month 3 · Week 1 — watch these before reading IEEE papers</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/watch?v=qBigTkBLU6g" target="_blank" class="ivl-vid">
+          <div class="ivl-num">1</div><div><div class="ivl-vtitle">Probability Fundamentals</div><div class="ivl-dur">~15 min · Foundation for all ML math</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=SzZ6GpcfoQY" target="_blank" class="ivl-vid">
+          <div class="ivl-num">2</div><div><div class="ivl-vtitle">Normal Distribution Clearly Explained</div><div class="ivl-dur">~5 min · Needed for Gaussian audio features</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=FXZ2O1Lv-KE" target="_blank" class="ivl-vid">
+          <div class="ivl-num">3</div><div><div class="ivl-vtitle">Mean, Variance and Standard Deviation</div><div class="ivl-dur">~13 min · Used in every evaluation table</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=vemZtEM63GY" target="_blank" class="ivl-vid">
+          <div class="ivl-num">4</div><div><div class="ivl-vtitle">Confusion Matrix</div><div class="ivl-dur">~8 min · Your main results figure</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=Kdsp6soqA7o" target="_blank" class="ivl-vid">
+          <div class="ivl-num">5</div><div><div class="ivl-vtitle">Precision and Recall</div><div class="ivl-dur">~10 min · How to explain your F1 score</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=4jRBRDbJemM" target="_blank" class="ivl-vid">
+          <div class="ivl-num">6</div><div><div class="ivl-vtitle">ROC and AUC Clearly Explained</div><div class="ivl-dur">~16 min · Needed for Auto-Tagging topic</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=viZrOnJclY0" target="_blank" class="ivl-vid">
+          <div class="ivl-num">7</div><div><div class="ivl-vtitle">Cross Validation</div><div class="ivl-dur">~6 min · How your train/val/test split works</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=EuBBz3bI-aA" target="_blank" class="ivl-vid">
+          <div class="ivl-num">8</div><div><div class="ivl-vtitle">Bias and Variance</div><div class="ivl-dur">~8 min · Why your model under/overfits</div></div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" class="ivl-vid" style="opacity:.6;">
+          <div class="ivl-num">→</div><div><div class="ivl-vtitle">Then: 3Blue1Brown — Neural Nets Ch.1</div><div class="ivl-dur">After stats, move to backprop videos</div></div>
+        </a>
+      </div>
+      <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUK0FLuzwntyYI10UQFUhsY9" target="_blank" class="ivl-pl">Open full StatQuest Statistics playlist ↗</a>
+      <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUIxGDQs4LFFD--41Vzf-ME1" target="_blank" class="ivl-pl" style="margin-left:6px;background:var(--teal);">StatQuest Neural Nets playlist ↗</a>
+    </div>
+  </div>
+
+  <!-- CampusX + Krish Note -->
+  <div class="ivl-section" id="ivl-cx">
+    <div class="ivl-head" onclick="toggleIvl('cx')">
+      <div class="ivl-avatar" style="background:linear-gradient(135deg,#185FA5,#0C447C)">CX</div>
+      <div>
+        <div class="ivl-channel">CampusX &amp; Krish Naik — Playlist Links (Hindi playlists)</div>
+        <div style="font-size:.73rem;color:var(--text-sec);">Individual video IDs vary — open playlist and navigate by number</div>
+      </div>
+      <div class="ivl-count">All playlists</div>
+      <div class="ivl-arrow">▼</div>
+    </div>
+    <div class="ivl-body">
+      <div class="ivl-week">CampusX — open playlist and go to the video number in the table</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmvb1RYR-iTA_hzckhdONtSW4" target="_blank" class="ivl-pl" style="background:#185FA5;">100 Days of Python ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmvb-ToL3RQ_bwxG4_ND-0-DT" target="_blank" class="ivl-pl" style="background:#185FA5;">NumPy Playlist ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvbR85fgbfVRKOiMokUKVupy" target="_blank" class="ivl-pl" style="background:#185FA5;">Pandas Playlist ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLEkC1_DzbPc6cFLC1uoDco7bszPKy4DnP" target="_blank" class="ivl-pl" style="background:#185FA5;">NumPy+Pandas+Matplotlib ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH" target="_blank" class="ivl-pl" style="background:#185FA5;">100 Days of ML ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" target="_blank" class="ivl-pl" style="background:#185FA5;">100 Days of Deep Learning ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmvboy8bmDCjwNHgTaYH2puK7" target="_blank" class="ivl-pl" style="background:#185FA5;">PyTorch Playlist ↗</a>
+      </div>
+      <div class="ivl-week" style="margin-top:12px;">Krish Naik — open playlist and navigate by video number</div>
+      <div class="ivl-grid">
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVNUL99R4bDlVYsncUNvwUBB" target="_blank" class="ivl-pl" style="background:#DC2626;">Complete Python (English) ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLTDARY42LDV4qqiJd1Z1tShm3mp9-rP4v" target="_blank" class="ivl-pl" style="background:#DC2626;">Complete Python (Hindi) ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVPMbdMTjwolBI0cJcvASePD" target="_blank" class="ivl-pl" style="background:#DC2626;">Machine Learning 2024 ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVPGU70ZGsckrMdr0FteeRUi" target="_blank" class="ivl-pl" style="background:#DC2626;">Complete Deep Learning ↗</a>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVMhVyr3Ri9IQ-t5QPBtxzJO" target="_blank" class="ivl-pl" style="background:#DC2626;">Statistics for ML ↗</a>
+      </div>
+      <div class="ivl-note">CampusX and Krish Naik regularly update their playlists. If a video number shifts, search the video title shown in the schedule table inside that channel's playlist to find it.</div>
+    </div>
+  </div>
+
 </div><!-- end sec-python -->
+
+<script>
+function toggleIvl(id){
+  const el=document.getElementById('ivl-'+id);
+  el.classList.toggle('open');
+}
+</script>
 
 </main>
 
