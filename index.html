@@ -206,6 +206,7 @@
   <button class="nav-btn" onclick="show('papers',this)">🗂 Paper Manager</button>
   <button class="nav-btn" onclick="show('books',this)">📚 Books</button>
   <button class="nav-btn" onclick="show('resources',this)">🗃 Topic Resources</button>
+  <button class="nav-btn" onclick="show('python',this)">🐍 Python YouTube</button>
 </nav>
 
 <main class="main">
@@ -2284,6 +2285,525 @@
 
 </div><!-- end sec-resources -->
 
+<!-- ═══════════════════════════ PYTHON YOUTUBE ═══════════════════════════ -->
+<div class="section" id="sec-python">
+<style>
+  .py-card{background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:1.1rem 1.2rem;margin-bottom:12px;box-shadow:var(--shadow)}
+  .py-card.featured{border:2px solid #185FA5}
+  .py-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:8px}
+  .py-avatar{width:48px;height:48px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;color:#fff}
+  .py-name{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:2px}
+  .py-handle{font-size:.78rem;color:var(--text-sec)}
+  .py-desc{font-size:.82rem;color:var(--text-sec);line-height:1.6;margin-bottom:10px}
+  .py-playlists{display:flex;flex-direction:column;gap:8px}
+  .py-pl{background:var(--gray-light);border-radius:8px;padding:9px 11px;display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
+  .py-pl-info{flex:1;min-width:160px}
+  .py-pl-title{font-size:.84rem;font-weight:600;color:var(--text);margin-bottom:2px}
+  .py-pl-meta{font-size:.75rem;color:var(--text-sec);line-height:1.5}
+  .py-pl-tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:99px;margin-right:4px;margin-bottom:3px;display:inline-block}
+  .tag-en{background:#E6F1FB;color:#0C447C}
+  .tag-hi{background:#FEF3C7;color:#92400E}
+  .tag-both{background:#EAF3DE;color:#27500A}
+  .tag-beg{background:#EEEDFE;color:#3C3489}
+  .tag-adv{background:#FAECE7;color:#712B13}
+  .py-open{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;display:inline-block;white-space:nowrap;flex-shrink:0;border:none}
+  .py-open.blue{background:var(--blue);color:#fff}
+  .py-open.blue:hover{background:#0C447C;color:#fff}
+  .py-open.teal{background:var(--teal);color:#fff}
+  .py-open.teal:hover{background:#085041;color:#fff}
+  .py-open.amber{background:var(--amber);color:#fff}
+  .py-open.amber:hover{background:#633806;color:#fff}
+  .py-open.gray{background:var(--gray-light);color:var(--text-sec);border:1px solid var(--gray-mid)}
+  .py-open.red{background:#DC2626;color:#fff}
+  .py-open.red:hover{background:#991B1B;color:#fff}
+  .py-open.green{background:var(--green);color:#fff}
+  .py-open.green:hover{background:#27500A;color:#fff}
+  .py-section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-sec);margin:16px 0 8px;padding-left:2px}
+  .py-order{background:var(--blue-soft);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 13px;font-size:.82rem;color:var(--blue-dark);line-height:1.7;margin-bottom:12px}
+  .py-order b{display:block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);margin-bottom:4px}
+</style>
+
+  <div class="py-order">
+    <b>Recommended learning order</b>
+    <b>Step 1 — Python basics</b> Pick ONE beginner Python playlist and finish it completely before moving to the next. Don't jump between playlists.<br>
+    <b>Step 2 — NumPy + Pandas</b> Pick the NumPy/Pandas playlist from any channel you're comfortable with.<br>
+    <b>Step 3 — Statistics for ML</b> StatQuest Statistics Fundamentals — watch this before Month 3 literature review.<br>
+    <b>Step 4 — ML fundamentals</b> CampusX 100 Days of ML or Krish Naik ML playlist — run alongside Month 2–3.<br>
+    <b>Rule:</b> CampusX is more academic and thorough. Krish Naik is faster and more practical. Both are excellent — pick by your learning style, not both at once.
+  </div>
+
+  <!-- ── CAMPUSX ── -->
+  <div class="py-section-label">🏫 CampusX</div>
+  <div class="py-card featured">
+    <div class="py-head">
+      <div class="py-avatar" style="background:linear-gradient(135deg,#185FA5,#0C447C)">CX</div>
+      <div>
+        <div class="py-name">CampusX</div>
+        <div class="py-handle">@campusx-official · Hindi/English · Most thorough ML channel for Indian students</div>
+      </div>
+    </div>
+    <div class="py-desc">The most academically rigorous free ML education in Hindi. Every concept explained from mathematical foundations through code. Perfect if you want to deeply understand what you're building — not just copy-paste code. The 100-day series are the most structured free courses available.</div>
+    <div class="py-playlists">
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">100 Days of Python Programming</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-beg">Beginner → Advanced</span></div>
+          <div class="py-pl-meta">The most complete Python course for beginners in Hindi. Covers variables, loops, OOP, file handling, NumPy, Pandas, Matplotlib — everything you need for Month 1 and 2. Day-by-day structure makes it easy to follow your 1 hr/day schedule.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmvb1RYR-iTA_hzckhdONtSW4" target="_blank" class="py-open blue">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">100 Days of Machine Learning</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-adv">ML fundamentals</span></div>
+          <div class="py-pl-meta">Every ML algorithm explained in depth with math, intuition, and code. Covers everything in the ML guide PDF. Run alongside Month 2–3 of your thesis plan. One of the best free ML resources in any language.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH" target="_blank" class="py-open blue">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">100 Days of Deep Learning</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-adv">Neural nets → Transformers</span></div>
+          <div class="py-pl-meta">Day-by-day deep learning from perceptrons to Transformers. Directly relevant to Month 4 when you fine-tune HuBERT or AST. Covers CNNs, RNNs, LSTMs, Attention — all the architectures in your thesis.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" target="_blank" class="py-open blue">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Practical Deep Learning using PyTorch</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-adv">PyTorch hands-on</span></div>
+          <div class="py-pl-meta">Hands-on PyTorch — the framework your CNN baseline is built in. Watch Weeks 1–3 before Month 4 implementation. No-fluff, practical focus with real problem-solving.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmvboy8bmDCjwNHgTaYH2puK7" target="_blank" class="py-open blue">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">NLP with Deep Learning</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-adv">Transformers + BERT</span></div>
+          <div class="py-pl-meta">word2vec, Attention, Transformers, BERT with code. Companion to your thesis methodology — helps you understand how HuBERT relates to BERT. Watch in Month 3 alongside paper reading.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvZo7fp5kkIth6nRTeQc7j--" target="_blank" class="py-open blue">Open playlist ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── KRISH NAIK ── -->
+  <div class="py-section-label">🎯 Krish Naik</div>
+  <div class="py-card">
+    <div class="py-head">
+      <div class="py-avatar" style="background:linear-gradient(135deg,#DC2626,#991B1B)">KN</div>
+      <div>
+        <div class="py-name">Krish Naik</div>
+        <div class="py-handle">@krishnaik06 · English + Hindi · Fast, practical, project-oriented</div>
+      </div>
+    </div>
+    <div class="py-desc">The most practical ML educator on YouTube. Krish moves fast, builds real projects, and covers the full pipeline from Python to deployment. Better for people who learn by doing rather than by theory. His complete Python playlists are among the most-watched ML learning resources in India.</div>
+    <div class="py-playlists">
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Complete Python Playlist (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Beginner → Intermediate</span></div>
+          <div class="py-pl-meta">Python fundamentals to intermediate in English. Covers all Month 1 content: variables, data structures, OOP, file handling, exception handling. Fast-paced — good if you want to move quickly through basics.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVNUL99R4bDlVYsncUNvwUBB" target="_blank" class="py-open red">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Complete Python Playlist (Hindi)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-beg">Beginner</span></div>
+          <div class="py-pl-meta">Same content as above in Hindi. Choose this if you're more comfortable following explanations in Hindi.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLTDARY42LDV4qqiJd1Z1tShm3mp9-rP4v" target="_blank" class="py-open red">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Machine Learning 2024 (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Full ML pipeline</span></div>
+          <div class="py-pl-meta">Supervised, unsupervised, deep learning with Python. Code-first approach with real datasets. Use alongside Month 2–3 of your plan. Krish explains concepts quickly then immediately codes them — great for visual learners.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVPMbdMTjwolBI0cJcvASePD" target="_blank" class="py-open red">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Complete Deep Learning (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">ANN → CNN → RNN → LSTM</span></div>
+          <div class="py-pl-meta">ANN, CNN, RNN, LSTM with TensorFlow and Keras. Watch the CNN section (videos 10–20) before Month 4 CNN baseline coding. Very project-driven — every architecture gets a real use case.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVPGU70ZGsckrMdr0FteeRUi" target="_blank" class="py-open red">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Statistics for Machine Learning (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Foundations</span></div>
+          <div class="py-pl-meta">Probability, distributions, hypothesis testing, Bayesian statistics — all framed for ML. Watch in Month 1 Week 4 alongside the 3Blue1Brown videos for a practical + visual combination.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVMhVyr3Ri9IQ-t5QPBtxzJO" target="_blank" class="py-open red">Open playlist ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── STATQUEST ── -->
+  <div class="py-section-label">📊 StatQuest with Josh Starmer</div>
+  <div class="py-card">
+    <div class="py-head">
+      <div class="py-avatar" style="background:linear-gradient(135deg,#0F6E56,#065F46)">SQ</div>
+      <div>
+        <div class="py-name">StatQuest with Josh Starmer</div>
+        <div class="py-handle">@statquest · English only · Best for understanding the math behind ML</div>
+      </div>
+    </div>
+    <div class="py-desc">StatQuest doesn't have a Python-specific playlist but is the single best resource for understanding the statistics and ML math behind what you code. Every concept explained with clear visuals and zero assumed knowledge. Watch StatQuest when a paper or Krish Naik video says something you don't fully understand mathematically.</div>
+    <div class="py-playlists">
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Statistics Fundamentals</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Foundations</span></div>
+          <div class="py-pl-meta">Probability, distributions, p-values, confidence intervals, hypothesis testing. Watch before Month 3 — you need this vocabulary to read academic papers and write your methodology chapter. The clearest statistics content on YouTube.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUK0FLuzwntyYI10UQFUhsY9" target="_blank" class="py-open teal">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Machine Learning Playlist</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Beginner-friendly</span></div>
+          <div class="py-pl-meta">Every ML algorithm from scratch: linear regression, logistic regression, decision trees, random forests, SVM, neural networks, gradient boosting. Watch these before implementing anything — StatQuest tells you what the math is actually doing.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF" target="_blank" class="py-open teal">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Neural Networks & Deep Learning</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Backprop → LSTMs → Transformers</span></div>
+          <div class="py-pl-meta">Covers backpropagation, LSTMs, Attention and Transformers step by step with visuals. The clearest explanation of backprop that exists. Watch before Month 4 implementation — understanding backprop makes debugging your training loop much easier.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUIxGDQs4LFFD--41Vzf-ME1" target="_blank" class="py-open teal">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">XGBoost / Gradient Boosting</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Tree-based models</span></div>
+          <div class="py-pl-meta">The clearest explanation of gradient boosting and XGBoost with full math. Relevant if your CNN baseline uses a tree-based feature classifier as a sub-comparison. Optional but very well taught.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLblh5JKOoLUJjeXUvUE0maghNuY--7K3e" target="_blank" class="py-open teal">Open playlist ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── OTHER ESSENTIAL ── -->
+  <div class="py-section-label">⭐ Other Essential Python & ML Channels</div>
+  <div class="py-card">
+    <div class="py-playlists">
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Corey Schafer — Python Tutorials (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Beginner</span></div>
+          <div class="py-pl-meta">The gold standard Python tutorial channel. Slower and more thorough than Krish Naik. If you're confused by something in Month 1, Corey Schafer's video on that exact topic (functions, OOP, decorators, etc.) will clarify it. Every video is a standalone masterclass.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU" target="_blank" class="py-open gray">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">3Blue1Brown — Neural Networks (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Visual / intuition</span></div>
+          <div class="py-pl-meta">8 animated videos explaining how neural networks and backpropagation work geometrically. Watch in Month 1 Week 4 — these videos build the intuition that makes everything else click. Not code-focused but the most important conceptual foundation you can have.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLZZWrBYkx7Otcjr3eCLZDCgfpqnxMY29s" target="_blank" class="py-open gray">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Andrej Karpathy — Neural Networks: Zero to Hero (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Advanced — after Month 3</span></div>
+          <div class="py-pl-meta">Build backprop, MLP, WaveNet, and GPT from scratch in pure Python. The best deep learning course for practitioners who want to truly understand what's happening inside their model. Watch after Month 3 once your literature review is done. Not for beginners.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ" target="_blank" class="py-open gray">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Valerio Velardo — Audio Signal Processing for ML (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Audio ML specific</span></div>
+          <div class="py-pl-meta">THE audio ML foundation playlist. Waveforms, FFT, spectrograms, MFCCs — everything you need before Month 2 audio coding. Non-negotiable for both Bangla SER and Genre Classification topics. Watch ALL of this in Month 2 Week 1.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0" target="_blank" class="py-open amber">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Valerio Velardo — Deep Learning for Audio (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Audio classification + deployment</span></div>
+          <div class="py-pl-meta">Build complete audio AI applications: audio classification, speech recognition deployment. Direct companion to the signal processing series. Watch in Month 2 Week 3–4 alongside HuggingFace audio course.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PL-wATfeyAMNpCyuwxoPTDMqTkzdbh_1E3" target="_blank" class="py-open amber">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Stanford CS229 — Andrew Ng Machine Learning (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Academic depth</span></div>
+          <div class="py-pl-meta">The gold-standard university ML course. 27 hours of lectures covering regression, SVMs, neural nets, RL. University-level rigor. Not required for your BSc but invaluable if you want deep academic understanding of what you're building. Watch selectively — pick the lecture matching your current topic.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU" target="_blank" class="py-open gray">Open playlist ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUICK REFERENCE TABLE -->
+  <div class="sec-h2" style="margin-top:4px;">⚡ Quick Reference — Which Playlist for Which Month</div>
+  <div class="card card-blue">
+    <table class="kv">
+      <tr><td>Month 1 · Wk 1–2</td><td><strong>Pick ONE:</strong> CampusX 100 Days of Python (Hindi) <em>or</em> Krish Naik Complete Python (English). Finish it. Don't switch.</td></tr>
+      <tr><td>Month 1 · Wk 3</td><td>Kaggle micro-courses for NumPy + Pandas (free, 1 hr each)</td></tr>
+      <tr><td>Month 1 · Wk 4</td><td>3Blue1Brown Neural Networks (all 8 videos) + Krish Naik Statistics playlist (first 5 videos)</td></tr>
+      <tr><td>Month 2 · Wk 1</td><td><strong>Velardo Audio Signal Processing</strong> — first 8 videos, non-negotiable</td></tr>
+      <tr><td>Month 2 · Wk 2</td><td>Velardo playlist continued + librosa official tutorial</td></tr>
+      <tr><td>Month 2 · Wk 3–4</td><td>Velardo Deep Learning for Audio + HuggingFace Audio Course Ch.3</td></tr>
+      <tr><td>Month 3 · Wk 1–2</td><td>StatQuest Statistics Fundamentals (5 videos) — essential before reading papers</td></tr>
+      <tr><td>Month 3 · Wk 3</td><td>CampusX 100 Days of Deep Learning (CNN section) or Krish Naik Deep Learning (CNN videos)</td></tr>
+      <tr><td>Month 4 · Wk 2–3</td><td>CampusX PyTorch playlist (first 5 videos) before CNN baseline coding</td></tr>
+      <tr><td>Month 4 · Wk 3</td><td>StatQuest Neural Networks playlist — understanding backprop before fine-tuning HuBERT/AST</td></tr>
+      <tr><td>After Month 3</td><td>Karpathy Zero to Hero — optional deep dive for practitioners who want to understand every line</td></tr>
+    </table>
+  </div>
+
+  <!-- ── NUMPY / PANDAS / KAGGLE ── -->
+  <div class="py-section-label">🔢 NumPy · Pandas · Kaggle Fundamentals</div>
+
+  <div class="insight" style="margin-bottom:12px;border-left-color:var(--purple);">
+    <div class="insight-label" style="color:var(--purple)">Why these matter for your thesis</div>
+    NumPy handles all array operations on your audio feature matrices. Pandas loads and manages your SUBESCO/GTZAN metadata (filenames, labels, splits). Without these two, you cannot write your data loading pipeline in Month 4. Learn them in Month 1 Week 3 — one week is enough to be functional.
+  </div>
+
+  <!-- CAMPUSX NUMPY/PANDAS -->
+  <div class="py-card featured">
+    <div class="py-head">
+      <div class="py-avatar" style="background:linear-gradient(135deg,#185FA5,#0C447C)">CX</div>
+      <div>
+        <div class="py-name">CampusX — NumPy, Pandas & Data Libraries</div>
+        <div class="py-handle">@campusx-official · Hindi · 3 dedicated playlists — most thorough free coverage</div>
+      </div>
+    </div>
+    <div class="py-desc">CampusX has dedicated, standalone playlists for NumPy and Pandas — not buried inside a general Python course. Each playlist goes deep with real datasets. The combined NumPy + Pandas + Matplotlib + Seaborn playlist is ideal for Month 1 Week 3 — covers everything needed for audio data handling in one place.</div>
+    <div class="py-playlists">
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">NumPy Complete Playlist</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-beg">Beginner → Intermediate</span></div>
+          <div class="py-pl-meta">Dedicated NumPy playlist covering: arrays, indexing, slicing, broadcasting, mathematical operations, reshaping, stacking. All operations you will use when loading and processing audio feature matrices (mel spectrograms are NumPy arrays). ~8–10 videos, completable in 2 weekend sessions.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_Rmvb-ToL3RQ_bwxG4_ND-0-DT" target="_blank" class="py-open blue">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Pandas Complete Playlist</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-beg">Beginner → Intermediate</span></div>
+          <div class="py-pl-meta">Dedicated Pandas playlist: Series, DataFrame, reading CSV/Excel/JSON, filtering, groupby, merging, handling missing values. You will use Pandas to manage your dataset metadata — mapping audio file paths to emotion labels, creating train/val/test splits, computing class distribution statistics for your thesis.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLKnIA16_RmvbR85fgbfVRKOiMokUKVupy" target="_blank" class="py-open blue">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">NumPy + Pandas + Matplotlib + Seaborn (Combined)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-hi">Hindi</span><span class="py-pl-tag tag-beg">All four libraries</span></div>
+          <div class="py-pl-meta">Single playlist covering all four data science libraries together. Pandas 6 hrs · NumPy 3 hrs · Matplotlib 2 hrs · Seaborn 1 hr. If you want to learn all four in one structured playlist rather than switching between separate ones, this is the most efficient path. Covers everything needed for Months 1–2 data work.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLEkC1_DzbPc6cFLC1uoDco7bszPKy4DnP" target="_blank" class="py-open blue">Open playlist ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- KRISH NAIK NUMPY/PANDAS -->
+  <div class="py-card">
+    <div class="py-head">
+      <div class="py-avatar" style="background:linear-gradient(135deg,#DC2626,#991B1B)">KN</div>
+      <div>
+        <div class="py-name">Krish Naik — NumPy & Pandas Coverage</div>
+        <div class="py-handle">@krishnaik06 · English + Hindi · Covered inside Complete Python playlist</div>
+      </div>
+    </div>
+    <div class="py-desc">Krish Naik covers NumPy and Pandas inside his Complete Python playlist rather than as standalone series. The advantage: you see NumPy/Pandas applied in real ML context immediately. The complete playlist below also includes data visualisation with Matplotlib and Seaborn and EDA on real datasets.</div>
+    <div class="py-playlists">
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Complete Python Playlist — NumPy + Pandas + Matplotlib + Seaborn sections</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Practical focus</span></div>
+          <div class="py-pl-meta">NumPy and Pandas are covered from video ~15 onwards in this playlist. Jump directly to those videos. Faster and more project-oriented than CampusX — Krish shows you how each function is used in real data science work rather than in isolation. Good if you already understand Python basics and just need the libraries.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVNUL99R4bDlVYsncUNvwUBB" target="_blank" class="py-open red">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">EDA + Feature Engineering Detailed Playlist</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Pandas applied to real data</span></div>
+          <div class="py-pl-meta">Pandas in action on real datasets: handling missing values, outlier detection, feature scaling, encoding, correlation analysis. This is Month 1 end-goal level — you will use these exact Pandas operations when exploring your SUBESCO/GTZAN dataset in Month 3 Week 4. Watch after finishing the Pandas basics playlist.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLZoTAELRMXVPwYGE2PXD3x0bfKnR0cJjN" target="_blank" class="py-open red">Open playlist ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- KAGGLE LEARN -->
+  <div class="py-card">
+    <div class="py-head">
+      <div class="py-avatar" style="background:linear-gradient(135deg,#20BEFF,#017CEE)">K</div>
+      <div>
+        <div class="py-name">Kaggle Learn — Free Micro-Courses with Certificates</div>
+        <div class="py-handle">kaggle.com/learn · English · Interactive browser notebooks · Free completion certificates</div>
+      </div>
+    </div>
+    <div class="py-desc">Kaggle micro-courses are the fastest way to become functional with data science libraries. Each course takes 3–5 hours, runs entirely in the browser (no install), has hands-on coding exercises with instant feedback, and awards a free certificate on completion. The Python → Pandas → Data Viz sequence maps exactly to Month 1 Week 3 of your thesis plan.</div>
+    <div class="py-playlists">
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Intro to Programming</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Zero experience needed</span><span class="py-pl-tag tag-both">Certificate</span></div>
+          <div class="py-pl-meta">Start here if you have literally never coded. Variables, arithmetic, data types, conditions, intro to functions — all in Python. ~5 hours. Do this only if Krish Naik / CampusX Python feels too fast in Week 1.</div>
+        </div>
+        <a href="https://www.kaggle.com/learn/intro-to-programming" target="_blank" class="py-open" style="background:#20BEFF;color:#fff;">Open course ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Python (Kaggle)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Beginner</span><span class="py-pl-tag tag-both">Certificate</span></div>
+          <div class="py-pl-meta">~5 hours covering Python syntax, functions, lists, loops, strings, dictionaries. Each lesson has an interactive notebook exercise you complete in the browser. Much faster than YouTube playlists for Python basics — good for Month 1 Week 1 alongside a YouTube playlist.</div>
+        </div>
+        <a href="https://www.kaggle.com/learn/python" target="_blank" class="py-open" style="background:#20BEFF;color:#fff;">Open course ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Pandas (Kaggle) ⭐</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Month 1 Week 3</span><span class="py-pl-tag tag-both">Certificate</span></div>
+          <div class="py-pl-meta">~4 hours. The most focused Pandas course available. Covers: creating DataFrames and Series, indexing and selecting data, groupby, sorting, missing values, renaming and combining. All using real wine review and video games datasets. Do all 6 exercises — each takes ~15 min. This + CampusX Pandas = complete Pandas skills.</div>
+        </div>
+        <a href="https://www.kaggle.com/learn/pandas" target="_blank" class="py-open" style="background:#20BEFF;color:#fff;">Open course ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Data Visualization (Kaggle)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Month 1 Week 3</span><span class="py-pl-tag tag-both">Certificate</span></div>
+          <div class="py-pl-meta">~4 hours. Seaborn and Matplotlib for line charts, bar charts, heatmaps, scatter plots, distributions. You will use these to produce the confusion matrix figures and training curve plots in your results chapter. Do this in Month 1 Week 3 alongside the Pandas course.</div>
+        </div>
+        <a href="https://www.kaggle.com/learn/data-visualization" target="_blank" class="py-open" style="background:#20BEFF;color:#fff;">Open course ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Intro to Machine Learning (Kaggle)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Month 1 Week 4</span><span class="py-pl-tag tag-both">Certificate</span></div>
+          <div class="py-pl-meta">~3 hours. Decision trees, model validation, underfitting/overfitting, random forests — all with hands-on notebooks. Gives you a working ML model in the browser before Month 2 even starts. Pairs perfectly with the 3Blue1Brown conceptual videos in Month 1 Week 4.</div>
+        </div>
+        <a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank" class="py-open" style="background:#20BEFF;color:#fff;">Open course ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Intermediate Machine Learning (Kaggle)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Month 2</span><span class="py-pl-tag tag-both">Certificate</span></div>
+          <div class="py-pl-meta">~4 hours. Missing values, categorical variables, pipelines, cross-validation, XGBoost, data leakage. Do this in Month 2 Week 1 alongside Velardo audio signal processing. Builds the ML workflow knowledge you need for Month 4 model training.</div>
+        </div>
+        <a href="https://www.kaggle.com/learn/intermediate-machine-learning" target="_blank" class="py-open" style="background:#20BEFF;color:#fff;">Open course ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Feature Engineering (Kaggle)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-adv">Month 3–4</span><span class="py-pl-tag tag-both">Certificate</span></div>
+          <div class="py-pl-meta">~5 hours. Creating features, mutual information, clustering as feature, PCA, target encoding. Directly relevant when you create features from your SUBESCO audio (MFCCs, chroma, spectral features) as input to your CNN baseline. Do this before Month 4 Week 1 preprocessing.</div>
+        </div>
+        <a href="https://www.kaggle.com/learn/feature-engineering" target="_blank" class="py-open" style="background:#20BEFF;color:#fff;">Open course ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ADDITIONAL NUMPY/PANDAS RESOURCES -->
+  <div class="py-card">
+    <div class="py-head">
+      <div class="py-avatar" style="background:linear-gradient(135deg,#3B6D11,#27500A)">📚</div>
+      <div>
+        <div class="py-name">Official Docs + Keith Galli (Best NumPy/Pandas YouTube — English)</div>
+        <div class="py-handle">Verified working links · All free · No login needed</div>
+      </div>
+    </div>
+    <div class="py-playlists">
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Keith Galli — Complete Pandas Tutorial (English)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Beginner → Practical</span></div>
+          <div class="py-pl-meta">The single best English Pandas tutorial playlist on YouTube. Real-world datasets, clean explanations, every important function covered. If you prefer English over Hindi for library tutorials, start here before the Kaggle Pandas course. Frequently recommended by data science communities.</div>
+        </div>
+        <a href="https://www.youtube.com/playlist?list=PLFCB5Dp81iNVmuoGIqcT5oF4K-7kTI5vp" target="_blank" class="py-open green">Open playlist ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">NumPy Official Quickstart (Docs)</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Reference</span></div>
+          <div class="py-pl-meta">The official NumPy tutorial — short, precise, runnable in Colab. Covers arrays, indexing, operations, linear algebra. Use this as a reference when you're stuck on a specific NumPy operation during Month 4 data loading, not as a course to complete linearly.</div>
+        </div>
+        <a href="https://numpy.org/doc/stable/user/quickstart.html" target="_blank" class="py-open green">Open docs ↗</a>
+      </div>
+
+      <div class="py-pl">
+        <div class="py-pl-info">
+          <div class="py-pl-title">Pandas Official Getting Started Tutorial</div>
+          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Reference</span></div>
+          <div class="py-pl-meta">Official Pandas documentation tutorials — 10-minutes to pandas, then specific guides on indexing, groupby, merging. Bookmark this page. During Month 4 when your data loading pipeline breaks, this is faster than searching YouTube for the specific Pandas function you need.</div>
+        </div>
+        <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" target="_blank" class="py-open green">Open docs ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MINI SCHEDULE -->
+  <div class="sec-h2" style="margin-top:4px;">📅 NumPy + Pandas + Kaggle — Month 1 Week 3 Schedule</div>
+  <div class="card card-blue">
+    <table class="kv">
+      <tr><td>Monday (1 hr)</td><td>Kaggle Python course — lessons 1–3 (functions, booleans, lists). All in browser, no install.</td></tr>
+      <tr><td>Tuesday (1 hr)</td><td>Kaggle Python course — lessons 4–7 (loops, strings, dictionaries, working with external libraries).</td></tr>
+      <tr><td>Wednesday (1 hr)</td><td>CampusX NumPy playlist — videos 1–4. Arrays, indexing, slicing. Open Colab and code along.</td></tr>
+      <tr><td>Thursday (1 hr)</td><td>CampusX NumPy playlist — videos 5–8. Broadcasting, reshaping, mathematical operations.</td></tr>
+      <tr><td>Friday (1 hr)</td><td>Kaggle Pandas course — lessons 1–3 (creating DataFrames, indexing, selecting data).</td></tr>
+      <tr><td>Saturday (3 hrs)</td><td>CampusX Pandas playlist — first 6 videos. Code along in Colab using your own CSV file (any dataset from Kaggle).</td></tr>
+      <tr><td>Sunday (3 hrs)</td><td>Kaggle Pandas course — lessons 4–6 (groupby, missing values, combining). Then Kaggle Data Visualization — lessons 1–3 (line chart, bar chart, heatmap). These are the exact chart types you need for your thesis results chapter.</td></tr>
+    </table>
+  </div>
+
+</div><!-- end sec-python -->
+
 </main>
 
 <script>
@@ -2392,6 +2912,13 @@ function pmPreload(){
 }
 
 // ── render papers ──
+function trSwitch(id, btn){
+  document.querySelectorAll('.tr-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tr-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('trp-'+id).classList.add('active');
+}
+
 function pmRender(){
   const list = document.getElementById('pm-list');
   let filtered = papers.filter(p=>{
