@@ -2850,14 +2850,7 @@
   <div class="py-card">
     <div class="py-playlists">
 
-      <div class="py-pl">
-        <div class="py-pl-info">
-          <div class="py-pl-title">Corey Schafer — Python Tutorials (English)</div>
-          <div style="margin:3px 0"><span class="py-pl-tag tag-en">English</span><span class="py-pl-tag tag-beg">Beginner</span></div>
-          <div class="py-pl-meta">The gold standard Python tutorial channel. Slower and more thorough than Krish Naik. If you're confused by something in Month 1, Corey Schafer's video on that exact topic (functions, OOP, decorators, etc.) will clarify it. Every video is a standalone masterclass.</div>
-        </div>
-        <a href="https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU" target="_blank" class="py-open gray">Open playlist ↗</a>
-      </div>
+
 
       <div class="py-pl">
         <div class="py-pl-info">
@@ -2925,8 +2918,8 @@
     </table>
   </div>
 
-  <!-- ── NUMPY / PANDAS / KAGGLE ── -->
-  <div class="py-section-label">🔢 NumPy · Pandas · Kaggle Fundamentals</div>
+
+    <div class="py-section-label">🔢 NumPy · Pandas · Kaggle Fundamentals</div>
 
   <div class="insight" style="margin-bottom:12px;border-left-color:var(--purple);">
     <div class="insight-label" style="color:var(--purple)">Why these matter for your thesis</div>
@@ -3179,9 +3172,9 @@
       <div class="ivl-avatar" style="background:linear-gradient(135deg,#534AB7,#3C3489)">CS</div>
       <div>
         <div class="ivl-channel">Corey Schafer — Python Tutorials</div>
-        <div style="font-size:.73rem;color:var(--text-sec);">Videos 1–16 individually linked · Watch in order · ~15–25 min each</div>
+        <div style="font-size:.73rem;color:var(--text-sec);">Videos 1–20 individually linked · Watch in order · ~15–25 min each</div>
       </div>
-      <div class="ivl-count">16 videos</div>
+      <div class="ivl-count">20 videos</div>
       <div class="ivl-arrow">▼</div>
     </div>
     <div class="ivl-body">
@@ -3214,7 +3207,7 @@
         <a href="https://www.youtube.com/watch?v=9Os0o3wzS_I" target="_blank" class="ivl-vid">
           <div class="ivl-num">8</div><div><div class="ivl-vtitle">Functions</div><div class="ivl-dur">20 min · Defining, args, kwargs, return</div></div>
         </a>
-        <a href="https://www.youtube.com/watch?v=CqvZ3vGoGs8" target="_blank" class="ivl-vid">
+        <a href="https://www.youtube.com/watch?v=CqvZ3vGoGs0" target="_blank" class="ivl-vid">
           <div class="ivl-num">9</div><div><div class="ivl-vtitle">Import Modules &amp; Standard Library</div><div class="ivl-dur">18 min · How Python's built-in tools work</div></div>
         </a>
         <a href="https://www.youtube.com/watch?v=Uh2ebFW8OYM" target="_blank" class="ivl-vid">
@@ -3223,7 +3216,7 @@
       </div>
       <div class="ivl-week">Month 1 · Week 2 — finish by Sunday</div>
       <div class="ivl-grid">
-        <a href="https://www.youtube.com/watch?v=q5uM4VKywbA" target="_blank" class="ivl-vid">
+        <a href="https://www.youtube.com/watch?v=ve2d4b6ZYTY" target="_blank" class="ivl-vid">
           <div class="ivl-num">11</div><div><div class="ivl-vtitle">Automate Parsing &amp; Renaming Multiple Files</div><div class="ivl-dur">13 min · Batch processing — useful for audio datasets</div></div>
         </a>
         <a href="https://www.youtube.com/watch?v=q5uM4VKywbA" target="_blank" class="ivl-vid">
@@ -3232,7 +3225,7 @@
         <a href="https://www.youtube.com/watch?v=eirjjyP2qcQ" target="_blank" class="ivl-vid">
           <div class="ivl-num">13</div><div><div class="ivl-vtitle">Datetime Module</div><div class="ivl-dur">28 min · Dates and times in Python</div></div>
         </a>
-        <a href="https://www.youtube.com/watch?v=9RCZnG_ANms" target="_blank" class="ivl-vid">
+        <a href="https://www.youtube.com/watch?v=9N6a-VLBa2I" target="_blank" class="ivl-vid">
           <div class="ivl-num">14</div><div><div class="ivl-vtitle">How to work with JSON Data</div><div class="ivl-dur">20 min · Loading config files and API responses</div></div>
         </a>
         <a href="https://www.youtube.com/watch?v=NIWwJbo-9_8" target="_blank" class="ivl-vid">
@@ -3450,16 +3443,13 @@
 
 </div><!-- end sec-python -->
 
-<script>
-function toggleIvl(id){
-  const el=document.getElementById('ivl-'+id);
-  el.classList.toggle('open');
-}
-</script>
-
 </main>
 
 <script>
+function toggleIvl(id){
+  const el=document.getElementById('ivl-'+id);
+  if(el) el.classList.toggle('open');
+}
 // ══════════════════════════════════════════════════════
 // PAPER MANAGER — localStorage-backed
 // ══════════════════════════════════════════════════════
